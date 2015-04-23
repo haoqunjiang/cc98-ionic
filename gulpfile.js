@@ -6,6 +6,7 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var browserSync = require('browser-sync');
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -50,3 +51,17 @@ gulp.task('git-check', function(done) {
   }
   done();
 });
+
+gulp.task('browser-sync', function() {
+  browserSync({
+    server: {
+      baseDir: './www',
+      routes: {
+        '/jspm_packages': './jspm_packages',
+        '/jspm_config.js': './jspm_config.js'
+      }
+    }
+  });
+});
+
+gulp.task('serve', ['browser-sync']);
