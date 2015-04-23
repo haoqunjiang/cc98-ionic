@@ -1,0 +1,30 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+  <!-- 最新话题 -->
+  <!-- 目前用的是全站最新话题，后续应当改成定制版面最新话题（暂无对应 API） -->
+  <ion-tab title="话题" icon-off="ion-ios-book-outline" icon-on="ion-ios-book" href="#/tab/topics">
+    <ion-nav-view name="tab-topics"></ion-nav-view>
+  </ion-tab>
+
+  <!-- 定制版面，并可浏览全站版面和随机版面 -->
+  <ion-tab title="版面" icon-off="ion-ios-browsers-outline" icon-on="ion-ios-browsers" href="#/tab/boards">
+    <ion-nav-view name="tab-boards"></ion-nav-view>
+  </ion-tab>
+
+  <!-- 热门话题（十大），并可以浏览随机主题 -->
+  <ion-tab title="热门" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/hot">
+    <ion-nav-view name="tab-hot"></ion-nav-view>
+  </ion-tab>
+
+  <!-- 账户信息以及 app 设置 -->
+  <ion-tab title="我" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/me">
+    <ion-nav-view name="tab-me"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

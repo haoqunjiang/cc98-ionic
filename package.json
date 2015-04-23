@@ -26,6 +26,7 @@
     },
     "configFile": "www/jspm_config.js",
     "dependencies": {
+      "font-awesome": "npm:font-awesome@^4.3.0",
       "gulp": "jspm:gulp@^3.5.6",
       "gulp-concat": "jspm:gulp-concat@^2.2.0",
       "gulp-minify-css": "jspm:gulp-minify-css@^0.3.0",

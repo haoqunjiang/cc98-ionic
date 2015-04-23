@@ -1,74 +1,77 @@
 # 本配置文件使用 YAML 格式定义
 parser:
-    babel-eslint
+  espree
 
 env:
-    browser: true
-    node: true
-    es6: true
+  browser: true
+  node: true
+  es6: true
+
+globals:
+  angular: true
 
 ecmaFeatures:
-    modules: true
+  modules: true
 
 rules:
-    # 一律使用单引号，除非字符串的值中有单引号
-    quotes: [1, single, avoid-escape]
+  # 一律使用单引号，除非字符串的值中有单引号
+  quotes: [1, single, avoid-escape]
 
-    # 不使用严格模式（考虑到可能有第三方库不支持严格模式，所以不能用全局严格模式，而函数级的又太麻烦）
-    strict: [1, never]
+  # 不使用严格模式（考虑到可能有第三方库不支持严格模式，所以不能用全局严格模式，而函数级的又太麻烦）
+  strict: [1, never]
 
-    # 采用 2 个空格缩进
-    indent: [1, 2]
+  # 采用 2 个空格缩进
+  indent: [1, 2]
 
-    # 函数定义的 () 前不应有空格（示例：function() {}、function foo() {}）
-    space-before-function-parentheses: never
+  # 函数定义的 () 前不应有空格（示例：function() {}、function foo() {}）
+  space-before-function-parentheses: never
 
-    # 代码块的花括号 { 前面应当有个空格
-    space-before-blocks: always
+  # 代码块的花括号 { 前面应当有个空格
+  space-before-blocks: always
 
-    # 花括号 { 一律在行末，除非表达式只有一行
-    brace-style: [1, 1tbs, { allowSingleLine: true }]
+  # 花括号 { 一律在行末，除非表达式只有一行
+  brace-style: [1, 1tbs, { allowSingleLine: true }]
 
-    # 代码块首尾不应有空行
-    padded-blocks: [1, never]
+  # 代码块首尾不应有空行
+  padded-blocks: [1, never]
 
-    # else 语句中如果有且仅有一个 if 判断（形如 else { if () {} } ），则应当用 else if 代替
-    no-lonely-if: 1
+  # else 语句中如果有且仅有一个 if 判断（形如 else { if () {} } ），则应当用 else if 代替
+  no-lonely-if: 1
 
-    # 定义 object literal 时，属性名如非必要，不应加引号
-    quote-props: [1, as-needed]
+  # 定义 object literal 时，属性名如非必要，不应加引号
+  quote-props: [1, as-needed]
 
-    # 除函数以外，所有变量在使用前都应被定义
-    no-use-before-define: [1, nofunc]
+  # 除函数以外，所有变量在使用前都应被定义
+  no-use-before-define: [1, nofunc]
 
-    # 不要使用 console 中的方法
-    no-console: 1
+  # 不要使用 console 中的方法
+  no-console: 1
 
-    # ( 右侧和 ) 左侧不应有空格
-    space-in-parens: [1, never]
+  # ( 右侧和 ) 左侧不应有空格
+  space-in-parens: [1, never]
 
-    # 类似于上一条，针对方括号
-    space-in-brackets: [1, never]
+  # 类似于上一条，针对方括号
+  space-in-brackets: [1, never]
 
-    # 逗号只能出现在行中或行末，不能出现在行首
-    comma-style: [1, last]
+  # 逗号只能出现在行中或行末，不能出现在行首
+  comma-style: [1, last]
 
-    # 单行注释的 // 后面应当有个空格
-    spaced-line-comment: always
+  # 单行注释的 // 后面应当有个空格
+  spaced-line-comment: always
 
-    # 变量不能自己和自己进行比较
-    no-self-compare: 1
+  # 变量不能自己和自己进行比较
+  no-self-compare: 1
 
-    # 只能把 var 定义的变量当做块级变量来用，避免因为 variable hoisting 带来的难以察觉的 bug
-    block-scoped-var: 1
+  # 只能把 var 定义的变量当做块级变量来用，避免因为 variable hoisting 带来的难以察觉的 bug
+  block-scoped-var: 1
 
-    # IIFE 调用必须用括弧 () 包裹（例：var x = (function () { return { y: 1 };})();）
-    wrap-iife: [2, inside]
+  # IIFE 调用必须用括弧 () 包裹（例：var x = (function () { return { y: 1 };})();）
+  wrap-iife: [2, inside]
 
-    # 考虑到有很多人喜欢类似于 a && b() 这样的简写，所以设置为 warning 而不是 error
-    no-unused-expressions: 1
+  # 考虑到有很多人喜欢类似于 a && b() 这样的简写，所以设置为 warning 而不是 error
+  no-unused-expressions: 1
 
-    # 以下划线开头的变量命名个人感觉并无不妥
-    no-underscore-dangle: 0
+  # 以下划线开头的变量命名个人感觉并无不妥
+  no-underscore-dangle: 0
 
-    # 其他有默认值的 ESLint 规则就不重复定义了
+  # 其他有默认值的 ESLint 规则就不重复定义了
