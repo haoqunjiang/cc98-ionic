@@ -1,0 +1,8 @@
+{
+  "url": "/topics",
+  "views": {
+    "tab-topics": {
+      "templateUrl": "templates/tab-dash.html"
+    }
+  }
+}

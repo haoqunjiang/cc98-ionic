@@ -1,0 +1,8 @@
+{
+  "url": "/me",
+  "views": {
+    "tab-me": {
+      "templateUrl": "app/me/me.html"
+    }
+  }
+}

@@ -1,16 +1,21 @@
 import 'ionic';
 
-import 'js/controllers';
-import 'js/services';
-
-import 'font-awesome';
-
 import 'maximnaidenov/angular-busy-tracker';
 import 'maximnaidenov/angular-busy-tracker/dist/busy.css!'; // ugly but useful
 
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('cc98', ['ionic', 'starter.controllers', 'starter.services'])
+// routes of submodules
+import TopicsRoute from 'app/topics/topics.route.json!';  // 话题
+import BoardsRoute from 'app/boards/boards.route.json!';  // 版面列表
+import HotRoute from 'app/hot/hot.route.json!';           // 热门话题
+import MeRoute from 'app/me/me.route.json!';              // 我
+// 搜索页
+// 搜索结果页
+// 话题内容
+// 回复主题
+// 设置
+
+
+angular.module('cc98', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,42 +38,10 @@ angular.module('cc98', ['ionic', 'starter.controllers', 'starter.services'])
       abstract: true,
       templateUrl: 'app/app-tabs.html'
     })
-
-    .state('tab.topics', {
-      url: '/topics',
-      views: {
-        'tab-topics': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
-        }
-      }
-    })
-
-    .state('tab.boards', {
-      url: '/boards',
-      views: {
-        'tab-boards': {
-          templateUrl: 'app/boards/boards.html'
-        }
-      }
-    })
-    .state('tab.hot', {
-      url: '/hot',
-      views: {
-        'tab-hot': {
-          templateUrl: 'app/hot/hot.html'
-        }
-      }
-    })
-
-    .state('tab.me', {
-      url: '/me',
-      views: {
-        'tab-me': {
-          templateUrl: 'app/me/me.html'
-        }
-      }
-    });
+    .state('tab.topics', TopicsRoute)
+    .state('tab.boards', BoardsRoute)
+    .state('tab.hot', HotRoute)
+    .state('tab.me', MeRoute);
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/hot');
