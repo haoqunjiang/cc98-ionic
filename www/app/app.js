@@ -62,8 +62,7 @@ angular.module('cc98', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/me',
       views: {
         'tab-me': {
-          templateUrl: 'app/me/me.html',
-          controller: 'AccountCtrl'
+          templateUrl: 'app/me/me.html'
         }
       }
     });
