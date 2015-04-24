@@ -16,16 +16,13 @@ System.config({
 
 System.config({
   "map": {
-    "angular-busy-tracker": "bower:angular-busy-tracker@1.1.0",
     "babel": "npm:babel-core@5.1.11",
     "babel-runtime": "npm:babel-runtime@5.1.11",
     "core-js": "npm:core-js@0.8.4",
+    "css": "github:systemjs/plugin-css@0.1.10",
     "font-awesome": "npm:font-awesome@4.3.0",
     "ionic": "github:driftyco/ionic-bower@1.0.0-rc.4",
-    "bower:angular-busy-tracker@1.1.0": {
-      "angular": "bower:angular@1.3.15",
-      "css": "github:systemjs/plugin-css@0.1.10"
-    },
+    "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
     "github:angular-ui/ui-router@0.2.13": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
@@ -79,6 +76,10 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "github:maximnaidenov/angular-busy-tracker@1.1.0": {
+      "angular": "github:angular/bower-angular@1.3.15",
+      "css": "github:systemjs/plugin-css@0.1.10"
     },
     "github:systemjs/plugin-css@0.1.10": {
       "clean-css": "npm:clean-css@3.1.9",

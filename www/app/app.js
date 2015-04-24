@@ -5,7 +5,8 @@ import 'js/services';
 
 import 'font-awesome';
 
-import 'angular-busy-tracker';
+import 'maximnaidenov/angular-busy-tracker';
+import 'maximnaidenov/angular-busy-tracker/dist/busy.css!'; // ugly but useful
 
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
