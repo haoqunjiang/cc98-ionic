@@ -5,6 +5,8 @@
 
         npm install gulp -g     # 安装 gulp 用于各种构建任务
         npm install bower -g    # 安装 jspm 用于下载第三方依赖
+        npm install -g jspm-bower-endpoint  # 目前 jspm 需要第三方插件才能支持 bower
+        jspm registry create bower jspm-bower-endpoint
 
 3. 在本项目根目录下运行以下命令：
 

@@ -5,6 +5,8 @@ import 'js/services';
 
 import 'font-awesome';
 
+import 'angular-busy-tracker';
+
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('cc98', ['ionic', 'starter.controllers', 'starter.services'])
