@@ -11,13 +11,31 @@ System.config({
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js",
     "bower:*": "jspm_packages/bower/*.js"
-  }
+  },
+  "bundles": {
+    "bundles/ionic": [
+      "github:driftyco/ionic-bower@1.0.0-rc.4/css/ionic.css!github:systemjs/plugin-css@0.1.10",
+      "github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic",
+      "github:angular/bower-angular@1.3.15/angular",
+      "github:angular/bower-angular-animate@1.3.15/angular-animate",
+      "github:angular/bower-angular-sanitize@1.3.15/angular-sanitize",
+      "github:angular-ui/ui-router@0.2.13/angular-ui-router",
+      "github:angular/bower-angular@1.3.15",
+      "github:angular/bower-angular-animate@1.3.15",
+      "github:angular/bower-angular-sanitize@1.3.15",
+      "github:angular-ui/ui-router@0.2.13",
+      "github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular",
+      "github:driftyco/ionic-bower@1.0.0-rc.4"
+    ]
+  },
+  "separateCSS": true
 });
 
 System.config({
   "map": {
     "babel": "npm:babel-core@5.1.11",
     "babel-runtime": "npm:babel-runtime@5.1.11",
+    "bootstrap": "github:twbs/bootstrap@3.3.4",
     "core-js": "npm:core-js@0.8.4",
     "css": "github:systemjs/plugin-css@0.1.10",
     "font-awesome": "npm:font-awesome@4.3.0",
@@ -86,6 +104,9 @@ System.config({
       "clean-css": "npm:clean-css@3.1.9",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0"
+    },
+    "github:twbs/bootstrap@3.3.4": {
+      "jquery": "github:components/jquery@2.1.3"
     },
     "npm:amdefine@0.1.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",

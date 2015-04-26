@@ -65,3 +65,11 @@
 - 建议使用 [JSDoc 3](http://usejsdoc.org/) 定义的格式来注释代码；
 - 对于 `module`、`controller`、`factory` 等的注释可以参考[这个链接](http://stackoverflow.com/a/24208836/2302258)（仅供参考，暂未使用这种方式注释，因为目前项目 `module` 的命名风格带了点号 `.` 不适用于此）；
 - 本项目中对返回类型为 `Promise` 的函数，使用了 `@resolve` 和 `@reject` 标签注释，这两个标签在 JSDoc 中并没有定义，此处仅是为了方便阅读代码，生成文档时并没有办法输出（关于如何注释 `Promise` 类型，[这个 GitHub Issue](https://github.com/jsdoc3/jsdoc/issues/509) 中有更详细的讨论）。
+
+
+
+## 其他
+
+因为 JSPM 的限制，在开发环境下自定义 ionic 的样式有点复杂（因为 jspm registry 里的 ionic 包是引入的 ionic.css，而实际自定义时是要修改 sass 文件的），因此本项目参考了[这里](https://github.com/jspm/jspm-cli/issues/393#issuecomment-77781122)的做法，对 ionic 额外做了个 bundle。
+
+后续如需升级 ionic 版本，则请在 `www` 目录下运行 `jspm bundle ionic bundles/ionic.js --inject` 即可。
