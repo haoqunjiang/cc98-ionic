@@ -54,7 +54,15 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('serve', ['browser-sync']);
+gulp.task('serve', ['browser-sync'], function() {
+  gulp.watch('www/**/*.css', function (file) {
+    if (file.type === 'changed') {
+      reload(file.path);
+    }
+  });
+  gulp.watch(['www/**/*.html', 'www/**/*.js'], ['bs-reload']);
+  gulp.watch(paths.sass, ['sass']);
+});
 
 gulp.task('ionic-sass', function(cb) {
   var System = require('systemjs');
@@ -81,7 +89,7 @@ gulp.task('ionic-sass', function(cb) {
         .pipe(replace('{{ionic-scss-path}}', scssPath))
         .pipe(sourcemaps.init())
         .pipe(sass({ errLogToConsole: true }))
-        .pipe(minifyCss({ keepSpecialComments: 0 }))
+        // .pipe(minifyCss({ keepSpecialComments: 0 })) // not needed in development
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./www/bundles/'))
         .on('end', cb);
