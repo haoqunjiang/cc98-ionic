@@ -4,18 +4,13 @@
   "description": "cc98-ionic: An Ionic project",
   "repository": "https://github.com/sodatea/cc98-ionic",
   "dependencies": {
-    "gulp": "^3.5.6",
-    "gulp-sass": "^1.3.3",
-    "gulp-concat": "^2.2.0",
-    "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0"
+    "gulp": "^3.8.11"
   },
   "devDependencies": {
-    "bower": "^1.3.3",
+    "eslint": "^0.20.0",
     "gulp-replace": "^0.5.3",
+    "gulp-sass": "^1.3.3",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-util": "^2.2.14",
-    "shelljs": "^0.3.0",
     "systemjs": "^0.16.9"
   },
   "cordovaPlugins": [
