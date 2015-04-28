@@ -1,5 +1,8 @@
 {
   "name": "cc98-ionic",
   "app_id": "3c8e4460",
-  "gulpStartupTasks": ["sass", "watch"]
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ]
 }
