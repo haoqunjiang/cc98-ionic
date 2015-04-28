@@ -1,7 +1,7 @@
 {
   "name": "cc98-ionic",
   "version": "1.0.0",
-  "description": "cc98-ionic: An Ionic project",
+  "description": "A third-party app for http://www.cc98.org/",
   "repository": "https://github.com/sodatea/cc98-ionic",
   "dependencies": {
     "gulp": "^3.8.11"
