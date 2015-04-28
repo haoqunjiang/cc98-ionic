@@ -2,7 +2,7 @@
   "url": "/topics",
   "views": {
     "tab-topics": {
-      "templateUrl": "templates/tab-dash.html"
+      "templateUrl": "app/tabs/topics/topics.html"
     }
   }
 }

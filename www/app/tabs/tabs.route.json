@@ -1,0 +1,5 @@
+{
+  "url": "/tabs",
+  "abstract": true,
+  "templateUrl": "app/tabs/tabs.html"
+}

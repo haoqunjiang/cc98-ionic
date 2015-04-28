@@ -2,7 +2,7 @@
   "url": "/boards",
   "views": {
     "tab-boards": {
-      "templateUrl": "app/boards/boards.html"
+      "templateUrl": "app/tabs/boards/boards.html"
     }
   }
 }

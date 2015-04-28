@@ -5,10 +5,11 @@ import 'maximnaidenov/angular-busy-tracker';
 import 'maximnaidenov/angular-busy-tracker/dist/busy.css!'; // ugly but useful
 
 // routes of submodules
-import TopicsRoute from 'app/topics/topics.route.json!';  // 话题
-import BoardsRoute from 'app/boards/boards.route.json!';  // 版面列表
-import HotRoute from 'app/hot/hot.route.json!';           // 热门话题
-import MeRoute from 'app/me/me.route.json!';              // 我
+import TabsRoute from 'app/tabs/tabs.route.json!';
+import TopicsRoute from 'app/tabs/topics/topics.route.json!'; // 话题
+import BoardsRoute from 'app/tabs/boards/boards.route.json!'; // 版面列表
+import HotRoute from 'app/tabs/hot/hot.route.json!';          // 热门话题
+import MeRoute from 'app/tabs/me/me.route.json!';             // 我
 // 搜索页
 // 搜索结果页
 // 话题内容
@@ -34,16 +35,12 @@ angular.module('cc98', ['ionic'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('tab', {
-      url: '/tab',
-      abstract: true,
-      templateUrl: 'app/app-tabs.html'
-    })
-    .state('tab.topics', TopicsRoute)
-    .state('tab.boards', BoardsRoute)
-    .state('tab.hot', HotRoute)
-    .state('tab.me', MeRoute);
+    .state('tabs', TabsRoute)
+    .state('tabs.topics', TopicsRoute)
+    .state('tabs.boards', BoardsRoute)
+    .state('tabs.hot', HotRoute)
+    .state('tabs.me', MeRoute);
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/hot');
+  $urlRouterProvider.otherwise('/tabs/hot');
 });

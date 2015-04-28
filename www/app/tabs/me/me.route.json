@@ -2,7 +2,7 @@
   "url": "/me",
   "views": {
     "tab-me": {
-      "templateUrl": "app/me/me.html"
+      "templateUrl": "app/tabs/me/me.html"
     }
   }
 }

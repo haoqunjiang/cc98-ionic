@@ -2,7 +2,7 @@
   "url": "/hot",
   "views": {
     "tab-hot": {
-      "templateUrl": "app/hot/hot.html"
+      "templateUrl": "app/tabs/hot/hot.html"
     }
   }
 }
