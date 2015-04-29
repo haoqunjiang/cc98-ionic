@@ -1,3 +1,5 @@
+import LoginRoute from 'app/login/login.route.json';          // 登录
+
 import TabsRoute from 'app/tabs/tabs.route.json!';
 import TopicsRoute from 'app/tabs/topics/topics.route.json!'; // 话题
 import BoardsRoute from 'app/tabs/boards/boards.route.json!'; // 版面列表
@@ -12,13 +14,14 @@ import MeRoute from 'app/tabs/me/me.route.json!';             // 我
 
 function AppRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('login', LoginRoute)
+
     .state('tabs', TabsRoute)
     .state('tabs.topics', TopicsRoute)
     .state('tabs.boards', BoardsRoute)
     .state('tabs.hot', HotRoute)
     .state('tabs.me', MeRoute);
 
-  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tabs/hot');
 }
 
