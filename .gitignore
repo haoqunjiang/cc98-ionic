@@ -66,3 +66,7 @@ jspm_packages
 
 platforms/
 plugins/
+
+
+### client id & client secret ###
+secrets.json
