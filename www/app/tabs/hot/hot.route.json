@@ -1,8 +1,0 @@
-{
-  "url": "/hot",
-  "views": {
-    "tab-hot": {
-      "templateUrl": "app/tabs/hot/hot.html"
-    }
-  }
-}

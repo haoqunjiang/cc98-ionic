@@ -74,4 +74,7 @@ rules:
   # 以下划线开头的变量命名个人感觉并无不妥
   no-underscore-dangle: 0
 
+  # 有时候为了和后端一致，非 camelCase 的变量命名也可以接受
+  camelcase: 0
+
   # 其他有默认值的 ESLint 规则就不重复定义了

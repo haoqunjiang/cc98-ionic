@@ -1,8 +1,0 @@
-{
-  "url": "/boards",
-  "views": {
-    "tab-boards": {
-      "templateUrl": "app/tabs/boards/boards.html"
-    }
-  }
-}

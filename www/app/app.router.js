@@ -1,16 +1,15 @@
-import LoginRoute from 'app/login/login.route.json';          // 登录
+import LoginRoute from 'app/login/login.route';          // 登录
 
-import TabsRoute from 'app/tabs/tabs.route.json!';
-import TopicsRoute from 'app/tabs/topics/topics.route.json!'; // 话题
-import BoardsRoute from 'app/tabs/boards/boards.route.json!'; // 版面列表
-import HotRoute from 'app/tabs/hot/hot.route.json!';          // 热门话题
-import MeRoute from 'app/tabs/me/me.route.json!';             // 我
+import TabsRoute from 'app/tabs/tabs.route';
+import TopicsRoute from 'app/tabs/topics/topics.route'; // 话题
+import BoardsRoute from 'app/tabs/boards/boards.route'; // 版面列表
+import HotRoute from 'app/tabs/hot/hot.route';          // 热门话题
+import MeRoute from 'app/tabs/me/me.route';             // 我
 // 搜索页
 // 搜索结果页
 // 话题内容
 // 回复主题
 // 设置
-
 
 function AppRouter($stateProvider, $urlRouterProvider) {
   $stateProvider

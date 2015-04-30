@@ -1,8 +1,0 @@
-{
-  "url": "/topics",
-  "views": {
-    "tab-topics": {
-      "templateUrl": "app/tabs/topics/topics.html"
-    }
-  }
-}

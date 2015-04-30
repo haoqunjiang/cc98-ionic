@@ -3,12 +3,43 @@
 // But as the website's implicit granted access token expires in such a short time (1200s currently),
 // it is unrealistic to take this approach in a client app.
 // So here I implemented an OAuth service with the authorization code approach.
+import qs from 'nodelibs/querystring';
+import secrets from '../../secrets.json!';
+
+class LoginController {
+  constructor($scope) {
+    this.$scope = $scope;
+    $scope.login = this.login.bind(this);
+  }
+
+  login() {
+    console.log('login')
+    var authorize_url = 'http://login.cc98.org/oauth/authorize?' + qs.stringify({
+      client_id: secrets.client_id,
+      redirect_uri: 'http://localhost/callback',
+      response_type: 'code'
+    });
+
+    var ref = window.open(authorize_url);
+    ref.addEventListener('loadstart', function(evt) {
+      if (evt.url.startsWith('http://localhost/callback')) {
+        console.log(evt)
+      }
+    });
+  }
+}
+
+LoginController.$inject = ['$scope'];
+
+export default LoginController;
+
 
 /*
 var requestToken = "";
 var accessToken = "";
 var clientId = "client_id_here";
 var clientSecret = "client_secret_here";
+var refreshTokenExpiry = 1200;  // 目前 98 的实现有问题，后续会改的
 
 var exampleApp = angular.module('example', ['ionic'])
     .config(function($stateProvider, $urlRouterProvider) {
