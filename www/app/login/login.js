@@ -10,20 +10,28 @@ class LoginController {
   constructor($scope) {
     // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
     $scope.ctrl = this;
+
+    this.$scope = $scope;
   }
 
+  /**
+   * OAuth 登录，采用 Authorization Code 方式
+   * @todo 增加 state 参数
+   */
   login() {
-    console.log('login')
     var authorize_url = 'http://login.cc98.org/oauth/authorize?' + qs.stringify({
       client_id: secrets.client_id,
-      redirect_uri: 'http://localhost/callback',
-      response_type: 'code'
+      redirect_uri: 'http://localhost',
+      response_type: 'code',
+      scope: 'all*'
     });
 
-    var ref = window.open(authorize_url);
-    ref.addEventListener('loadstart', function(evt) {
-      if (evt.url.startsWith('http://localhost/callback')) {
-        console.log(evt)
+    var ref = window.open(authorize_url, '_blank');
+    ref.addEventListener('loadstart', (evt) => {
+      if (evt.url.indexOf('http://localhost') === 0) {
+        this.url = evt.url;
+        ref.close();
+        this.$scope.$apply(); // 为了看到效果，在后续开发中应当去掉
       }
     });
   }

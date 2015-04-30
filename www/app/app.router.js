@@ -21,7 +21,7 @@ function AppRouter($stateProvider, $urlRouterProvider) {
     .state('tabs.hot', HotRoute)
     .state('tabs.me', MeRoute);
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tabs/hot');
 }
 
 // 对于 config 阶段用到的函数，似乎不支持以下这种方式进行依赖注入，因此直接用上面的函数就好不必再声明了
