@@ -4,7 +4,7 @@
 2. 运行以下命令（可能需要 `root` 权限）：
 
         npm install gulp -g     # 安装 gulp 用于各种构建任务
-        npm install bower -g    # 安装 jspm 用于下载第三方依赖
+        npm install jspm -g    # 安装 jspm 用于下载第三方依赖
 
 3. 在本项目根目录下运行以下命令：
 
