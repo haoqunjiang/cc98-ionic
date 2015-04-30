@@ -1,3 +1,4 @@
+import 'core-js';
 import 'ionic'; // 因为设置过 separateCSS 被 bundle 过，这里只引入了 js 部分
 import '../bundles/ionic.app.css!'; // 自定义后的 ionic css
 

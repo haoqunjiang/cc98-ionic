@@ -28,7 +28,7 @@ class LoginController {
 
     var ref = window.open(authorize_url, '_blank');
     ref.addEventListener('loadstart', (evt) => {
-      if (evt.url.indexOf('http://localhost') === 0) {
+      if (evt.url.startsWith('http://localhost')) {
         this.url = evt.url;
         ref.close();
         this.$scope.$apply(); // 为了看到效果，在后续开发中应当去掉
