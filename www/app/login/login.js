@@ -8,8 +8,8 @@ import secrets from '../../secrets.json!';
 
 class LoginController {
   constructor($scope) {
-    this.$scope = $scope;
-    $scope.login = this.login.bind(this);
+    // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
+    $scope.ctrl = this;
   }
 
   login() {
