@@ -18,7 +18,8 @@
     "org.apache.cordova.console",
     "com.ionic.keyboard",
     "cordova-plugin-inappbrowser",
-    "org.apache.cordova.statusbar"
+    "org.apache.cordova.statusbar",
+    "org.apache.cordova.inappbrowser"
   ],
   "cordovaPlatforms": [],
   "jspm": {

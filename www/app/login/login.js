@@ -7,11 +7,18 @@ import qs from 'nodelibs/querystring';
 import secrets from '../../secrets.json!';
 
 class LoginController {
-  constructor($scope) {
+  constructor($scope, $http) {
     // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
     $scope.ctrl = this;
 
     this.$scope = $scope;
+    this.$http = $http;
+
+    this.authorizeEndpoint = 'http://login.cc98.org/oauth/authorize';
+    this.tokenEndpoint = 'http://login.cc98.org/oauth/token';
+    //this.tokenEndpoint = 'http://127.0.0.1:3000/';
+
+    this.refreshTokenExpiry = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
   }
 
   /**
@@ -19,25 +26,72 @@ class LoginController {
    * @todo 增加 state 参数
    */
   login() {
-    var authorize_url = 'http://login.cc98.org/oauth/authorize?' + qs.stringify({
+    this._toggleKeyboardAccessoryBar({show: true});
+
+    var authorizeUrl = this.authorizeEndpoint + '?' + qs.stringify({
       client_id: secrets.client_id,
-      redirect_uri: 'http://localhost',
+      redirect_uri: secrets.redirect_uri,
       response_type: 'code',
+      grant_type: 'authorization_code',
       scope: 'all*'
     });
-
-    var ref = window.open(authorize_url, '_blank');
+    var ref = window.open(authorizeUrl, '_blank');
     ref.addEventListener('loadstart', (evt) => {
-      if (evt.url.startsWith('http://localhost')) {
-        this.url = evt.url;
-        ref.close();
-        this.$scope.$apply(); // 为了看到效果，在后续开发中应当去掉
+      if (evt.url.startsWith(secrets.redirect_uri)) {
+        var {code, error} = qs.parse(evt.url.split('?')[1]);
+        this._toggleKeyboardAccessoryBar({show: false});
+
+        if (error) {
+          alert('Failed to get authorization code!');
+        } else {
+          this._getToken(code);
+        }
+
+        //ref.close();
       }
     });
   }
+
+  _getTokens(code) {
+    this.$http({
+      method: 'POST',
+      url: this.tokenEndpoint,
+      data: {
+        grant_type: 'authorization_code',
+        client_id: secrets.client_id,
+        client_secret: secrets.client_secret,
+        redirect_uri: secrets.redirect_uri,
+        code: code
+      },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj){
+          str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+        }
+        return str.join('&');
+      }
+    }).success(function(data) {
+      var {access_token, token_type, expires_in, refresh_token} = data;
+    }).error(function(err) {
+      alert('获取 Access Token 错误');
+    });
+  }
+
+  /**
+   * toggle keyboard accessory bar
+   * @param  {Object}  params
+   * @param  {boolean} params.show set this to true to show the bar or false to hide
+   */
+  _toggleKeyboardAccessoryBar(params) {
+    // 重新关掉键盘的 AccessoryBar，毕竟只有填表单时用得到
+    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+      window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(!params.show);
+    }
+  }
 }
 
-LoginController.$inject = ['$scope'];
+LoginController.$inject = ['$scope', '$http'];
 
 export default LoginController;
 
