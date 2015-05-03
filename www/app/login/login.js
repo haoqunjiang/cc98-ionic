@@ -29,11 +29,11 @@ class LoginController {
     this._toggleKeyboardAccessoryBar({show: true});
 
     var authorizeUrl = this.authorizeEndpoint + '?' + qs.stringify({
-      client_id: secrets.client_id,
-      redirect_uri: secrets.redirect_uri,
       response_type: 'code',
       grant_type: 'authorization_code',
-      scope: 'all*'
+      client_id: secrets.client_id,
+      redirect_uri: secrets.redirect_uri,
+      scope: secrets.scope
     });
     var ref = window.open(authorizeUrl, '_blank');
     ref.addEventListener('loadstart', (evt) => {
