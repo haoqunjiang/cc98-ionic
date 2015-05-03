@@ -80,4 +80,11 @@ rules:
   # Hybrid App 中还是用得到系统的 alert 的
   no-alert: 0
 
+  # max-statements:[2, 16]
+  # max-depth:[2, 5]
+  # complexity:[2, 7]
+  # max-len:[2, 65]
+  # max-params:[2, 1]
+  # max-nested-callbacks:[2, 0]
+
   # 其他有默认值的 ESLint 规则就不重复定义了
