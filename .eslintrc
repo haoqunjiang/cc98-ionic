@@ -80,6 +80,7 @@ rules:
   # Hybrid App 中还是用得到系统的 alert 的
   no-alert: 0
 
+  # 控制代码复杂度 http://elijahmanor.github.io/talks/js-smells/
   # max-statements:[2, 16]
   # max-depth:[2, 5]
   # complexity:[2, 7]

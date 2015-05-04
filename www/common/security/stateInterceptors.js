@@ -6,6 +6,6 @@ function LoginInterceptor($rootScope) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {});
 }
 
-LoginInterceptor.$injector = [];
+LoginInterceptor.$inject = ['$rootScope'];
 
 export default angular.module('security.stateInterceptor', []).run(LoginInterceptor);
