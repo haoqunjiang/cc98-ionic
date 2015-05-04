@@ -1,4 +1,5 @@
 import 'ionic';
+import 'gsklee/ngStorage';
 
 function Accounts() {
   var services = {
@@ -17,4 +18,4 @@ function Accounts() {
 
 Accounts.$inject = [];
 
-export default angular.module('utils.accounts', []).factory(Accounts);
+export default angular.module('resources.accounts', []).factory(Accounts);

@@ -6,5 +6,8 @@ export default {
     'tab-topics': {
       template: TopicsTemplate
     }
+  },
+  data: {
+    requiresLogin: true
   }
 };

@@ -39,6 +39,7 @@ System.config({
     "core-js": "npm:core-js@0.9.5",
     "css": "github:systemjs/plugin-css@0.1.10",
     "font-awesome": "npm:font-awesome@4.3.0",
+    "gsklee/ngStorage": "github:gsklee/ngStorage@0.3.0",
     "ionic": "github:driftyco/ionic-bower@1.0.0-rc.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",

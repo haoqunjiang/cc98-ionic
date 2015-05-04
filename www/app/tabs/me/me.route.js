@@ -6,5 +6,8 @@ export default {
     'tab-me': {
       template: MeTemplate
     }
+  },
+  data: {
+    requiresLogin: true
   }
 };

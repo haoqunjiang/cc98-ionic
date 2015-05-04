@@ -1,15 +1,12 @@
-import 'core-js';
-import 'ionic'; // 因为设置过 separateCSS 被 bundle 过，这里只引入了 js 部分
-import '../bundles/ionic.app.css!'; // 自定义后的 ionic css
+import 'core-js'; // ES Harmony shim
+import 'ionic';   // 因为 bundle 设置过 separateCSS，此处只引入了 js 部分
+import '../bundles/ionic.app.css!'; // 自定义编译后的 ionic css
 
-// import 'maximnaidenov/angular-busy-tracker';
-// import 'maximnaidenov/angular-busy-tracker/dist/busy.css!'; // ugly but useful
+import securityModule from '../common/security/index';
 
-// 路由
-import AppRouter from './app.router';
-// 移动平台相关
-import AppPlatform from './app.platform';
+import AppRouter from './app.router';     // 路由
+import InitNativeEnv from './app.native'; // 移动平台相关
 
-export default angular.module('cc98', ['ionic'])
+export default angular.module('cc98', ['ionic', securityModule.name])
   .config(AppRouter)
-  .run(AppPlatform);
+  .run(InitNativeEnv);
