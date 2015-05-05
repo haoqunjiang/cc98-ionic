@@ -2,6 +2,8 @@ import 'ionic';
 import 'gsklee/ngStorage';
 
 function Accounts() {
+  var current;
+
   var services = {
     get: get,
     set: set,
@@ -13,14 +15,20 @@ function Accounts() {
     setCurrent: setCurrent
   };
 
+  return services;
+
   function get() {}
   function set() {}
   function update() {}
   function all() {}
-  function getCurrent() {}
-  function setCurrent() {}
 
-  return services;
+  function getCurrent() {
+    return current;
+  }
+
+  function setCurrent(user) {
+    current = user;
+  }
 }
 
 Accounts.$inject = [];

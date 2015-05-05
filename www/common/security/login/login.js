@@ -7,12 +7,15 @@ import qs from 'nodelibs/querystring';
 import secrets from '../../../secrets.json!';
 
 class LoginController {
-  constructor($scope, $http) {
+  constructor($scope, $http, $rootScope, $state, Accounts) {
     // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
     $scope.ctrl = this;
 
     this.$scope = $scope;
     this.$http = $http;
+    this.$rootScope = $rootScope;
+    this.$state = $state;
+    this.Accounts = Accounts;
 
     this.authorizeEndpoint = 'http://login.cc98.org/oauth/authorize';
     this.tokenEndpoint = 'http://login.cc98.org/oauth/token';
@@ -44,10 +47,10 @@ class LoginController {
         if (error) {
           alert('Failed to get authorization code!');
         } else {
-          this._getToken(code);
+          this._getTokens(code);
         }
 
-        //ref.close();
+        ref.close();
       }
     });
   }
@@ -71,11 +74,21 @@ class LoginController {
         }
         return str.join('&');
       }
-    }).success(function(data) {
+    }).success((data) => {
       var {access_token, token_type, expires_in, refresh_token} = data;
-    }).error(function(err) {
-      alert('获取 Access Token 错误');
+      this.Accounts.setCurrent({access_token: access_token});
+
+      this._return();
+    }).error(() => {
+      alert('Failed to get access token!');
     });
+  }
+
+  /**
+   * return to the state which the user was meant to go
+   */
+  _return() {
+    this.$state.go(this.$rootScope.returnToStateName, this.$rootScope.returnToStateParams);
   }
 
   /**
@@ -91,6 +104,6 @@ class LoginController {
   }
 }
 
-LoginController.$inject = ['$scope', '$http'];
+LoginController.$inject = ['$scope', '$http', '$rootScope', '$state', 'Accounts'];
 
 export default LoginController;
