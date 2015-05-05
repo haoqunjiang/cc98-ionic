@@ -1,4 +1,6 @@
 import 'ionic';
+
+import stateInterceptorsModule from './stateInterceptors'
 import LoginRoute from './login/login.route';
 
 function SecurityRouter($stateProvider) {
@@ -7,6 +9,6 @@ function SecurityRouter($stateProvider) {
 SecurityRouter.$inject = ['$stateProvider'];
 
 export default angular.module('security', [
-  'security.httpInterceptors',
-  'security.stateInterceptors'
+  //'security.httpInterceptors',
+  stateInterceptorsModule.name
 ]).config(SecurityRouter);

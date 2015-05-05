@@ -4,7 +4,7 @@
 // it is unrealistic to take this approach in a client app.
 // So here I implemented an OAuth service with the authorization code approach.
 import qs from 'nodelibs/querystring';
-import secrets from '../../secrets.json!';
+import secrets from '../../../secrets.json!';
 
 class LoginController {
   constructor($scope, $http) {

@@ -13,9 +13,16 @@ function Accounts() {
     setCurrent: setCurrent
   };
 
+  function get() {}
+  function set() {}
+  function update() {}
+  function all() {}
+  function getCurrent() {}
+  function setCurrent() {}
+
   return services;
 }
 
 Accounts.$inject = [];
 
-export default angular.module('resources.accounts', []).factory(Accounts);
+export default angular.module('resources.accounts', []).factory('Accounts', Accounts);

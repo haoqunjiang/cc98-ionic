@@ -1,5 +1,3 @@
-import LoginRoute from 'app/login/login.route';          // 登录
-
 import TabsRoute from 'app/tabs/tabs.route';
 import TopicsRoute from 'app/tabs/topics/topics.route'; // 话题
 import BoardsRoute from 'app/tabs/boards/boards.route'; // 版面列表
@@ -13,8 +11,6 @@ import MeRoute from 'app/tabs/me/me.route';             // 我
 
 function AppRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('login', LoginRoute)
-
     .state('tabs', TabsRoute)
     .state('tabs.topics', TopicsRoute)
     .state('tabs.boards', BoardsRoute)
