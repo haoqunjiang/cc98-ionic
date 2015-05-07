@@ -20,3 +20,11 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
 
 // Include all of Ionic
 @import "{{ionic-scss-path}}";
+
+
+.button-bar-icon {
+  .icon:before,
+  &.icon:before {
+    font-size: $button-bar-button-icon-size !important;
+  }
+}
