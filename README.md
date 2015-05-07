@@ -19,6 +19,7 @@
           "client_secret": YOUR_CLIENT_SECRET,
           "redirect_uri": YOUR_REDIRECT_URI
         }
+        ```
 
   其中 `YOUR_CLIENT_ID`、`YOUR_CLIENT_SECRET` 均可在申请 CC98 API 时获得，`YOUR_REDIRECT_URI` 则是申请后自行设置的回调页面地址；
 
