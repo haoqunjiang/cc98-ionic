@@ -13,16 +13,13 @@
 
 4. 在 `www` 目录下新建 `secrets.json` 文件，在其中填入以下内容：
 
-```json        
-{
-  "client_id": YOUR_CLIENT_ID,
-  "client_secret": YOUR_CLIENT_SECRET,
-  "redirect_uri": YOUR_REDIRECT_URI
-}
-```
+        {
+          "client_id": YOUR_CLIENT_ID,
+          "client_secret": YOUR_CLIENT_SECRET,
+          "redirect_uri": YOUR_REDIRECT_URI
+        }
 
   其中 `YOUR_CLIENT_ID`、`YOUR_CLIENT_SECRET` 均可在申请 CC98 API 时获得，`YOUR_REDIRECT_URI` 则是申请后自行设置的回调页面地址；
-
 
 5. 运行 `ionic serve`，即可在浏览器中查看效果了。
 
