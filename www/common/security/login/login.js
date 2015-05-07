@@ -1,10 +1,18 @@
+/* eslint-disable camelcase */
+
 // Client-Side Applications had better use implicit_grant
 // see here -> http://wiki.dev.app.360.cn/index.php?title=OAuth2.0%E6%96%87%E6%A1%A3
 // But as the website's implicit granted access token expires in such a short time (1200s currently),
-// it is unrealistic to take this approach in a client app.
+// that it is unrealistic to take this approach in a client app.
 // So here I implemented an OAuth service with the authorization code approach.
+
 import qs from 'nodelibs/querystring';
 import secrets from '../../../secrets.json!';
+
+const AUTHORIZE_ENDPOINT = 'http://login.cc98.org/oauth/authorize';
+const TOKEN_ENDPOINT = 'http://login.cc98.org/oauth/token';
+const AUTH_SCOPE = 'all*';
+const REFRESH_TOKEN_EXPIRY = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
 
 class LoginController {
   constructor($scope, $http, $rootScope, $state, Accounts) {
@@ -16,12 +24,6 @@ class LoginController {
     this.$rootScope = $rootScope;
     this.$state = $state;
     this.Accounts = Accounts;
-
-    this.authorizeEndpoint = 'http://login.cc98.org/oauth/authorize';
-    this.tokenEndpoint = 'http://login.cc98.org/oauth/token';
-    //this.tokenEndpoint = 'http://127.0.0.1:3000/';
-
-    this.refreshTokenExpiry = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
 
     if (window.StatusBar) { window.StatusBar.styleDefault(); }
   }
@@ -41,12 +43,12 @@ class LoginController {
   login() {
     this._toggleKeyboardAccessoryBar({show: true});
 
-    var authorizeUrl = this.authorizeEndpoint + '?' + qs.stringify({
+    var authorizeUrl = AUTHORIZE_ENDPOINT + '?' + qs.stringify({
       response_type: 'code',
       grant_type: 'authorization_code',
       client_id: secrets.client_id,
       redirect_uri: secrets.redirect_uri,
-      scope: secrets.scope
+      scope: AUTH_SCOPE
     });
     var ref = window.open(authorizeUrl, '_blank');
     ref.addEventListener('loadstart', (evt) => {
@@ -68,7 +70,7 @@ class LoginController {
   _getTokens(code) {
     this.$http({
       method: 'POST',
-      url: this.tokenEndpoint,
+      url: TOKEN_ENDPOINT,
       data: {
         grant_type: 'authorization_code',
         client_id: secrets.client_id,
