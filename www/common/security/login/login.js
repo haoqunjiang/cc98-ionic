@@ -22,12 +22,15 @@ class LoginController {
     //this.tokenEndpoint = 'http://127.0.0.1:3000/';
 
     this.refreshTokenExpiry = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
+
+    if (window.StatusBar) { window.StatusBar.styleDefault(); }
   }
 
   /**
    * cancel login and return to the state where the user was from
    */
   cancel() {
+    if (window.StatusBar) { window.StatusBar.styleLightContent(); }
     this.$state.go(this.$rootScope.fromStateName, this.$rootScope.fromStateParams);
   }
 
@@ -95,6 +98,7 @@ class LoginController {
    * return to the state which the user was meant to go
    */
   _return() {
+    if (window.StatusBar) { window.StatusBar.styleLightContent(); }
     this.$state.go(this.$rootScope.returnToStateName, this.$rootScope.returnToStateParams);
   }
 
