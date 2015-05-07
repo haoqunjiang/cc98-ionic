@@ -4,11 +4,20 @@ import accountsModule from '../resources/accounts';
  * @param {Object} $rootScope
  */
 function LoginInterceptor($rootScope, $location, Accounts) {
-  $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (toState.data && toState.data.requiresLogin && !isLoggedIn()) {
+      event.preventDefault();
+
+      $rootScope.fromStateName = fromState.name;
+      $rootScope.fromStateParams = fromParams;
       $rootScope.returnToStateName = toState.name;
       $rootScope.returnToStateParams = toParams;
-      $location.path('/login');
+
+      // 直接跳转的话有一定概率不会起作用
+      // https://github.com/angular/angular.js/issues/9607
+      $rootScope.$evalAsync(function() {
+        $location.path('/login');
+      });
     }
   });
 
