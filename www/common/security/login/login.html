@@ -1,7 +1,12 @@
-<ion-view view-title="Login">
-  <ion-content>
-    <button class="button" type="button" ng-click="ctrl.login()">ctrl.login</button>
-    <p>url: {{ctrl.url}}</p>
-    <p></p>
-  </ion-content>
-</ion-view>
+<ion-nav-view>
+  <ion-view view-title="Login">
+    <ion-header-bar>
+      <button class="button button-clear button-left button-bar-icon button-icon ion-ios-close-empty" ng-click="ctrl.cancel()"></button>
+    </ion-header-bar>
+
+    <ion-content>
+      <p>url: {{ctrl.url}}</p>
+      <button class="button" type="button" ng-click="ctrl.login()">login</button>
+    </ion-content>
+  </ion-view>
+</ion-nav-view>

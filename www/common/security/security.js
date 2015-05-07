@@ -10,6 +10,7 @@ function SecurityRouter($stateProvider) {
 SecurityRouter.$inject = ['$stateProvider'];
 
 export default angular.module('security', [
+  'ionic',
   //'security.httpInterceptors',
   stateInterceptorsModule.name,
   accountsModule.name

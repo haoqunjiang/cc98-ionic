@@ -25,6 +25,13 @@ class LoginController {
   }
 
   /**
+   * cancel login and return to the state where the user was from
+   */
+  cancel() {
+    this.$state.go(this.$rootScope.fromStateName, this.$rootScope.fromStateParams);
+  }
+
+  /**
    * OAuth 登录，采用 Authorization Code 方式
    * @todo 增加 state 参数
    */
