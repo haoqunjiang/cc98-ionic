@@ -7619,5 +7619,8 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.button-bar-icon .icon:before, .button-bar-icon.icon:before {
+  font-size: 20px !important; }
+
 
 /*# sourceMappingURL=ionic.app.css.map */
