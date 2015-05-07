@@ -14,8 +14,8 @@ System.config({
   },
   "bundles": {
     "bundles/ionic": [
-      "github:driftyco/ionic-bower@1.0.0-rc.4/css/ionic.css!github:systemjs/plugin-css@0.1.10",
-      "github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic",
+      "github:driftyco/ionic-bower@1.0.0-rc.5/css/ionic.css!github:systemjs/plugin-css@0.1.10",
+      "github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic",
       "github:angular/bower-angular@1.3.15/angular",
       "github:angular/bower-angular-animate@1.3.15/angular-animate",
       "github:angular/bower-angular-sanitize@1.3.15/angular-sanitize",
@@ -24,8 +24,8 @@ System.config({
       "github:angular/bower-angular-animate@1.3.15",
       "github:angular/bower-angular-sanitize@1.3.15",
       "github:angular-ui/ui-router@0.2.13",
-      "github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular",
-      "github:driftyco/ionic-bower@1.0.0-rc.4"
+      "github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic-angular",
+      "github:driftyco/ionic-bower@1.0.0-rc.5"
     ]
   },
   "separateCSS": true
@@ -40,7 +40,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.10",
     "font-awesome": "npm:font-awesome@4.3.0",
     "gsklee/ngStorage": "github:gsklee/ngStorage@0.3.0",
-    "ionic": "github:driftyco/ionic-bower@1.0.0-rc.4",
+    "ionic": "github:driftyco/ionic-bower@1.0.0-rc.5",
     "json": "github:systemjs/plugin-json@0.1.0",
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
     "nodelibs": "github:jspm/nodelibs@0.0.9",
@@ -55,7 +55,7 @@ System.config({
     "github:angular/bower-angular-sanitize@1.3.15": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
-    "github:driftyco/ionic-bower@1.0.0-rc.4": {
+    "github:driftyco/ionic-bower@1.0.0-rc.5": {
       "angular": "github:angular/bower-angular@1.3.15",
       "angular-animate": "github:angular/bower-angular-animate@1.3.15",
       "angular-sanitize": "github:angular/bower-angular-sanitize@1.3.15",
@@ -66,7 +66,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.2.1"
+      "buffer": "npm:buffer@3.2.2"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -116,7 +116,7 @@ System.config({
       "browserify-sign": "npm:browserify-sign@2.7.0",
       "create-ecdh": "npm:create-ecdh@1.0.0",
       "diffie-hellman": "npm:diffie-hellman@2.2.0",
-      "ieee754": "npm:ieee754@1.1.4",
+      "ieee754": "npm:ieee754@1.1.5",
       "inherits": "npm:inherits@2.0.1",
       "json": "github:systemjs/plugin-json@0.1.0",
       "pbkdf2-compat": "npm:pbkdf2-compat@2.0.1",
@@ -216,9 +216,9 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:buffer@3.2.1": {
+    "npm:buffer@3.2.2": {
       "base64-js": "npm:base64-js@0.0.8",
-      "ieee754": "npm:ieee754@1.1.4",
+      "ieee754": "npm:ieee754@1.1.5",
       "is-array": "npm:is-array@1.0.1"
     },
     "npm:clean-css@3.1.9": {

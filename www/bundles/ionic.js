@@ -1,13 +1,13 @@
 "format register";
 
-System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, function(__require, __exports, __module) {
+System.register("github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic", [], false, function(__require, __exports, __module) {
   System.get("@@global-helpers").prepareGlobal(__module.id, []);
   (function() {
     "format global";
     (function() {
       window.ionic = window.ionic || {};
       window.ionic.views = {};
-      window.ionic.version = '1.0.0-rc.4';
+      window.ionic.version = '1.0.0-rc.5';
       (function(ionic) {
         ionic.DelegateService = function(methodNames) {
           if (methodNames.indexOf('$getByHandle') > -1) {
@@ -1907,12 +1907,15 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
       var wasOrientationChange = false;
       var KEYBOARD_OPEN_CSS = 'keyboard-open';
       var SCROLL_CONTAINER_CSS = 'scroll-content';
+      var debouncedKeyboardFocusIn = ionic.debounce(keyboardFocusIn, 200, true);
+      var debouncedKeyboardNativeShow = ionic.debounce(keyboardNativeShow, 100, true);
       ionic.keyboard = {
         isOpen: false,
         isClosing: false,
         isOpening: false,
         height: 0,
         isLandscape: false,
+        isInitialized: false,
         hide: function() {
           if (keyboardHasPlugin()) {
             cordova.plugins.Keyboard.close();
@@ -1923,13 +1926,34 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
           if (keyboardHasPlugin()) {
             cordova.plugins.Keyboard.show();
           }
+        },
+        disable: function() {
+          if (keyboardHasPlugin()) {
+            window.removeEventListener('native.keyboardshow', debouncedKeyboardNativeShow);
+            window.removeEventListener('native.keyboardhide', keyboardFocusOut);
+          } else {
+            document.body.removeEventListener('focusout', keyboardFocusOut);
+          }
+          document.body.removeEventListener('ionic.focusin', debouncedKeyboardFocusIn);
+          document.body.removeEventListener('focusin', debouncedKeyboardFocusIn);
+          window.removeEventListener('orientationchange', keyboardOrientationChange);
+          if (window.navigator.msPointerEnabled) {
+            document.removeEventListener("MSPointerDown", keyboardInit);
+          } else {
+            document.removeEventListener('touchstart', keyboardInit);
+          }
+          ionic.keyboard.isInitialized = false;
+        },
+        enable: function() {
+          keyboardInit();
         }
       };
       keyboardCurrentViewportHeight = getViewportHeight();
       function keyboardInit() {
-        var debouncedKeyboardFocusIn = ionic.debounce(keyboardFocusIn, 200, true);
+        if (ionic.keyboard.isInitialized)
+          return ;
         if (keyboardHasPlugin()) {
-          window.addEventListener('native.keyboardshow', ionic.debounce(keyboardNativeShow, 100, true));
+          window.addEventListener('native.keyboardshow', debouncedKeyboardNativeShow);
           window.addEventListener('native.keyboardhide', keyboardFocusOut);
         } else {
           document.body.addEventListener('focusout', keyboardFocusOut);
@@ -1941,6 +1965,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
         } else {
           document.removeEventListener('touchstart', keyboardInit);
         }
+        ionic.keyboard.isInitialized = true;
       }
       function keyboardNativeShow(e) {
         clearTimeout(keyboardFocusOutTimer);
@@ -1958,6 +1983,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
       function keyboardFocusIn(e) {
         clearTimeout(keyboardFocusOutTimer);
         if (!e.target || e.target.readOnly || !ionic.tap.isKeyboardElement(e.target) || !(scrollView = inputScrollView(e.target))) {
+          keyboardActiveElement = null;
           return ;
         }
         keyboardActiveElement = e.target;
@@ -2056,7 +2082,9 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
         clearTimeout(keyboardFocusOutTimer);
         ionic.keyboard.isOpen = false;
         ionic.keyboard.isClosing = false;
-        ionic.trigger('resetScrollView', {target: keyboardActiveElement}, true);
+        if (keyboardActiveElement) {
+          ionic.trigger('resetScrollView', {target: keyboardActiveElement}, true);
+        }
         ionic.requestAnimationFrame(function() {
           document.body.classList.remove(KEYBOARD_OPEN_CSS);
         });
@@ -2071,21 +2099,24 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
             cordova.plugins.Keyboard.close();
           keyboardActiveElement && keyboardActiveElement.blur();
         }
+        keyboardActiveElement = null;
       }
       function keyboardShow() {
-        var elementBounds = keyboardActiveElement.getBoundingClientRect();
+        ionic.keyboard.isOpen = true;
+        ionic.keyboard.isOpening = false;
         var details = {
-          target: keyboardActiveElement,
-          elementTop: Math.round(elementBounds.top),
-          elementBottom: Math.round(elementBounds.bottom),
           keyboardHeight: keyboardGetHeight(),
           viewportHeight: keyboardCurrentViewportHeight
         };
-        details.windowHeight = details.viewportHeight - details.keyboardHeight;
-        details.isElementUnderKeyboard = (details.elementBottom > details.windowHeight);
-        ionic.keyboard.isOpen = true;
-        ionic.keyboard.isOpening = false;
-        ionic.trigger('scrollChildIntoView', details, true);
+        if (keyboardActiveElement) {
+          details.target = keyboardActiveElement;
+          var elementBounds = keyboardActiveElement.getBoundingClientRect();
+          details.elementTop = Math.round(elementBounds.top);
+          details.elementBottom = Math.round(elementBounds.bottom);
+          details.windowHeight = details.viewportHeight - details.keyboardHeight;
+          details.isElementUnderKeyboard = (details.elementBottom > details.windowHeight);
+          ionic.trigger('scrollChildIntoView', details, true);
+        }
         setTimeout(function() {
           document.body.classList.add(KEYBOARD_OPEN_CSS);
         }, 400);
@@ -2131,7 +2162,9 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
         } else if (!ionic.keyboard.isLandscape && !keyboardPortraitViewportHeight) {
           keyboardPortraitViewportHeight = keyboardCurrentViewportHeight;
         }
-        ionic.trigger('resetScrollView', {target: keyboardActiveElement}, true);
+        if (keyboardActiveElement) {
+          ionic.trigger('resetScrollView', {target: keyboardActiveElement}, true);
+        }
         if (ionic.keyboard.isOpen && ionic.tap.isTextInput(keyboardActiveElement)) {
           keyboardShow();
         }
@@ -4687,7 +4720,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", [], false, fu
               stop();
               element.style.width = '';
               element.style.left = '';
-              slides && (slides.length = 0);
+              slides && (slides.length = []);
               if (browser.addEventListener) {
                 element.removeEventListener('touchstart', events, false);
                 element.removeEventListener('webkitTransitionEnd', events, false);
@@ -18245,8 +18278,8 @@ System.register("github:angular-ui/ui-router@0.2.13", ["github:angular-ui/ui-rou
   return module.exports;
 });
 
-System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["github:driftyco/ionic-bower@1.0.0-rc.4/css/ionic.css!github:systemjs/plugin-css@0.1.10", "github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", "github:angular/bower-angular@1.3.15", "github:angular/bower-angular-animate@1.3.15", "github:angular/bower-angular-sanitize@1.3.15", "github:angular-ui/ui-router@0.2.13"], false, function(__require, __exports, __module) {
-  System.get("@@global-helpers").prepareGlobal(__module.id, ["github:driftyco/ionic-bower@1.0.0-rc.4/css/ionic.css!github:systemjs/plugin-css@0.1.10", "github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic", "github:angular/bower-angular@1.3.15", "github:angular/bower-angular-animate@1.3.15", "github:angular/bower-angular-sanitize@1.3.15", "github:angular-ui/ui-router@0.2.13"]);
+System.register("github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic-angular", ["github:driftyco/ionic-bower@1.0.0-rc.5/css/ionic.css!github:systemjs/plugin-css@0.1.10", "github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic", "github:angular/bower-angular@1.3.15", "github:angular/bower-angular-animate@1.3.15", "github:angular/bower-angular-sanitize@1.3.15", "github:angular-ui/ui-router@0.2.13"], false, function(__require, __exports, __module) {
+  System.get("@@global-helpers").prepareGlobal(__module.id, ["github:driftyco/ionic-bower@1.0.0-rc.5/css/ionic.css!github:systemjs/plugin-css@0.1.10", "github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic", "github:angular/bower-angular@1.3.15", "github:angular/bower-angular-animate@1.3.15", "github:angular/bower-angular-sanitize@1.3.15", "github:angular-ui/ui-router@0.2.13"]);
   (function() {
     "format global";
     "deps ../css/ionic.css!";
@@ -18942,7 +18975,34 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
               }
             }
           },
-          goBack: function() {
+          goBack: function(backCount) {
+            if (isDefined(backCount) && backCount !== -1) {
+              if (backCount > -1)
+                return ;
+              var currentHistory = viewHistory.histories[this.currentHistoryId()];
+              var newCursor = currentHistory.cursor + backCount + 1;
+              if (newCursor < 1) {
+                newCursor = 1;
+              }
+              currentHistory.cursor = newCursor;
+              setNavViews(currentHistory.stack[newCursor].viewId);
+              var cursor = newCursor - 1;
+              var clearStateIds = [];
+              var fwdView = getViewById(currentHistory.stack[cursor].forwardViewId);
+              while (fwdView) {
+                clearStateIds.push(fwdView.stateId || fwdView.viewId);
+                cursor++;
+                if (cursor >= currentHistory.stack.length)
+                  break;
+                fwdView = getViewById(currentHistory.stack[cursor].forwardViewId);
+              }
+              var self = this;
+              if (clearStateIds.length) {
+                $timeout(function() {
+                  self.clearCache(clearStateIds);
+                }, 600);
+              }
+            }
             viewHistory.backView && viewHistory.backView.go();
           },
           enabledBack: function(view) {
@@ -18975,10 +19035,10 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
               setNavViews(currentView.viewId);
             }
           },
-          clearCache: function() {
+          clearCache: function(stateIds) {
             $timeout(function() {
               $ionicNavViewDelegate._instances.forEach(function(instance) {
-                instance.clearCache();
+                instance.clearCache(stateIds);
               });
             });
           },
@@ -19078,8 +19138,8 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
             }
           }
         });
-        $rootScope.$ionicGoBack = function() {
-          $ionicHistory.goBack();
+        $rootScope.$ionicGoBack = function(backCount) {
+          $ionicHistory.goBack(backCount);
         };
         $rootScope.$on('$ionicView.afterEnter', function(ev, data) {
           if (data && data.title) {
@@ -19189,6 +19249,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
             position: 'top'
           }
         });
+        setPlatformConfig('windowsphone', {scrolling: {jsScrolling: false}});
         provider.transitions = {
           views: {},
           navBar: {}
@@ -19224,7 +19285,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
         provider.transitions.navBar.ios = function(enteringHeaderBar, leavingHeaderBar, direction, shouldAnimate) {
           function setStyles(ctrl, opacity, titleX, backTextX) {
             var css = {};
-            css[ionic.CSS.TRANSITION_DURATION] = d.shouldAnimate ? '' : 0;
+            css[ionic.CSS.TRANSITION_DURATION] = d.shouldAnimate ? '' : '0ms';
             css.opacity = opacity === 1 ? '' : opacity;
             ctrl.setCss('buttons-left', css);
             ctrl.setCss('buttons-right', css);
@@ -19384,7 +19445,10 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
         provider.$get = function() {
           return provider;
         };
-      });
+      }).config(['$compileProvider', function($compileProvider) {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|ms-appx|x-wmapp0):|data:image\//);
+      }]);
       var LOADING_TPL = '<div class="loading-container">' + '<div class="loading">' + '</div>' + '</div>';
       var LOADING_HIDE_DEPRECATED = '$ionicLoading instance.hide() has been deprecated. Use $ionicLoading.hide().';
       var LOADING_SHOW_DEPRECATED = '$ionicLoading instance.show() has been deprecated. Use $ionicLoading.show().';
@@ -19513,6 +19577,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
               $log.error('Cannot call ' + self.viewType + '.show() after remove(). Please create a new ' + self.viewType + ' instance.');
               return $$q.when();
             }
+            $ionicClickBlock.show(600);
             var modalEl = jqLite(self.modalEl);
             self.el.classList.remove('hide');
             $timeout(function() {
@@ -21392,13 +21457,25 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
             }
           }
         };
-        self.clearCache = function() {
+        self.clearCache = function(stateIds) {
           var viewElements = $element.children();
           var viewElement,
-              viewScope;
-          for (var x = 0,
-              l = viewElements.length; x < l; x++) {
+              viewScope,
+              x,
+              l,
+              y,
+              eleIdentifier;
+          for (x = 0, l = viewElements.length; x < l; x++) {
             viewElement = viewElements.eq(x);
+            if (stateIds) {
+              eleIdentifier = viewElement.data(DATA_ELE_IDENTIFIER);
+              for (y = 0; y < stateIds.length; y++) {
+                if (eleIdentifier === stateIds[y]) {
+                  $ionicViewSwitcher.destroyViewEle(viewElement);
+                }
+              }
+              continue;
+            }
             if (navViewAttr(viewElement) == VIEW_STATUS_CACHED) {
               $ionicViewSwitcher.destroyViewEle(viewElement);
             } else if (navViewAttr(viewElement) == VIEW_STATUS_ACTIVE) {
@@ -22563,7 +22640,11 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
           var spinnerName,
               spinner;
           this.init = function() {
-            spinnerName = $attrs.icon || ionic.Platform.platform();
+            var override = null;
+            if (ionic.Platform.platform() === 'windowsphone') {
+              override = 'android';
+            }
+            spinnerName = $attrs.icon || override || ionic.Platform.platform();
             spinner = spinners[spinnerName];
             if (!spinner) {
               spinnerName = 'ios';
@@ -24127,7 +24208,7 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
               buttonEle.setAttribute(tAttrs.$attr[n], tAttrs[n]);
             }
             if (!tAttrs.ngClick) {
-              buttonEle.setAttribute('ng-click', '$ionicGoBack($event)');
+              buttonEle.setAttribute('ng-click', '$ionicGoBack()');
             }
             buttonEle.className = 'button back-button hide buttons ' + (tElement.attr('class') || '');
             buttonEle.innerHTML = tElement.html() || '';
@@ -25114,14 +25195,14 @@ System.register("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular", ["git
   return System.get("@@global-helpers").retrieveGlobal(__module.id, false);
 });
 
-System.register("github:driftyco/ionic-bower@1.0.0-rc.4", ["github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular"], true, function(require, exports, module) {
+System.register("github:driftyco/ionic-bower@1.0.0-rc.5", ["github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic-angular"], true, function(require, exports, module) {
   var global = System.global,
       __define = global.define;
   global.define = undefined;
-  module.exports = require("github:driftyco/ionic-bower@1.0.0-rc.4/js/ionic-angular");
+  module.exports = require("github:driftyco/ionic-bower@1.0.0-rc.5/js/ionic-angular");
   global.define = __define;
   return module.exports;
 });
 
-System.register('github:driftyco/ionic-bower@1.0.0-rc.4/css/ionic.css!github:systemjs/plugin-css@0.1.10', [], false, function() {});
+System.register('github:driftyco/ionic-bower@1.0.0-rc.5/css/ionic.css!github:systemjs/plugin-css@0.1.10', [], false, function() {});
 //# sourceMappingURL=ionic.js.map
