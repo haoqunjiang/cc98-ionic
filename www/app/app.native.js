@@ -1,4 +1,4 @@
-function InitNativeEnv($ionicPlatform) {
+function initNativeEnv($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -12,6 +12,6 @@ function InitNativeEnv($ionicPlatform) {
   });
 }
 
-InitNativeEnv.$inject = ['$ionicPlatform'];
+initNativeEnv.$inject = ['$ionicPlatform'];
 
-export default InitNativeEnv;
+export default initNativeEnv;

@@ -1,5 +1,5 @@
-import LoginController from './login';
 import LoginTemplate from './login.html!text';
+import LoginController from './login.controller';
 
 export default {
   cache: false,

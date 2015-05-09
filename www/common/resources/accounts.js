@@ -1,5 +1,5 @@
 import 'ionic';
-import 'ngStorage';
+import 'gsklee/ngStorage';
 
 function Accounts($localStorage) {
   let services = {

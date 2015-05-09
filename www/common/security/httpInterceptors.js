@@ -97,3 +97,23 @@
  * RequestEntityTooLarge 413 content_too_long  内容长度超过了允许的字符数上限
  * RequestEntityTooLarge 413 title_too_long  标题长度超过了允许的字符数上限
  */
+import 'ionic';
+
+
+function authInterceptor(Accounts) {
+  return {
+    request: function(config) {
+      config.headers = config.headers || {};
+    },
+    response: function(config) {}
+  }
+}
+
+authInterceptor.$inject = ['Accounts'];
+
+export default angular.module('security.httpInterceptors', ['resources.accounts'])
+  .factory('authInterceptor', authInterceptor)
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
+  });
+

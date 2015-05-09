@@ -75,6 +75,8 @@ rules:
   no-underscore-dangle: 0
 
   # 有时候为了和后端一致（比如 OAuth2），非 camelCase 的变量命名也可以接受
+  # angular 中 controller 和 部分 factory（因个人喜好）函数用 UpperCamelCase 其他均用 lowerCamelCase
+  # import 模板文件时也用 UpperCamelCase（为了使 .route.js 文件的格式看起来舒服点）
   camelcase: 1
 
   # Hybrid App 中还是用得到系统的 alert 的

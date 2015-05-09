@@ -4,9 +4,9 @@ import '../bundles/ionic.app.css!'; // 自定义编译后的 ionic css
 
 import securityModule from '../common/security/security';
 
-import AppRouter from './app.router';     // 路由
-import InitNativeEnv from './app.native'; // 移动平台相关
+import appRouter from './app.router';     // 路由
+import initNativeEnv from './app.native'; // 移动平台相关
 
 export default angular.module('cc98', ['ionic', securityModule.name])
-  .config(AppRouter)
-  .run(InitNativeEnv);
+  .config(appRouter)
+  .run(initNativeEnv);
