@@ -1,17 +1,12 @@
-function initNativeEnv($ionicPlatform) {
+function initNativeEnv($ionicPlatform, $cordovaKeyboard, $cordovaStatusbar) {
   $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      window.StatusBar.styleLightContent();
-    }
+    // Hide the accessory bar by default (remove this to show the accessory bar
+    // above the keyboard for form inputs)
+    $cordovaKeyboard.hideAccessoryBar(true);
+    $cordovaStatusbar.style(1); // LightContent
   });
 }
 
-initNativeEnv.$inject = ['$ionicPlatform'];
+initNativeEnv.$inject = ['$ionicPlatform', '$cordovaKeyboard', '$cordovaStatusbar'];
 
 export default initNativeEnv;
