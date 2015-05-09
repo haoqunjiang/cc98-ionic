@@ -79,15 +79,15 @@ class LoginController {
       },
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
       transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj){
+        let str = [];
+        for(let p in obj){
           str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
         }
         return str.join('&');
       }
     }).success(({access_token, expires_in, refresh_token}) => {
-      let access_token_expires = new Date((new Date()).getTime() + expires_in * 1000);
-      let refresh_token_expires = new Date((new Date()).getTime() + REFRESH_TOKEN_EXPIRY * 1000);
+      let access_token_expires = (new Date()).getTime() + expires_in * 1000;
+      let refresh_token_expires = (new Date()).getTime() + REFRESH_TOKEN_EXPIRY * 1000;
 
       this.Accounts.setCurrent({
         access_token: access_token,
@@ -112,8 +112,7 @@ class LoginController {
 
   /**
    * toggle keyboard accessory bar
-   * @param  {Object}  params
-   * @param  {boolean} params.show set this to true to show the bar or false to hide
+   * @param  {boolean} options.show set this to true to show the bar or false to hide
    */
   _toggleKeyboardAccessoryBar({show}) {
     // 重新关掉键盘的 AccessoryBar，毕竟只有填表单时用得到
