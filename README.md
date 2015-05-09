@@ -41,10 +41,10 @@
 
 
 
-## ES2015
+## ES Harmony
 
-受[这篇文章](http://div.io/topic/950)和 [angular-systemjs-seed](https://github.com/Swimlane/angular-systemjs-seed) 项目启发，本项目遵循 ES2015 标准来书写代码。
-为了在尚未支持 ES2015 标准的浏览器中运行，本项目使用的工具包括 [jspm](http://jspm.io/)、[SystemJS](https://github.com/systemjs/systemjs) 和 [Babel](https://babeljs.io/)。
+受[这篇文章](http://div.io/topic/950)和 [angular-systemjs-seed](https://github.com/Swimlane/angular-systemjs-seed) 项目启发，本项目遵循 ES Harmony 标准来书写代码。
+为了在尚未支持 ES Harmony 标准的浏览器中运行，本项目使用的工具包括 [jspm](http://jspm.io/)、[SystemJS](https://github.com/systemjs/systemjs) 和 [Babel](https://babeljs.io/)。
 
 
 
@@ -62,7 +62,7 @@
 - 各大主流 IDE/编辑器的 ESLint 插件可在 [ESLint 官网](http://eslint.org/docs/integrations/)下载到；
 - 本项目的默认 ESLint 配置在 [.eslintrc](./src/main/webapp/.eslintrc) 文件里，可以查看该文件了解本项目的代码规范；
 - 此外，可在 ESLint 官网查看它的默认规范；
-- 对于以上没有涉及到的部分以及 HTML/CSS 代码规范，请参考 [Google HTML/CSS Style Guide](https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml) 以及 [Google JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)，至于他们的 AngularJS Style Guide 参考价值不大，AngularJS 官方的 [Best Practices](https://github.com/angular/angular.js/wiki/Best-Practices) 可以一看，[John Papa 的 Angular Style Guide](https://github.com/johnpapa/angular-styleguide) 也有很重要的参考价值。使用 ES2015 的 AngularJS 写法可以参考[这篇文章](http://martinmicunda.com/2015/02/09/how-to-start-writing-apps-with-es6-angular-1x-and-jspm/)。
+- 对于以上没有涉及到的部分以及 HTML/CSS 代码规范，请参考 [Google HTML/CSS Style Guide](https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml) 以及 [Google JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)，至于他们的 AngularJS Style Guide 参考价值不大，AngularJS 官方的 [Best Practices](https://github.com/angular/angular.js/wiki/Best-Practices) 可以一看，[John Papa 的 Angular Style Guide](https://github.com/johnpapa/angular-styleguide) 也有很重要的参考价值。使用 ES Harmony 的 AngularJS 写法可以参考[这篇文章](http://martinmicunda.com/2015/02/09/how-to-start-writing-apps-with-es6-angular-1x-and-jspm/)。
 
 > #### 关于 Sublime Text 使用 ESLint 的一些注意点
 > - 需要预装 `eslint` 命令行版本以及 Sublime Text 的 SublimeLinter 插件；
