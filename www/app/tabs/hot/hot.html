@@ -4,6 +4,14 @@
   </ion-nav-buttons>
 
   <ion-content>
-    十大占位
+    <ion-list>
+      <ion-item ng-repeat="topic in ctrl.topics">
+        <h2>{{topic.title}}</h2>
+        <p>
+          <span>{{topic.authorName}} {{topic.createTime}}</span>
+          <span class="pull-right">{{topic.replyCount}}回应</span>
+        </p>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
