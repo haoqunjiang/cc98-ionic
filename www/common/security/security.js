@@ -6,5 +6,5 @@ import loginModule from './login/login.module';
 export default angular.module('security', [
   'ionic',
   loginModule.name,
-  stateInterceptorsModule.name,
+  stateInterceptorsModule.name
 ]);

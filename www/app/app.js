@@ -8,9 +8,6 @@ import securityModule from '../common/security/security';
 import appRouter from './app.router';     // 路由
 import initNativeEnv from './app.native'; // 移动平台相关
 
-document.addEventListener("deviceready", function () {
-
-})
 export default angular.module('cc98', ['ionic', securityModule.name, 'ngCordova'])
   .config(appRouter)
   .run(initNativeEnv);

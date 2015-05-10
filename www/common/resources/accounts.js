@@ -1,7 +1,16 @@
+/* eslint-disable camelcase */
 import 'ionic';
+import 'driftyco/ng-cordova';
 import 'gsklee/ngStorage';
+import qs from 'nodelibs/querystring';
+import secrets from '../../secrets.json!';
 
-function Accounts($localStorage) {
+const AUTHORIZE_ENDPOINT = 'http://login.cc98.org/oauth/authorize';
+const TOKEN_ENDPOINT = 'http://login.cc98.org/oauth/token';
+const AUTH_SCOPE = 'all*';
+const REFRESH_TOKEN_EXPIRES_IN = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
+
+function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
   let services = {
     get: get,
     set: set,
@@ -9,7 +18,11 @@ function Accounts($localStorage) {
     all: all,
 
     getCurrent: getCurrent,
-    setCurrent: setCurrent
+    setCurrent: setCurrent,
+
+    login: login,
+    logout: logout,
+    refresh: refresh
   };
   return services;
 
@@ -68,16 +81,106 @@ function Accounts($localStorage) {
    * @param {string} [user.avatar]
    */
   function setCurrent(user) {
-    current = user;
+    $localStorage.current = user;
     // 如果有用户名，就 push/update 它到 accounts 数组中
     if (user.username) {
       services.set(user);
-    };
+    }
   }
+
+  // Client-Side Applications had better use implicit_grant
+  // see here -> http://wiki.dev.app.360.cn/index.php?title=OAuth2.0%E6%96%87%E6%A1%A3
+  // But as the website's implicit granted access token expires in such a short time (1200s currently),
+  // that it is unrealistic to take this approach in a client app.
+  // So here I implemented an OAuth service with the authorization code approach.
+
+  /**
+   * login
+   * @return {Promise} [description]
+   */
+  function login() {
+    let deferred = $q.defer();
+
+    $cordovaKeyboard.hideAccessoryBar(false);
+    let authorizeUrl = AUTHORIZE_ENDPOINT + '?' + qs.stringify({
+      response_type: 'code',
+      grant_type: 'authorization_code',
+      client_id: secrets.client_id,
+      redirect_uri: secrets.redirect_uri,
+      scope: AUTH_SCOPE
+    });
+    let ref = window.open(authorizeUrl, '_blank');
+    ref.addEventListener('loadstart', (evt) => {
+      if (!evt.url.startsWith(secrets.redirect_uri)) { return; }
+      $cordovaKeyboard.hideAccessoryBar(true);
+
+      let {code, error} = qs.parse(evt.url.split('?')[1]);
+      if (error) {
+        deferred.reject('Failed to get authorization code!');
+      } else {
+        deferred.resolve(code);
+      }
+    });
+
+    return deferred.promise
+      .finally(() => ref.close()) // 先关窗口免得用户看到跳转页
+      .then(_getTokens);
+  }
+
+  /**
+   * get access_token & refresh_token with oauth authorization code
+   * @param  {string} code authorization code
+   * @return {Promise}
+   */
+  function _getTokens(code) {
+    return $http({
+      method: 'POST',
+      url: TOKEN_ENDPOINT,
+      data: {
+        grant_type: 'authorization_code',
+        client_id: secrets.client_id,
+        client_secret: secrets.client_secret,
+        redirect_uri: secrets.redirect_uri,
+        code: code
+      },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: function(obj) {
+        let str = [];
+        for(let p in obj){
+          str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+        }
+        return str.join('&');
+      }
+    }).success(({access_token, expires_in, refresh_token}) => {
+      let access_token_expires = Date.now() + expires_in * 1000;
+      let refresh_token_expires = Date.now() + REFRESH_TOKEN_EXPIRES_IN * 1000;
+      setCurrent({
+        access_token: access_token,
+        refresh_token: refresh_token,
+        access_token_expiry: access_token_expires,
+        refresh_token_expiry: refresh_token_expires
+      });
+    }).error((data, status) => {
+      throw new Error(`HTTP Error ${status}. Failed to get tokens!`);
+    });
+  }
+
+  /**
+   * logout the current account and delele cookie
+   * @return {Promise}
+   */
+  function logout() {}
+
+  /**
+   * refresh access token with refresh token
+   * @return {Promise}
+   */
+  function refresh() {}
 }
 
-Accounts.$inject = ['$localStorage'];
+Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard'];
 
 export default angular.module('resources.accounts', [
-  'ngStorage'
+  'ngStorage',
+  'ngCordova'
 ]).factory('Accounts', Accounts);
