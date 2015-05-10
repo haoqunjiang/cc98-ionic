@@ -3,14 +3,16 @@ import 'ionic';
 import 'driftyco/ng-cordova';
 import 'gsklee/ngStorage';
 import qs from 'nodelibs/querystring';
+
+import settingsModule from './settings';
+
 import secrets from '../../secrets.json!';
 
-const AUTHORIZE_ENDPOINT = 'http://login.cc98.org/oauth/authorize';
-const TOKEN_ENDPOINT = 'http://login.cc98.org/oauth/token';
 const AUTH_SCOPE = 'all*';
 const REFRESH_TOKEN_EXPIRES_IN = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
 
-function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
+function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard, settings) {
+  let $http = $injector.get('$http');
   let services = {
     get: get,
     set: set,
@@ -28,14 +30,14 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
 
 
   /**
-   * get a stored account by username or userid
-   * (if both provided, the username has higher priority during search)
-   * @param  {string} options.username
-   * @param  {number} options.userid
+   * get a stored account by userName or userId
+   * (if both provided, the userName has higher priority during search)
+   * @param  {string} options.userName
+   * @param  {number} options.userId
    * @return {Object} the found account or null
    */
-  function get({username, userid}) {
-    return $localStorage.find((x) => x.username === username || x.userid === userid);
+  function get({userName, userId}) {
+    return $localStorage.find((x) => x.userName === userName || x.userId === userId);
   }
 
   /**
@@ -43,7 +45,7 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
    * @param {object} user the user account to set
    */
   function set(user) {
-    let found = $localStorage.accounts.find(x => x.username === user.username);
+    let found = $localStorage.accounts.find(x => x.userName === user.userName);
     if (found) {
       Object.assign(found, user);
     } else {
@@ -76,14 +78,14 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
    * @param {number} user.access_token_expires timestamp indicating when access_token expires
    * @param {string} user.refresh_token
    * @param {number} user.refresh_token_expires timestamp indicating when access_token expires
-   * @param {id}     [user.userid]
-   * @param {string} [user.username]
+   * @param {id}     [user.userId]
+   * @param {string} [user.userName]
    * @param {string} [user.avatar]
    */
   function setCurrent(user) {
     $localStorage.current = user;
     // 如果有用户名，就 push/update 它到 accounts 数组中
-    if (user.username) {
+    if (user.userName) {
       services.set(user);
     }
   }
@@ -102,7 +104,7 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
     let deferred = $q.defer();
 
     $cordovaKeyboard.hideAccessoryBar(false);
-    let authorizeUrl = AUTHORIZE_ENDPOINT + '?' + qs.stringify({
+    let authorizeUrl = settings.authorizeEndpoint + '?' + qs.stringify({
       response_type: 'code',
       grant_type: 'authorization_code',
       client_id: secrets.client_id,
@@ -135,7 +137,7 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
   function _getTokens(code) {
     return $http({
       method: 'POST',
-      url: TOKEN_ENDPOINT,
+      url: settings.tokenEndpoint,
       data: {
         grant_type: 'authorization_code',
         client_id: secrets.client_id,
@@ -152,13 +154,13 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
         return str.join('&');
       }
     }).success(({access_token, expires_in, refresh_token}) => {
-      let access_token_expires = Date.now() + expires_in * 1000;
-      let refresh_token_expires = Date.now() + REFRESH_TOKEN_EXPIRES_IN * 1000;
+      let access_token_expiry = Date.now() + expires_in * 1000;
+      let refresh_token_expiry = Date.now() + REFRESH_TOKEN_EXPIRES_IN * 1000;
       setCurrent({
         access_token: access_token,
         refresh_token: refresh_token,
-        access_token_expiry: access_token_expires,
-        refresh_token_expiry: refresh_token_expires
+        access_token_expiry: access_token_expiry,
+        refresh_token_expiry: refresh_token_expiry
       });
     }).error((data, status) => {
       throw new Error(`HTTP Error ${status}. Failed to get tokens!`);
@@ -178,9 +180,10 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard) {
   function refresh() {}
 }
 
-Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard'];
+Accounts.$inject = ['$injector', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
 
 export default angular.module('resources.accounts', [
   'ngStorage',
-  'ngCordova'
+  'ngCordova',
+  settingsModule.name
 ]).factory('Accounts', Accounts);

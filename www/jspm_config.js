@@ -45,6 +45,7 @@ System.config({
     "json": "github:systemjs/plugin-json@0.1.0",
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
     "nodelibs": "github:jspm/nodelibs@0.0.9",
+    "symbol-enum": "npm:symbol-enum@2.0.0",
     "systemjs/plugin-text": "github:systemjs/plugin-text@0.0.2",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:angular-ui/ui-router@0.2.13": {

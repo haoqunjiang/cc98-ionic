@@ -1,3 +1,4 @@
+import 'ionic';
 import accountsModule from '../resources/accounts';
 /**
  * 每次切换页面时判断是否需要登录，如果需要就跳转到登录页

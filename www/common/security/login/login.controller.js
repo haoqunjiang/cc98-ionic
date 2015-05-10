@@ -1,5 +1,5 @@
 class LoginController {
-  constructor($scope, $http, $rootScope, $state, $cordovaStatusbar, Accounts) {
+  constructor($scope, $http, $rootScope, $state, $cordovaStatusbar, Accounts, APIRequest) {
     // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
     $scope.ctrl = this;
 
@@ -9,6 +9,7 @@ class LoginController {
     this.$state = $state;
     this.$cordovaStatusbar = $cordovaStatusbar;
     this.Accounts = Accounts;
+    this.APIRequest = APIRequest;
 
     $cordovaStatusbar.style(0); // set to default style
   }
@@ -23,10 +24,27 @@ class LoginController {
 
   /**
    * OAuth 登录，采用 Authorization Code 方式
-   * @todo 增加 state 参数
    */
   login() {
-    this.Accounts.login().then(this._return);
+    this.Accounts.login()
+      // 这一步放在这里做是为了避免 Accounts 模块与 API 模块循环依赖，以及不知道为什么只能放在匿名函数里调用才能成功
+      .then(() => this._getMe())
+      .then(() => this._return());
+  }
+
+  /**
+   * get account information about the current user
+   * @return {Promise}
+   */
+  _getMe() {
+    return this.APIRequest.get('me')
+      .then((userInfo) => {
+        this.Accounts.setCurrent({
+          userId: userInfo.id,
+          userName: userInfo.name,
+          userinfo: userInfo
+        });
+      });
   }
 
   /**
@@ -38,6 +56,6 @@ class LoginController {
   }
 }
 
-LoginController.$inject = ['$scope', '$http', '$rootScope', '$state', '$cordovaStatusbar', 'Accounts'];
+LoginController.$inject = ['$scope', '$http', '$rootScope', '$state', '$cordovaStatusbar', 'Accounts', 'APIRequest'];
 
 export default LoginController;

@@ -1,4 +1,6 @@
+import apiModule from '../../services/api';
 import accountsModule from '../../resources/accounts';
+
 import loginRoute from './login.route';
 
 function LoginRouter($stateProvider) {
@@ -7,5 +9,6 @@ function LoginRouter($stateProvider) {
 LoginRouter.$inject = ['$stateProvider'];
 
 export default angular.module('security.login', [
+  apiModule.name,
   accountsModule.name
 ]).config(LoginRouter);

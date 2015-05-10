@@ -98,22 +98,51 @@
  * RequestEntityTooLarge 413 title_too_long  标题长度超过了允许的字符数上限
  */
 import 'ionic';
+import 'gsklee/ngStorage';
 
+import settingsModule from '../resources/settings';
 
-function authInterceptor(Accounts) {
+import ErrorCode from '../error-code';
+
+function authInterceptor($q, $localStorage, settings) {
   return {
     request: function(config) {
-      config.headers = config.headers || {};
+      // 如果不是 API 调用的话跳过验证
+      if (!config.url.startsWith(settings.apiEndpoint)) {
+        return config;
+      }
+
+      let current = $localStorage.current;
+
+      // 未登录时直接返回
+      if (!current || !current.access_token) {
+        return config;
+      }
+
+      if (Date.now() < current.access_token_expiry) {
+        config.headers = config.headers || {};
+        config.headers.Authorization = 'Bearer ' + current.access_token;
+        return config;
+      } else if (Date.now() < current.refresh_token_expiry) {
+        return $q.reject(ErrorCode.ACCESS_TOKEN_EXPIRED);
+      } else {
+        return $q.reject(ErrorCode.REFRESH_TOKEN_EXPIRED);  // 这个逻辑放在这里不是很合适，以后移到 retry 部分
+      }
     },
-    response: function(config) {}
-  }
+
+    response: function(response) {
+      return response;
+    }
+  };
 }
 
-authInterceptor.$inject = ['Accounts'];
+authInterceptor.$inject = ['$q', '$localStorage', 'settings'];
 
-export default angular.module('security.httpInterceptors', ['resources.accounts'])
-  .factory('authInterceptor', authInterceptor)
+export default angular.module('security.httpInterceptors', [
+  'ngStorage',
+  settingsModule.name
+]).factory('authInterceptor', authInterceptor)
   .config(function($httpProvider) {
-    $httpProvider.interceptors.push('AuthInterceptor');
+    $httpProvider.interceptors.push('authInterceptor');
   });
 
