@@ -83,10 +83,10 @@ function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard,
    * @param {string} [user.avatar]
    */
   function setCurrent(user) {
-    $localStorage.current = user;
+    $localStorage.current = Object.assign($localStorage.current || {}, user);
     // 如果有用户名，就 push/update 它到 accounts 数组中
     if (user.userName) {
-      services.set(user);
+      services.set($localStorage.current);
     }
   }
 
