@@ -45,6 +45,7 @@ function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard,
    * @param {object} user the user account to set
    */
   function set(user) {
+    $localStorage.accounts = $localStorage.accounts || [];
     let found = $localStorage.accounts.find(x => x.userName === user.userName);
     if (found) {
       Object.assign(found, user);
@@ -85,8 +86,8 @@ function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard,
   function setCurrent(user) {
     $localStorage.current = Object.assign($localStorage.current || {}, user);
     // 如果有用户名，就 push/update 它到 accounts 数组中
-    if (user.userName) {
-      services.set($localStorage.current);
+    if ($localStorage.current.userName) {
+      set($localStorage.current);
     }
   }
 
