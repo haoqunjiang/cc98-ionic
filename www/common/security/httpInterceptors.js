@@ -102,7 +102,7 @@ import 'gsklee/ngStorage';
 
 import settingsModule from '../resources/settings';
 
-import ErrorCode from '../error-code';
+// import ErrorCode from '../error-code';
 
 function authInterceptor($q, $localStorage, settings) {
   return {
@@ -114,20 +114,21 @@ function authInterceptor($q, $localStorage, settings) {
 
       let current = $localStorage.current;
 
-      // 未登录时直接返回
-      if (!current || !current.access_token) {
+      // 未登录或者授权过期了就不加 header 了
+      if (!current || !current.access_token || Date.now() > current.access_token_expiry) {
         return config;
       }
 
-      if (Date.now() < current.access_token_expiry) {
-        config.headers = config.headers || {};
-        config.headers.Authorization = 'Bearer ' + current.access_token;
-        return config;
-      } else if (Date.now() < current.refresh_token_expiry) {
+      config.headers = config.headers || {};
+      config.headers.Authorization = 'Bearer ' + current.access_token;
+      return config;
+      /* 这段应当加在 response 中
+      if (Date.now() < current.refresh_token_expiry) {
         return $q.reject(ErrorCode.ACCESS_TOKEN_EXPIRED);
       } else {
         return $q.reject(ErrorCode.REFRESH_TOKEN_EXPIRED);  // 这个逻辑放在这里不是很合适，以后移到 retry 部分
       }
+      */
     },
 
     response: function(response) {
