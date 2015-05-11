@@ -4,6 +4,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var replace = require('gulp-replace');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+var jsinspect = require('gulp-jsinspect');
 
 var paths = {
   sass: ['./www/scss/**/*.scss']
@@ -72,4 +73,9 @@ gulp.task('ionic-sass', function(cb) {
 
 gulp.task('app-sass', function(cb) {
   cb();
+});
+
+gulp.task('jsinspect', function() {
+  return gulp.src(['www/**/*.js', '!www/bundles/**', '!www/jspm_config.js', '!www/jspm_packages/**', '!node_modules/**'])
+    .pipe(jsinspect({threshold: 30}));
 });

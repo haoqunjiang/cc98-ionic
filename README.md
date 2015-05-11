@@ -36,7 +36,10 @@
 
 ### 代码覆盖率
 
-### JSCPD（代码重复率检测）
+### 代码重复率检测
+
+- jsinspect: `gulp jsinspect`;
+- jscpd: [todo]
 
 
 
