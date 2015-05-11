@@ -1,10 +1,13 @@
 ## 开发环境
 
+理论上本项目可以同时为 iOS 和 Android 平台构建，不过目前仅为 iOS 平台测试过，以下描述也只针对 iOS，如需构建到 Android 平台，请自行参考 ionic framework 的官方文档。
+
 1. 安装 [io.js](https://iojs.org/)；
 2. 运行以下命令（可能需要 `root` 权限）：
 
         npm install gulp -g     # 安装 gulp 用于各种构建任务
-        npm install jspm -g    # 安装 jspm 用于下载第三方依赖
+        npm install jspm -g     # 安装 jspm 用于下载第三方依赖
+        npm install cordova ionic -g  # 安装 cordova 和 ionic 命令行工具
 
 3. 在本项目根目录下运行以下命令：
 
@@ -21,7 +24,7 @@
 
   其中 `YOUR_CLIENT_ID`、`YOUR_CLIENT_SECRET` 均可在申请 CC98 API 时获得，`YOUR_REDIRECT_URI` 则是申请后自行设置的回调页面地址；
 
-5. 运行 `ionic serve`，即可在浏览器中查看效果了。
+5. 运行 `ionic run ios`，即可在浏览器中查看效果了。
 
 
 
