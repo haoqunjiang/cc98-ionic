@@ -6,6 +6,8 @@ import 'driftyco/ng-cordova';
 import securityModule from '../common/security/security';
 import apiModule from '../common/services/api';
 
+import fromNowModule from '../common/filters/fromNow';
+
 import appRouter from './app.router';     // 路由
 import initNativeEnv from './app.native'; // 移动平台相关
 
@@ -13,6 +15,7 @@ export default angular.module('cc98', [
   'ionic',
   'ngCordova',
   securityModule.name,
-  apiModule.name
+  apiModule.name,
+  fromNowModule.name
 ]).config(appRouter)
   .run(initNativeEnv);

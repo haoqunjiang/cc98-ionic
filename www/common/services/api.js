@@ -7,9 +7,7 @@ import httpInterceptorsModule from '../security/httpInterceptors';
 
 import ErrorCode from '../error-code';
 
-/* eslint-disable no-shadow */
 function APIRequest($http, $cordovaToast, Accounts, settings) {
-  /* eslint-enable no-shadow */
   let services = {
     get: get,
     post: post

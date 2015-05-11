@@ -44,6 +44,7 @@ System.config({
     "ionic": "github:driftyco/ionic-bower@1.0.0-rc.5",
     "json": "github:systemjs/plugin-json@0.1.0",
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
+    "moment": "github:moment/moment@2.10.2",
     "nodelibs": "github:jspm/nodelibs@0.0.9",
     "symbol-enum": "npm:symbol-enum@2.0.0",
     "systemjs/plugin-text": "github:systemjs/plugin-text@0.0.2",

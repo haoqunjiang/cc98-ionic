@@ -65,3 +65,16 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
   border: 0;
 }
 
+.item-text-wrap .item,
+.item-text-wrap .item-content,
+.item-text-wrap,
+.item-text-wrap h1,
+.item-text-wrap h2,
+.item-text-wrap h3,
+.item-text-wrap h4,
+.item-text-wrap h5,
+.item-text-wrap h6,
+.item-text-wrap p {
+  word-break: break-all;
+  -webkit-hyphens: auto;  // 现在 Gulp 还没加 autoprefixer 所以暂时先这样
+}
