@@ -49,9 +49,11 @@ function APIRequest($http, $cordovaToast, Accounts, settings) {
 
 APIRequest.$inject = ['$http', '$cordovaToast', 'Accounts', 'settings'];
 
-export default angular.module('services.api', [
-  'ngCordovaMocks',
-  settingsModule.name,
-  accountsModule.name,
-  httpInterceptorsModule.name
-]).factory('APIRequest', APIRequest);
+export default angular
+  .module('services.api', [
+    'ngCordovaMocks',
+    settingsModule.name,
+    accountsModule.name,
+    httpInterceptorsModule.name
+  ])
+  .factory('APIRequest', APIRequest);

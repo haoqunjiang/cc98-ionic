@@ -139,10 +139,12 @@ function authInterceptor($q, $localStorage, settings) {
 
 authInterceptor.$inject = ['$q', '$localStorage', 'settings'];
 
-export default angular.module('security.httpInterceptors', [
-  'ngStorage',
-  settingsModule.name
-]).factory('authInterceptor', authInterceptor)
+export default angular
+  .module('security.httpInterceptors', [
+    'ngStorage',
+    settingsModule.name
+  ])
+  .factory('authInterceptor', authInterceptor)
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
   });

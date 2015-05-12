@@ -7,5 +7,6 @@ let settings = {
   tokenEndpoint: 'http://login.cc98.org/oauth/token'
 };
 
-export default angular.module('settings', [])
+export default angular
+  .module('settings', [])
   .value('settings', settings);

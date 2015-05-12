@@ -29,6 +29,6 @@ function LoginInterceptor($rootScope, $location, Accounts) {
 
 LoginInterceptor.$inject = ['$rootScope', '$location', 'Accounts'];
 
-export default angular.module('security.stateInterceptor', [
-  accountsModule.name
-]).run(LoginInterceptor);
+export default angular
+  .module('security.stateInterceptor', [accountsModule.name])
+  .run(LoginInterceptor);

@@ -13,12 +13,14 @@ import fromNowModule from '../common/filters/fromNow';
 import appRouter from './app.router';     // 路由
 import initNativeEnv from './app.native'; // 移动平台相关
 
-export default angular.module('cc98', [
-  'ionic',
-  'ngCordovaMocks',
-  securityModule.name,
-  apiModule.name,
-  mockModule.name,
-  fromNowModule.name
-]).config(appRouter)
+export default angular
+  .module('cc98', [
+    'ionic',
+    'ngCordovaMocks',
+    securityModule.name,
+    apiModule.name,
+    mockModule.name,
+    fromNowModule.name
+  ])
+  .config(appRouter)
   .run(initNativeEnv);

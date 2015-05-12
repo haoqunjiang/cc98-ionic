@@ -207,8 +207,10 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
 
 Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
 
-export default angular.module('resources.accounts', [
-  'ngStorage',
-  'ngCordovaMocks',
-  settingsModule.name
-]).factory('Accounts', Accounts);
+export default angular
+  .module('resources.accounts', [
+    'ngStorage',
+    'ngCordovaMocks',
+    settingsModule.name
+  ])
+  .factory('Accounts', Accounts);

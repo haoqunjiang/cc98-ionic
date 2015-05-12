@@ -12,11 +12,12 @@ function fromNow(str) {
   if (now.diff(date, 'days') < 1) {
     return date.fromNow();  // 一天以内的，返回 fromNow
   } else if(now.diff(date, 'years') < 1) {
-    return moment.format('MM-DD HH:mm'); // 一年以内的，返回 月-日-时-分
+    return date.format('MM-DD HH:mm'); // 一年以内的，返回 月-日-时-分
   } else {
-    return moment.format('YYYY-MM-DD'); // 不是同一年的，返回 年-月-日
+    return date.format('YYYY-MM-DD'); // 不是同一年的，返回 年-月-日
   }
 }
 
-export default angular.module('filters.fromNow', [])
+export default angular
+  .module('filters.fromNow', [])
   .filter('fromNow', () => fromNow);

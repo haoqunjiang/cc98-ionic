@@ -5,12 +5,14 @@
 
   <ion-content>
     <ion-list class="item-text-wrap">
-      <ion-item ng-repeat="topic in ctrl.topics" class="padding">
-        <h3>{{topic.title}}</h3>
-        <p>
-          <small>{{topic.boardName}} {{topic.authorName}} {{topic.createTime | fromNow}}</small>
-          <small class="pull-right">{{topic.replyCount}}回应</small>
-        </p>
+      <ion-item ng-repeat="topic in ctrl.topics" class="padding-top padding-bottom">
+        <a class="item-content" ng-href="#/topic/{{topic.id}}">
+          <h3>{{topic.title}}</h3>
+          <p>
+            <small>{{topic.boardName}} {{topic.authorName}} {{topic.createTime | fromNow}}</small>
+            <small class="pull-right">{{topic.replyCount}}回应</small>
+          </p>
+        </a>
       </ion-item>
     </ion-list>
   </ion-content>
