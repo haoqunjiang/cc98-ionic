@@ -22,6 +22,7 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
 @import "{{ionic-scss-path}}";
 
 
+// 修复图标在 header bar 上过大的问题
 .button-bar-icon {
   .icon:before,
   &.icon:before {
@@ -29,6 +30,41 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
   }
 }
 
+// 修复中英文断行
+.item-text-wrap .item,
+.item-text-wrap .item-content,
+.item-text-wrap,
+.item-text-wrap h1,
+.item-text-wrap h2,
+.item-text-wrap h3,
+.item-text-wrap h4,
+.item-text-wrap h5,
+.item-text-wrap h6,
+.item-text-wrap p {
+  word-break: break-all;  // 强制英文单词断行
+  hyphens: auto;          // 英文单词断行用连字符，不过除了火狐外的浏览器都还不支持
+}
+
+// 帖子列表
+.topic-item {
+  .topic-item-meta {
+    // 因为里面包含的几个 small 没有占满高度，导致下方空隙看起来大一点，所以要 margin 负值补偿
+    margin-bottom: -4px !important;
+  }
+
+  small:not(:last-of-type), .icon {
+    margin-right: 0.25em;
+  }
+
+  .topic-item-boardname {
+    background-color: #f5f5f5;
+    color: #999;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+}
+
+// helper classes
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table;
@@ -63,18 +99,4 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
   text-shadow: none;
   background-color: transparent;
   border: 0;
-}
-
-.item-text-wrap .item,
-.item-text-wrap .item-content,
-.item-text-wrap,
-.item-text-wrap h1,
-.item-text-wrap h2,
-.item-text-wrap h3,
-.item-text-wrap h4,
-.item-text-wrap h5,
-.item-text-wrap h6,
-.item-text-wrap p {
-  word-break: break-all;
-  -webkit-hyphens: auto;  // 现在 Gulp 还没加 autoprefixer 所以暂时先这样
 }

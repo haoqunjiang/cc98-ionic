@@ -5,15 +5,17 @@
 
   <ion-content>
     <ion-list class="item-text-wrap">
-      <ion-item ng-repeat="topic in ctrl.topics" class="padding-top padding-bottom">
-        <a class="item-content" ng-href="#/topic/{{topic.id}}">
-          <h3>{{topic.title}}</h3>
-          <p>
-            <small>{{topic.boardName}} {{topic.authorName}} {{topic.createTime | fromNow}}</small>
-            <small class="pull-right">{{topic.replyCount}}回应</small>
-          </p>
-        </a>
-      </ion-item>
+      <a ng-repeat="topic in ctrl.topics" ng-href="#/topic/{{topic.id}}" class="item-content">
+        <ion-item class="topic-item padding-vertical">
+            <h3>{{topic.title}}</h3>
+            <p class="topic-item-meta">
+              <small class="topic-item-boardname">{{topic.boardName}}</small>
+              <small class="topic-item-author">{{topic.authorName || '匿名'}}</small>
+              <small class="topic-item-time">{{topic.createTime | fromNow}}</small>
+              <small class="pull-right"><i class="icon ion-ios-chatbubble-outline"></i>{{topic.replyCount}}</small>
+            </p>
+        </ion-item>
+      </a>
     </ion-list>
   </ion-content>
 </ion-view>

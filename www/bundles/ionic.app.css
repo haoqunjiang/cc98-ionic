@@ -9248,6 +9248,31 @@ a.button {
 .button-bar-icon.icon:before {
   font-size: 20px !important; }
 
+.item-text-wrap .item,
+.item-text-wrap .item-content,
+.item-text-wrap,
+.item-text-wrap h1,
+.item-text-wrap h2,
+.item-text-wrap h3,
+.item-text-wrap h4,
+.item-text-wrap h5,
+.item-text-wrap h6,
+.item-text-wrap p {
+  word-break: break-all;
+  hyphens: auto; }
+
+.topic-item .topic-item-meta {
+  margin-bottom: -2px !important; }
+
+.topic-item small:not(:last-of-type), .topic-item .icon {
+  margin-right: 0.25em; }
+
+.topic-item .topic-item-boardname {
+  background-color: #f5f5f5;
+  color: #999;
+  padding: 2px 4px;
+  border-radius: 2px; }
+
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
@@ -9276,18 +9301,5 @@ a.button {
   text-shadow: none;
   background-color: transparent;
   border: 0; }
-
-.item-text-wrap .item,
-.item-text-wrap .item-content,
-.item-text-wrap,
-.item-text-wrap h1,
-.item-text-wrap h2,
-.item-text-wrap h3,
-.item-text-wrap h4,
-.item-text-wrap h5,
-.item-text-wrap h6,
-.item-text-wrap p {
-  word-break: break-all;
-  -webkit-hyphens: auto; }
 
 /*# sourceMappingURL=ionic.app.css.map */
