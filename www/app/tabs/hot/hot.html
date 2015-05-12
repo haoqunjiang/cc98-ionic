@@ -5,11 +5,11 @@
 
   <ion-content>
     <ion-list class="item-text-wrap">
-      <ion-item ng-repeat="topic in ctrl.topics">
-        <h2>{{topic.title}}</h2>
+      <ion-item ng-repeat="topic in ctrl.topics" class="padding">
+        <h3>{{topic.title}}</h3>
         <p>
-          <span>{{topic.authorName}} {{topic.createTime | fromNow}}</span>
-          <span class="pull-right">{{topic.replyCount}}回应</span>
+          <small>{{topic.boardName}} {{topic.authorName}} {{topic.createTime | fromNow}}</small>
+          <small class="pull-right">{{topic.replyCount}}回应</small>
         </p>
       </ion-item>
     </ion-list>

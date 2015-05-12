@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import 'ionic';
 import 'driftyco/ng-cordova';
+import 'driftyco/ng-cordova/dist/ng-cordova-mocks';
 import 'gsklee/ngStorage';
 import qs from 'nodelibs/querystring';
 
@@ -11,8 +12,7 @@ import secrets from '../../secrets.json!';
 const AUTH_SCOPE = 'all*';
 const REFRESH_TOKEN_EXPIRES_IN = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
 
-function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard, settings) {
-  let $http = $injector.get('$http');
+function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, settings) {
   let services = {
     get: get,
     set: set,
@@ -131,6 +131,34 @@ function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard,
   }
 
   /**
+   * refresh access token with refresh token
+   * @return {Promise}
+   */
+  function refresh() {
+    return $http({
+      method: 'POST',
+      url: settings.tokenEndpoint,
+      data: {
+        grant_type: 'refresh_token',
+        refresh_token: $localStorage.current.refresh_token,
+        client_id: secrets.client_id,
+        client_secret: secrets.client_secret,
+        redirect_uri: secrets.redirect_uri
+      },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      transformRequest: _transformRequest
+    }).success(({access_token, expires_in}) => {
+      let access_token_expiry = Date.now() + expires_in * 1000;
+      setCurrent({
+        access_token: access_token,
+        access_token_expiry: access_token_expiry
+      });
+    }).error((data, status) => {
+      throw new Error(`HTTP Error ${status}. Failed to refresh token!`);
+    });
+  }
+
+  /**
    * get access_token & refresh_token with oauth authorization code
    * @param  {string} code authorization code
    * @return {Promise}
@@ -147,13 +175,7 @@ function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard,
         code: code
       },
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-      transformRequest: function(obj) {
-        let str = [];
-        for(let p in obj){
-          str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-        }
-        return str.join('&');
-      }
+      transformRequest: _transformRequest
     }).success(({access_token, expires_in, refresh_token}) => {
       let access_token_expiry = Date.now() + expires_in * 1000;
       let refresh_token_expiry = Date.now() + REFRESH_TOKEN_EXPIRES_IN * 1000;
@@ -174,17 +196,19 @@ function Accounts($injector, $q, $localStorage, $cordovaToast, $cordovaKeyboard,
    */
   function logout() {}
 
-  /**
-   * refresh access token with refresh token
-   * @return {Promise}
-   */
-  function refresh() {}
+  function _transformRequest(obj) {
+    let str = [];
+    for(let p in obj){
+      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+    }
+    return str.join('&');
+  }
 }
 
-Accounts.$inject = ['$injector', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
+Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
 
 export default angular.module('resources.accounts', [
   'ngStorage',
-  'ngCordova',
+  'ngCordovaMocks',
   settingsModule.name
 ]).factory('Accounts', Accounts);

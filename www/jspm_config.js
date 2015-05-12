@@ -33,6 +33,7 @@ System.config({
 
 System.config({
   "map": {
+    "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
     "babel": "npm:babel-core@5.1.13",
     "babel-runtime": "npm:babel-runtime@5.1.13",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
@@ -53,6 +54,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.3.15"
     },
     "github:angular/bower-angular-animate@1.3.15": {
+      "angular": "github:angular/bower-angular@1.3.15"
+    },
+    "github:angular/bower-angular-mocks@1.3.15": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
     "github:angular/bower-angular-sanitize@1.3.15": {

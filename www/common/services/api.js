@@ -1,5 +1,6 @@
 import 'ionic';
 import 'driftyco/ng-cordova';
+import 'driftyco/ng-cordova/dist/ng-cordova-mocks';
 
 import accountsModule from '../resources/accounts';
 import settingsModule from '../resources/settings';
@@ -49,7 +50,7 @@ function APIRequest($http, $cordovaToast, Accounts, settings) {
 APIRequest.$inject = ['$http', '$cordovaToast', 'Accounts', 'settings'];
 
 export default angular.module('services.api', [
-  'ngCordova',
+  'ngCordovaMocks',
   settingsModule.name,
   accountsModule.name,
   httpInterceptorsModule.name
