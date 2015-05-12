@@ -24,7 +24,7 @@
 
   其中 `YOUR_CLIENT_ID`、`YOUR_CLIENT_SECRET` 均可在申请 CC98 API 时获得，`YOUR_REDIRECT_URI` 则是申请后自行设置的回调页面地址；
 
-5. 运行 `ionic run ios`，即可在浏览器中查看效果了。
+5. 运行 `ionic run ios`，即可在 iOS 模拟器中查看效果了（iOS 开发环境请自行配置）。
 
 
 
@@ -88,4 +88,8 @@
 
 因为 JSPM 的限制，在开发环境下自定义 ionic 的样式有点复杂（因为 jspm registry 里的 ionic 包是引入的 ionic.css，而实际自定义时是要修改 sass 文件的），因此本项目参考了[这里](https://github.com/jspm/jspm-cli/issues/393#issuecomment-77781122)的做法，对 ionic 额外做了个 bundle。
 
-后续如需升级 ionic 版本，则请在 `www` 目录下运行 `jspm bundle ionic bundles/ionic.js --inject` 即可。
+后续如需升级 ionic 版本，则请运行如下命令：
+
+        jspm install ionic  # jspm 遵循 semver，所以单纯的 update 很有可能不起作用，很多时候都得重新 install，
+        cd www
+        jspm bundle ionic bundles/ionic.js --inject
