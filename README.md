@@ -90,6 +90,6 @@
 
 后续如需升级 ionic 版本，则请运行如下命令：
 
-        jspm install ionic  # jspm 遵循 semver，所以单纯的 update 很有可能不起作用，很多时候都得重新 install，
-        cd www
-        jspm bundle ionic bundles/ionic.js --inject
+    jspm install ionic  # jspm 遵循 semver，所以单纯的 update 很有可能不起作用，很多时候都得重新 install，
+    cd www
+    jspm bundle ionic bundles/ionic.js --inject
