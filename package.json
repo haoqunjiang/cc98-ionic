@@ -3,16 +3,19 @@
   "version": "1.0.0",
   "description": "A third-party app for http://www.cc98.org/",
   "repository": "https://github.com/sodatea/cc98-ionic",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "gulp": "^3.8.11"
   },
   "devDependencies": {
+    "browser-sync": "^2.7.1",
     "eslint": "^0.20.0",
     "gulp-jsinspect": "^1.0.0",
     "gulp-replace": "^0.5.3",
     "gulp-sass": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
-    "systemjs": "^0.16.9"
+    "systemjs": "^0.16.9",
+    "systemjs-builder": "^0.10.6"
   },
   "cordovaPlugins": [
     "org.apache.cordova.device",
