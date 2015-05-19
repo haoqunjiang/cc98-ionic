@@ -146,13 +146,11 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
         redirect_uri: secrets.redirect_uri
       },
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-      transformRequest: _transformRequest
+      transformRequest: qs.stringify
     }).success(({access_token, expires_in}) => {
       let access_token_expiry = Date.now() + expires_in * 1000;
-      setCurrent({
-        access_token: access_token,
-        access_token_expiry: access_token_expiry
-      });
+
+      setCurrent({access_token, access_token_expiry});
     }).error((data, status) => {
       throw new Error(`HTTP Error ${status}. Failed to refresh token!`);
     });
@@ -175,16 +173,12 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
         code: code
       },
       headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-      transformRequest: _transformRequest
+      transformRequest: qs.stringify
     }).success(({access_token, expires_in, refresh_token}) => {
       let access_token_expiry = Date.now() + expires_in * 1000;
       let refresh_token_expiry = Date.now() + REFRESH_TOKEN_EXPIRES_IN * 1000;
-      setCurrent({
-        access_token: access_token,
-        refresh_token: refresh_token,
-        access_token_expiry: access_token_expiry,
-        refresh_token_expiry: refresh_token_expiry
-      });
+
+      setCurrent({access_token, refresh_token, access_token_expiry, refresh_token_expiry});
     }).error((data, status) => {
       throw new Error(`HTTP Error ${status}. Failed to get tokens!`);
     });
@@ -195,14 +189,6 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
    * @return {Promise}
    */
   function logout() {}
-
-  function _transformRequest(obj) {
-    let str = [];
-    for(let p in obj){
-      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
-    }
-    return str.join('&');
-  }
 }
 
 Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
