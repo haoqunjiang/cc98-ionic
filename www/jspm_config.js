@@ -41,11 +41,11 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.10",
     "driftyco/ng-cordova": "github:driftyco/ng-cordova@0.1.15-alpha",
     "font-awesome": "npm:font-awesome@4.3.0",
-    "gsklee/ngStorage": "github:gsklee/ngStorage@0.3.0",
+    "gsklee/ngStorage": "github:gsklee/ngStorage@0.3.4",
     "ionic": "github:driftyco/ionic-bower@1.0.0-rc.5",
     "json": "github:systemjs/plugin-json@0.1.0",
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
-    "moment": "github:moment/moment@2.10.2",
+    "moment": "github:moment/moment@2.10.3",
     "nodelibs": "github:jspm/nodelibs@0.0.9",
     "symbol-enum": "npm:symbol-enum@2.0.0",
     "systemjs/plugin-text": "github:systemjs/plugin-text@0.0.2",
@@ -141,7 +141,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "github:twbs/bootstrap@3.3.4": {
-      "jquery": "github:components/jquery@2.1.3"
+      "jquery": "github:components/jquery@2.1.4"
     },
     "npm:amdefine@0.1.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -159,9 +159,9 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
-    "npm:asn1.js@1.0.4": {
+    "npm:asn1.js@1.0.6": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "bn.js": "npm:bn.js@1.3.0",
+      "bn.js": "npm:bn.js@2.0.5",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
@@ -273,8 +273,8 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.1",
-      "ripemd160": "npm:ripemd160@1.0.0",
-      "sha.js": "npm:sha.js@2.4.0",
+      "ripemd160": "npm:ripemd160@1.0.1",
+      "sha.js": "npm:sha.js@2.4.1",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
     "npm:create-hmac@1.1.3": {
@@ -358,7 +358,7 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:parse-asn1@3.0.0": {
-      "asn1.js": "npm:asn1.js@1.0.4",
+      "asn1.js": "npm:asn1.js@1.0.6",
       "browserify-aes": "npm:browserify-aes@1.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.1",
@@ -431,7 +431,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:ripemd160@1.0.0": {
+    "npm:ripemd160@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
@@ -441,7 +441,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:sha.js@2.4.0": {
+    "npm:sha.js@2.4.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.1",

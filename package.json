@@ -1,6 +1,6 @@
 {
   "name": "cc98-ionic",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A third-party app for http://www.cc98.org/",
   "repository": "https://github.com/sodatea/cc98-ionic",
   "license": "BSD-3-Clause",
@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.7.1",
-    "eslint": "^0.20.0",
+    "eslint": "^0.21.2",
     "gulp-jsinspect": "^1.0.0",
     "gulp-replace": "^0.5.3",
     "gulp-sass": "^2.0.0",
