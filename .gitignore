@@ -58,14 +58,17 @@ build/Release
 node_modules
 
 
+### Added by sodatea
+
 ### jspm ###
 jspm_packages
 
-
 ### cordova ###
-
 platforms/
 plugins/
+
+### tsd typings ###
+typings
 
 
 ### client id & client secret ###

@@ -93,3 +93,8 @@
     jspm install ionic  # jspm 遵循 semver，所以单纯的 update 很有可能不起作用，很多时候都得重新 install
     cd www
     jspm bundle ionic bundles/ionic.js --inject
+
+
+## 后续计划
+
+- 等 [flow](http://flowtype.org/) 成熟后考虑加入类型系统。目前来说 flow 的坑太多、功能太不完善不适合用到本项目中。
