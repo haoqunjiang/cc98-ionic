@@ -1,4 +1,3 @@
-import 'core-js'; // ES Harmony shim
 import 'ionic';   // 因为 bundle 设置过 separateCSS，此处只引入了 js 部分
 import '../bundles/ionic.app.css!'; // 自定义编译后的 ionic css
 import 'driftyco/ng-cordova';

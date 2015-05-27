@@ -28,8 +28,8 @@ $dark:                            #444 !default;
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../jspm_packages/github/driftyco/ionic-bower@1.0.0-rc.5/fonts/ionicons.eot?v=2.0.1");
-  src: url("../jspm_packages/github/driftyco/ionic-bower@1.0.0-rc.5/fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0-rc.5/fonts/ionicons.ttf?v=2.0.1") format("truetype"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0-rc.5/fonts/ionicons.woff?v=2.0.1") format("woff"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0-rc.5/fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");
+  src: url("../jspm_packages/github/driftyco/ionic-bower@1.0.0/fonts/ionicons.eot?v=2.0.1");
+  src: url("../jspm_packages/github/driftyco/ionic-bower@1.0.0/fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0/fonts/ionicons.ttf?v=2.0.1") format("truetype"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0/fonts/ionicons.woff?v=2.0.1") format("woff"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0/fonts/ionicons.woff") format("woff"), url("../jspm_packages/github/driftyco/ionic-bower@1.0.0/fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -3364,7 +3364,6 @@ body.grade-c {
   width: auto;
   height: auto; }
 
-.scroll-content-false,
 .menu .scroll-content.scroll-content-false {
   z-index: 11; }
 
@@ -9262,7 +9261,7 @@ a.button {
   hyphens: auto; }
 
 .topic-item .topic-item-meta {
-  margin-bottom: -2px !important; }
+  margin-bottom: -4px !important; }
 
 .topic-item small:not(:last-of-type), .topic-item .icon {
   margin-right: 0.25em; }
