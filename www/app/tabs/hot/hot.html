@@ -5,7 +5,12 @@
 
   <ion-content>
     <ion-list class="item-text-wrap">
-      <a ng-repeat="topic in ctrl.topics" ng-href="#/topic/{{topic.id}}" class="item-content">
+      <a ng-repeat="topic in ctrl.topics" class="item-content" ui-sref="topic({
+        topicId: topic.id,
+        title: topic.title,
+        boardId: topic.boardId,
+        boardName: topic.boardName,
+      })">
         <ion-item class="topic-item padding-vertical">
             <h3>{{topic.title}}</h3>
             <p class="topic-item-meta">
