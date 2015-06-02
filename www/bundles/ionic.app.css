@@ -9243,6 +9243,35 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.pull-right {
+  float: right !important; }
+
+.pull-left {
+  float: left !important; }
+
+.hide {
+  display: none !important; }
+
+.show {
+  display: block !important; }
+
+.invisible {
+  visibility: hidden; }
+
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
 .button-bar-icon .icon:before,
 .button-bar-icon.icon:before {
   font-size: 20px !important; }
@@ -9272,33 +9301,11 @@ a.button {
   padding: 2px 4px;
   border-radius: 2px; }
 
-.clearfix:before, .clearfix:after {
-  content: " ";
-  display: table; }
-
-.clearfix:after {
-  clear: both; }
-
-.pull-right {
-  float: right !important; }
-
-.pull-left {
-  float: left !important; }
-
-.hide {
-  display: none !important; }
-
-.show {
-  display: block !important; }
-
-.invisible {
-  visibility: hidden; }
-
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0; }
+.scroll-refresher .ionic-refresher-content {
+  bottom: 16px !important; }
+  .scroll-refresher .ionic-refresher-content .text-refreshing,
+  .scroll-refresher .ionic-refresher-content .text-pulling {
+    font-size: 14px !important;
+    line-height: 14px !important; }
 
 /*# sourceMappingURL=ionic.app.css.map */

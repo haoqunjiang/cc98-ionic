@@ -63,3 +63,15 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
     border-radius: 2px;
   }
 }
+
+// 下拉刷新的默认字体大小是 16px 太大了（帖子标题用的 h3 才 14px），这里改小一点
+.scroll-refresher {
+  .ionic-refresher-content {
+    bottom: 16px !important;
+    .text-refreshing,
+    .text-pulling {
+      font-size: 14px !important;
+      line-height: 14px !important;
+    }
+  }
+}
