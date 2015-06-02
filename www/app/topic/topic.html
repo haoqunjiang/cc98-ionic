@@ -1,8 +1,27 @@
 <ion-view view-title="话题">
   <ion-content>
-    <ion-list class="item-text-wrap">
-        <ion-item class="topic-item padding-vertical">
-        </ion-item>
+    <ion-refresher
+      pulling-text="下拉刷新"
+      on-refresh="ctrl.fetchPosts((ctrl.page - 1) * 10, ctrl.page * 10 - 1)">
+    </ion-refresher>
+
+    <ion-list class="item-text-wrap topic-detail">
+      <p class="posts-from" style="font-weight: 100">
+        话题来自：{{ctrl.boardName}}
+      </p>
+
+      <ion-item class="post-item padding-vertical" ng-repeat="post in ctrl.posts">
+      {{post.content}}
+      </ion-item>
     </ion-list>
   </ion-content>
+
+  <ion-footer-bar class="item-input-inset" style="border-top: 1px solid #eee">
+    <div class="list">
+      <label class="item-input-wrapper" ui-sref="comment({topicId: ctrl.topicId})">
+        <i class="icon ion-ios-chatbubble"></i>
+        <input type="text" placeholder="添加评论">
+      </label>
+    </div>
+  </ion-footer-bar>
 </ion-view>

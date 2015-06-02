@@ -7,7 +7,7 @@ export default {
   controller: TopicController,
   params: {
     topicTitle: '',
-    boardId: undefined,
+    boardId: null,
     boardName: ''
   }
 };

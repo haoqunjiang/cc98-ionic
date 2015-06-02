@@ -75,3 +75,24 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
     }
   }
 }
+
+// 帖子详情
+.topic-detail {
+  .posts-from {
+    @extend .item;
+    @extend .balanced;
+
+    padding-top: 6px;
+    padding-bottom: 6px;
+    min-height: 24px;
+    border: none;
+
+    font-size: 12px;
+    font-weight: 100;
+    background-color: #f8f8f8;
+  }
+
+  .post-item:nth-child(2) {
+    border-top: none;
+  }
+}

@@ -5325,7 +5325,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .tab-item.activated.tab-item-dark {
     color: #444; }
 
-.item.tabs {
+.item.tabs, .topic-detail .tabs.posts-from {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -5333,7 +5333,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   display: -ms-flexbox;
   display: flex;
   padding: 0; }
-  .item.tabs .icon:before {
+  .item.tabs .icon:before, .topic-detail .tabs.posts-from .icon:before {
     position: relative; }
 
 .tab-item.disabled,
@@ -5494,9 +5494,9 @@ ion-tabs.tabs-color-active-dark .tab-item {
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   opacity: 0; }
-  .popover .item:first-child {
+  .popover .item:first-child, .popover .topic-detail .posts-from:first-child, .topic-detail .popover .posts-from:first-child {
     border-top: 0; }
-  .popover .item:last-child {
+  .popover .item:last-child, .popover .topic-detail .posts-from:last-child, .topic-detail .popover .posts-from:last-child {
     border-bottom: 0; }
   .popover.popover-bottom {
     margin-top: -12px; }
@@ -5566,7 +5566,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   margin-top: -32px;
   background-color: #fafafa;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); }
-  .platform-android .popover .item {
+  .platform-android .popover .item, .platform-android .popover .topic-detail .posts-from, .topic-detail .platform-android .popover .posts-from {
     border-color: #fafafa;
     background-color: #fafafa;
     color: #4d4d4d; }
@@ -5770,7 +5770,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
  * Items
  * --------------------------------------------------
  */
-.item {
+.item, .topic-detail .posts-from {
   border-color: #ddd;
   background-color: #fff;
   color: #444;
@@ -5782,32 +5782,38 @@ ion-tabs.tabs-color-active-dark .tab-item {
   border-width: 1px;
   border-style: solid;
   font-size: 16px; }
-  .item h2 {
+  .item h2, .topic-detail .posts-from h2 {
     margin: 0 0 2px 0;
     font-size: 16px;
     font-weight: normal; }
-  .item h3 {
+  .item h3, .topic-detail .posts-from h3 {
     margin: 0 0 4px 0;
     font-size: 14px; }
-  .item h4 {
+  .item h4, .topic-detail .posts-from h4 {
     margin: 0 0 4px 0;
     font-size: 12px; }
-  .item h5, .item h6 {
+  .item h5, .topic-detail .posts-from h5, .item h6, .topic-detail .posts-from h6 {
     margin: 0 0 3px 0;
     font-size: 10px; }
-  .item p {
+  .item p, .topic-detail .posts-from p {
     color: #666;
     font-size: 14px;
     margin-bottom: 2px; }
   .item h1:last-child,
+  .topic-detail .posts-from h1:last-child,
   .item h2:last-child,
+  .topic-detail .posts-from h2:last-child,
   .item h3:last-child,
+  .topic-detail .posts-from h3:last-child,
   .item h4:last-child,
+  .topic-detail .posts-from h4:last-child,
   .item h5:last-child,
+  .topic-detail .posts-from h5:last-child,
   .item h6:last-child,
-  .item p:last-child {
+  .topic-detail .posts-from h6:last-child,
+  .item p:last-child, .topic-detail .posts-from p:last-child {
     margin-bottom: 0; }
-  .item .badge {
+  .item .badge, .topic-detail .posts-from .badge {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -5817,144 +5823,183 @@ ion-tabs.tabs-color-active-dark .tab-item {
     position: absolute;
     top: 16px;
     right: 32px; }
-  .item.item-button-right .badge {
+  .item.item-button-right .badge, .topic-detail .item-button-right.posts-from .badge {
     right: 67px; }
-  .item.item-divider .badge {
+  .item.item-divider .badge, .topic-detail .item-divider.posts-from .badge {
     top: 8px; }
-  .item .badge + .badge {
+  .item .badge + .badge, .topic-detail .posts-from .badge + .badge {
     margin-right: 5px; }
-  .item.item-light {
+  .item.item-light, .topic-detail .item-light.posts-from {
     border-color: #ddd;
     background-color: #fff;
     color: #444; }
-  .item.item-stable {
+  .item.item-stable, .topic-detail .item-stable.posts-from {
     border-color: #b2b2b2;
     background-color: #f8f8f8;
     color: #444; }
-  .item.item-positive {
+  .item.item-positive, .topic-detail .item-positive.posts-from {
     border-color: #0c60ee;
     background-color: #387ef5;
     color: #fff; }
-  .item.item-calm {
+  .item.item-calm, .topic-detail .item-calm.posts-from {
     border-color: #0a9dc7;
     background-color: #11c1f3;
     color: #fff; }
-  .item.item-assertive {
+  .item.item-assertive, .topic-detail .item-assertive.posts-from {
     border-color: #e42112;
     background-color: #ef473a;
     color: #fff; }
-  .item.item-balanced {
+  .item.item-balanced, .topic-detail .item-balanced.posts-from {
     border-color: #28a54c;
     background-color: #33cd5f;
     color: #fff; }
-  .item.item-energized {
+  .item.item-energized, .topic-detail .item-energized.posts-from {
     border-color: #e6b500;
     background-color: #ffc900;
     color: #fff; }
-  .item.item-royal {
+  .item.item-royal, .topic-detail .item-royal.posts-from {
     border-color: #6b46e5;
     background-color: #886aea;
     color: #fff; }
-  .item.item-dark {
+  .item.item-dark, .topic-detail .item-dark.posts-from {
     border-color: #111;
     background-color: #444;
     color: #fff; }
-  .item[ng-click]:hover {
+  .item[ng-click]:hover, .topic-detail [ng-click].posts-from:hover {
     cursor: pointer; }
 
 .list-borderless .item,
-.item-borderless {
+.list-borderless .topic-detail .posts-from,
+.topic-detail .list-borderless .posts-from, .item-borderless {
   border-width: 0; }
 
 .item.active,
+.topic-detail .active.posts-from,
 .item.activated,
+.topic-detail .activated.posts-from,
 .item-complex.active .item-content,
 .item-complex.activated .item-content,
 .item .item-content.active,
-.item .item-content.activated {
+.topic-detail .posts-from .item-content.active,
+.item .item-content.activated, .topic-detail .posts-from .item-content.activated {
   border-color: #ccc;
   background-color: #D9D9D9; }
   .item.active.item-light,
+  .topic-detail .active.item-light.posts-from,
   .item.activated.item-light,
+  .topic-detail .activated.item-light.posts-from,
   .item-complex.active .item-content.item-light,
   .item-complex.activated .item-content.item-light,
   .item .item-content.active.item-light,
-  .item .item-content.activated.item-light {
+  .topic-detail .posts-from .item-content.active.item-light,
+  .item .item-content.activated.item-light, .topic-detail .posts-from .item-content.activated.item-light {
     border-color: #ccc;
     background-color: #fafafa; }
   .item.active.item-stable,
+  .topic-detail .active.item-stable.posts-from,
   .item.activated.item-stable,
+  .topic-detail .activated.item-stable.posts-from,
   .item-complex.active .item-content.item-stable,
   .item-complex.activated .item-content.item-stable,
   .item .item-content.active.item-stable,
-  .item .item-content.activated.item-stable {
+  .topic-detail .posts-from .item-content.active.item-stable,
+  .item .item-content.activated.item-stable, .topic-detail .posts-from .item-content.activated.item-stable {
     border-color: #a2a2a2;
     background-color: #e5e5e5; }
   .item.active.item-positive,
+  .topic-detail .active.item-positive.posts-from,
   .item.activated.item-positive,
+  .topic-detail .activated.item-positive.posts-from,
   .item-complex.active .item-content.item-positive,
   .item-complex.activated .item-content.item-positive,
   .item .item-content.active.item-positive,
-  .item .item-content.activated.item-positive {
+  .topic-detail .posts-from .item-content.active.item-positive,
+  .item .item-content.activated.item-positive, .topic-detail .posts-from .item-content.activated.item-positive {
     border-color: #0c60ee;
     background-color: #0c60ee; }
   .item.active.item-calm,
+  .topic-detail .active.item-calm.posts-from,
   .item.activated.item-calm,
+  .topic-detail .activated.item-calm.posts-from,
   .item-complex.active .item-content.item-calm,
   .item-complex.activated .item-content.item-calm,
   .item .item-content.active.item-calm,
-  .item .item-content.activated.item-calm {
+  .topic-detail .posts-from .item-content.active.item-calm,
+  .item .item-content.activated.item-calm, .topic-detail .posts-from .item-content.activated.item-calm {
     border-color: #0a9dc7;
     background-color: #0a9dc7; }
   .item.active.item-assertive,
+  .topic-detail .active.item-assertive.posts-from,
   .item.activated.item-assertive,
+  .topic-detail .activated.item-assertive.posts-from,
   .item-complex.active .item-content.item-assertive,
   .item-complex.activated .item-content.item-assertive,
   .item .item-content.active.item-assertive,
-  .item .item-content.activated.item-assertive {
+  .topic-detail .posts-from .item-content.active.item-assertive,
+  .item .item-content.activated.item-assertive, .topic-detail .posts-from .item-content.activated.item-assertive {
     border-color: #e42112;
     background-color: #e42112; }
   .item.active.item-balanced,
+  .topic-detail .active.item-balanced.posts-from,
   .item.activated.item-balanced,
+  .topic-detail .activated.item-balanced.posts-from,
   .item-complex.active .item-content.item-balanced,
   .item-complex.activated .item-content.item-balanced,
   .item .item-content.active.item-balanced,
-  .item .item-content.activated.item-balanced {
+  .topic-detail .posts-from .item-content.active.item-balanced,
+  .item .item-content.activated.item-balanced, .topic-detail .posts-from .item-content.activated.item-balanced {
     border-color: #28a54c;
     background-color: #28a54c; }
   .item.active.item-energized,
+  .topic-detail .active.item-energized.posts-from,
   .item.activated.item-energized,
+  .topic-detail .activated.item-energized.posts-from,
   .item-complex.active .item-content.item-energized,
   .item-complex.activated .item-content.item-energized,
   .item .item-content.active.item-energized,
-  .item .item-content.activated.item-energized {
+  .topic-detail .posts-from .item-content.active.item-energized,
+  .item .item-content.activated.item-energized, .topic-detail .posts-from .item-content.activated.item-energized {
     border-color: #e6b500;
     background-color: #e6b500; }
   .item.active.item-royal,
+  .topic-detail .active.item-royal.posts-from,
   .item.activated.item-royal,
+  .topic-detail .activated.item-royal.posts-from,
   .item-complex.active .item-content.item-royal,
   .item-complex.activated .item-content.item-royal,
   .item .item-content.active.item-royal,
-  .item .item-content.activated.item-royal {
+  .topic-detail .posts-from .item-content.active.item-royal,
+  .item .item-content.activated.item-royal, .topic-detail .posts-from .item-content.activated.item-royal {
     border-color: #6b46e5;
     background-color: #6b46e5; }
   .item.active.item-dark,
+  .topic-detail .active.item-dark.posts-from,
   .item.activated.item-dark,
+  .topic-detail .activated.item-dark.posts-from,
   .item-complex.active .item-content.item-dark,
   .item-complex.activated .item-content.item-dark,
   .item .item-content.active.item-dark,
-  .item .item-content.activated.item-dark {
+  .topic-detail .posts-from .item-content.active.item-dark,
+  .item .item-content.activated.item-dark, .topic-detail .posts-from .item-content.activated.item-dark {
     border-color: #000;
     background-color: #262626; }
 
 .item,
+.topic-detail .posts-from,
 .item h1,
+.topic-detail .posts-from h1,
 .item h2,
+.topic-detail .posts-from h2,
 .item h3,
+.topic-detail .posts-from h3,
 .item h4,
+.topic-detail .posts-from h4,
 .item h5,
+.topic-detail .posts-from h5,
 .item h6,
+.topic-detail .posts-from h6,
 .item p,
+.topic-detail .posts-from p,
 .item-content,
 .item-content h1,
 .item-content h2,
@@ -5967,11 +6012,12 @@ ion-tabs.tabs-color-active-dark .tab-item {
   text-overflow: ellipsis;
   white-space: nowrap; }
 
-a.item {
+a.item, .topic-detail a.posts-from {
   color: inherit;
   text-decoration: none; }
   a.item:hover,
-  a.item:focus {
+  .topic-detail a.posts-from:hover,
+  a.item:focus, .topic-detail a.posts-from:focus {
     text-decoration: none; }
 
 /**
@@ -5985,7 +6031,8 @@ a.item {
  */
 .item-complex,
 a.item.item-complex,
-button.item.item-complex {
+.topic-detail a.item-complex.posts-from,
+button.item.item-complex, .topic-detail button.item-complex.posts-from {
   padding: 0; }
 
 .item-complex .item-content,
@@ -6002,7 +6049,8 @@ a.item-content {
   text-decoration: none; }
 
 .item-text-wrap .item,
-.item-text-wrap .item-content,
+.item-text-wrap .topic-detail .posts-from,
+.topic-detail .item-text-wrap .posts-from, .item-text-wrap .item-content,
 .item-text-wrap,
 .item-text-wrap h1,
 .item-text-wrap h2,
@@ -6132,7 +6180,7 @@ a.item-content {
     width: 32px;
     text-align: center; }
 
-.item .fill-icon {
+.item .fill-icon, .topic-detail .posts-from .fill-icon {
   min-width: 30px;
   min-height: 30px;
   font-size: 28px; }
@@ -6218,7 +6266,8 @@ a.item-content {
 
 .item-button-right,
 a.item.item-button-right,
-button.item.item-button-right {
+.topic-detail a.item-button-right.posts-from,
+button.item.item-button-right, .topic-detail button.item-button-right.posts-from {
   padding-right: 80px; }
 
 .item-button-right > .button,
@@ -6615,12 +6664,12 @@ button.item.item-button-right {
   padding-top: 1px;
   padding-bottom: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
-  .card .item {
+  .card .item, .card .topic-detail .posts-from, .topic-detail .card .posts-from {
     border-left: 0;
     border-right: 0; }
-  .card .item:first-child {
+  .card .item:first-child, .card .topic-detail .posts-from:first-child, .topic-detail .card .posts-from:first-child {
     border-top: 0; }
-  .card .item:last-child {
+  .card .item:last-child, .card .topic-detail .posts-from:last-child, .topic-detail .card .posts-from:last-child {
     border-bottom: 0; }
 
 .padding .card, .padding .list-inset {
@@ -6628,47 +6677,62 @@ button.item.item-button-right {
   margin-right: 0; }
 
 .card .item:first-child,
-.list-inset .item:first-child,
-.padding > .list .item:first-child {
+.card .topic-detail .posts-from:first-child,
+.topic-detail .card .posts-from:first-child, .list-inset .item:first-child,
+.list-inset .topic-detail .posts-from:first-child,
+.topic-detail .list-inset .posts-from:first-child, .padding > .list .item:first-child, .padding > .list .topic-detail .posts-from:first-child, .topic-detail .padding > .list .posts-from:first-child {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px; }
   .card .item:first-child .item-content,
-  .list-inset .item:first-child .item-content,
-  .padding > .list .item:first-child .item-content {
+  .card .topic-detail .posts-from:first-child .item-content,
+  .topic-detail .card .posts-from:first-child .item-content, .list-inset .item:first-child .item-content,
+  .list-inset .topic-detail .posts-from:first-child .item-content,
+  .topic-detail .list-inset .posts-from:first-child .item-content, .padding > .list .item:first-child .item-content, .padding > .list .topic-detail .posts-from:first-child .item-content, .topic-detail .padding > .list .posts-from:first-child .item-content {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px; }
 
 .card .item:last-child,
-.list-inset .item:last-child,
-.padding > .list .item:last-child {
+.card .topic-detail .posts-from:last-child,
+.topic-detail .card .posts-from:last-child, .list-inset .item:last-child,
+.list-inset .topic-detail .posts-from:last-child,
+.topic-detail .list-inset .posts-from:last-child, .padding > .list .item:last-child, .padding > .list .topic-detail .posts-from:last-child, .topic-detail .padding > .list .posts-from:last-child {
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px; }
   .card .item:last-child .item-content,
-  .list-inset .item:last-child .item-content,
-  .padding > .list .item:last-child .item-content {
+  .card .topic-detail .posts-from:last-child .item-content,
+  .topic-detail .card .posts-from:last-child .item-content, .list-inset .item:last-child .item-content,
+  .list-inset .topic-detail .posts-from:last-child .item-content,
+  .topic-detail .list-inset .posts-from:last-child .item-content, .padding > .list .item:last-child .item-content, .padding > .list .topic-detail .posts-from:last-child .item-content, .topic-detail .padding > .list .posts-from:last-child .item-content {
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px; }
 
 .card .item:last-child,
-.list-inset .item:last-child {
+.card .topic-detail .posts-from:last-child,
+.topic-detail .card .posts-from:last-child, .list-inset .item:last-child, .list-inset .topic-detail .posts-from:last-child, .topic-detail .list-inset .posts-from:last-child {
   margin-bottom: -1px; }
 
 .card .item,
-.list-inset .item,
-.padding > .list .item,
-.padding-horizontal > .list .item {
+.card .topic-detail .posts-from,
+.topic-detail .card .posts-from, .list-inset .item,
+.list-inset .topic-detail .posts-from,
+.topic-detail .list-inset .posts-from, .padding > .list .item,
+.padding > .list .topic-detail .posts-from,
+.topic-detail .padding > .list .posts-from, .padding-horizontal > .list .item, .padding-horizontal > .list .topic-detail .posts-from, .topic-detail .padding-horizontal > .list .posts-from {
   margin-right: 0;
   margin-left: 0; }
   .card .item.item-input input,
-  .list-inset .item.item-input input,
-  .padding > .list .item.item-input input,
-  .padding-horizontal > .list .item.item-input input {
+  .card .topic-detail .item-input.posts-from input,
+  .topic-detail .card .item-input.posts-from input, .list-inset .item.item-input input,
+  .list-inset .topic-detail .item-input.posts-from input,
+  .topic-detail .list-inset .item-input.posts-from input, .padding > .list .item.item-input input,
+  .padding > .list .topic-detail .item-input.posts-from input,
+  .topic-detail .padding > .list .item-input.posts-from input, .padding-horizontal > .list .item.item-input input, .padding-horizontal > .list .topic-detail .item-input.posts-from input, .topic-detail .padding-horizontal > .list .item-input.posts-from input {
     padding-right: 44px; }
 
-.padding-left > .list .item {
+.padding-left > .list .item, .padding-left > .list .topic-detail .posts-from, .topic-detail .padding-left > .list .posts-from {
   margin-left: 0; }
 
-.padding-right > .list .item {
+.padding-right > .list .item, .padding-right > .list .topic-detail .posts-from, .topic-detail .padding-right > .list .posts-from {
   margin-right: 0; }
 
 /**
@@ -8976,7 +9040,7 @@ a.button {
 .assertive-border {
   border-color: #e42112; }
 
-.balanced, a.balanced {
+.balanced, .topic-detail .posts-from, a.balanced, .topic-detail a.posts-from {
   color: #33cd5f; }
 
 .balanced-bg {
@@ -9277,7 +9341,8 @@ a.button {
   font-size: 20px !important; }
 
 .item-text-wrap .item,
-.item-text-wrap .item-content,
+.item-text-wrap .topic-detail .posts-from,
+.topic-detail .item-text-wrap .posts-from, .item-text-wrap .item-content,
 .item-text-wrap,
 .item-text-wrap h1,
 .item-text-wrap h2,
@@ -9307,5 +9372,17 @@ a.button {
   .scroll-refresher .ionic-refresher-content .text-pulling {
     font-size: 14px !important;
     line-height: 14px !important; }
+
+.topic-detail .posts-from {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  min-height: 24px;
+  border: none;
+  font-size: 12px;
+  font-weight: 100;
+  background-color: #f8f8f8; }
+
+.topic-detail .post-item:nth-child(2) {
+  border-top: none; }
 
 /*# sourceMappingURL=ionic.app.css.map */
