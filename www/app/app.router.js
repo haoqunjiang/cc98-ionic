@@ -4,6 +4,7 @@ import boardsRoute from 'app/tabs/boards/boards.route'; // 版面列表
 import hotRoute from 'app/tabs/hot/hot.route';          // 热门话题
 import meRoute from 'app/tabs/me/me.route';             // 我
 import topicRoute from 'app/topic/topic.route';         // 话题
+import commentRoute from 'app/comment/comment.route';   // 回复
 // 搜索页
 // 搜索结果页
 // 话题内容
@@ -17,7 +18,8 @@ function appRouter($stateProvider, $urlRouterProvider) {
     .state('tabs.boards', boardsRoute)
     .state('tabs.hot', hotRoute)
     .state('tabs.me', meRoute)
-    .state('topic', topicRoute);
+    .state('topic', topicRoute)
+    .state('comment', commentRoute);
 
   $urlRouterProvider.otherwise('/tabs/hot');
 }
