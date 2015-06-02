@@ -15,12 +15,12 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+// 下面用了占位符作为路径，在构建时动态获取 jspm_packages 里 ionic 所在文件夹的位置然后替换
 // The path for our ionicons font files, relative to the built CSS in www/bundles
 $ionicons-font-path: "{{ionic-font-path}}" !default;
+@import "{{ionic-scss-path}}";  // 引入 ionic 的所有 scss 文件
 
-// Include all of Ionic
-@import "{{ionic-scss-path}}";
-
+@import "./helper.scss"; // 引入一些方便开发的通用样式
 
 // 修复图标在 header bar 上过大的问题
 .button-bar-icon {
@@ -62,41 +62,4 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
     padding: 2px 4px;
     border-radius: 2px;
   }
-}
-
-// helper classes
-.clearfix:before, .clearfix:after {
-  content: " ";
-  display: table;
-}
-.clearfix:after {
-  clear: both;
-}
-
-.pull-right {
-  float: right !important;
-}
-
-.pull-left {
-  float: left !important;
-}
-
-.hide {
-  display: none !important;
-}
-
-.show {
-  display: block !important;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
 }
