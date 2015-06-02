@@ -2,7 +2,12 @@ import TopicController from './topic.controller';
 import TopicTemplate from './topic.html!text';
 
 export default {
-  url: '/topic/:topicId?boardId&boardName',
+  url: '/topic/:topicId',
   template: TopicTemplate,
-  controller: TopicController
+  controller: TopicController,
+  params: {
+    topicTitle: '',
+    boardId: undefined,
+    boardName: ''
+  }
 };

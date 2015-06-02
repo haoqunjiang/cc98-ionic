@@ -4,10 +4,11 @@
   </ion-nav-buttons>
 
   <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="ctrl.fetch()"></ion-refresher>
     <ion-list class="item-text-wrap">
       <a ng-repeat="topic in ctrl.topics" class="item-content" ui-sref="topic({
         topicId: topic.id,
-        title: topic.title,
+        topicTitle: topic.title,
         boardId: topic.boardId,
         boardName: topic.boardName,
       })">

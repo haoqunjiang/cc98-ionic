@@ -15,22 +15,21 @@ function APIRequest($http, $cordovaToast, Accounts, settings) {
   };
   return services;
 
-  function get(url, data) {
-    let config = {
+  function get(url, config) {
+    let fullconfig = Object.assign({
       method: 'GET',
-      url: settings.apiEndpoint + url,
-      params: data
-    };
-    return _request(config);
+      url: settings.apiEndpoint + url
+    }, config);
+    return _request(fullconfig);
   }
 
-  function post(url, data) {
-    let config = {
+  function post(url, data, config) {
+    let fullconfig = Object.assign({
       method: 'POST',
       url: settings.apiEndpoint + url,
       data: data
-    };
-    return _request(config);
+    }, config);
+    return _request(fullconfig);
   }
 
   function _request(config) {

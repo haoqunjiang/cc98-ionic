@@ -5,7 +5,13 @@ class HotController {
     this.$scope = $scope;
     this.APIRequest = APIRequest;
 
-    this.APIRequest.get('topic/hot').then((data) => this.topics = data);
+    this.fetch();
+  }
+
+  fetch() {
+    this.APIRequest.get('topic/hot')
+      .then((data) => this.topics = data)
+      .then(() => this.$scope.$broadcast('scroll.refreshComplete'));
   }
 }
 
