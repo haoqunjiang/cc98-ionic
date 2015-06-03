@@ -2,7 +2,7 @@
   <ion-content>
     <ion-refresher
       pulling-text="下拉刷新"
-      on-refresh="ctrl.fetchPosts((ctrl.page - 1) * 10, ctrl.page * 10 - 1)">
+      on-refresh="ctrl.refresh()">
     </ion-refresher>
 
     <ion-list class="item-text-wrap topic-detail">
@@ -10,9 +10,11 @@
         话题来自：{{ctrl.boardName}}
       </p>
 
-      <ion-item class="post-item padding-vertical" ng-repeat="post in ctrl.posts">
-      <img ng-src="{{post.userAvatar || 'http://placehold.it/60?text=cc98'}}"
-      {{post.content}}
+      <ion-item class="post-item padding-vertical item-avatar" ng-repeat-start="post in ctrl.posts">
+        <img ng-src="{{post.userAvatar || 'http://placehold.it/60?text=cc98'}}">
+      </ion-item>
+      <ion-item ng-repeat-end>
+        {{post.content}}
       </ion-item>
     </ion-list>
   </ion-content>

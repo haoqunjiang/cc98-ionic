@@ -49,7 +49,11 @@ function Users($q, APIRequest, usersdb) {
   function store(user) {
     Object.assign(user, {_id: user.id.toString()});
 
-    return usersdb.put(user).then(() => user);
+    return usersdb.upsert(user)
+      .then(() => user)
+      .catch((err) => {
+        console.error(err);
+      });
   }
 }
 

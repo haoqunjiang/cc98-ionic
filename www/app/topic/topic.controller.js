@@ -56,11 +56,25 @@ class TopicController {
 
   fetchAvatars(reload=false) {
     this.posts.map((item) => {
+      // 心灵
+      if (!item.userId) {
+        item.userAvatar = 'http://www.cc98.org/pic/anonymous.gif';
+        return;
+      }
+      // 否则载入用户头像
       this.Users.query({userId: item.userId, fromRemote: reload})
-        .then(({portraitUrl}) =>
-          item.userAvatar = portraitUrl.startsWith('http') ? portraitUrl : `http://www.cc98.org/${portraitUrl}`
-        );
+        .then(({portraitUrl}) => {
+          item.userAvatar = portraitUrl.startsWith('http') ? portraitUrl : `http://www.cc98.org/${portraitUrl}`;
+        });
     });
+  }
+
+  // 刷新页面并强制刷新头像缓存
+  refresh() {
+    Promise.all([
+      this.fetchMeta(),
+      this.fetchPosts().then(() => this.fetchAvatars(true))
+    ]).then(() => this.$scope.$broadcast('scroll.refreshComplete'));
   }
 }
 
