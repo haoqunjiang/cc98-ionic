@@ -12,6 +12,9 @@ globals:
 ecmaFeatures:
   modules: true
 
+plugins:
+  - smells
+
 rules:
   # 一律使用单引号，除非字符串的值中有单引号
   quotes: [1, single, avoid-escape]
@@ -83,11 +86,18 @@ rules:
   no-alert: 0
 
   # 控制代码复杂度 http://elijahmanor.github.io/talks/js-smells/
-  # max-statements:[2, 16]
-  # max-depth:[2, 5]
-  # complexity:[2, 7]
-  # max-len:[2, 65]
-  # max-params:[2, 1]
-  # max-nested-callbacks:[2, 0]
+  max-statements: [2, 16]
+  max-depth: [2, 5]
+  complexity: [2, 7]
+  # 每行最多 110 个字符，比 80 个字符多一点，毕竟可能会有很多缩进，而且反正显示器够大
+  max-len: [1, 110]
+  # 上限设置到 10 是因为 Angular 依赖注入可能会有很多
+  max-params: [1, 10]
+  # 最多允许嵌套两层回调
+  max-nested-callbacks: [2, 2]
+  smells/no-switch: 1
+  smells/no-complex-switch-case: 1
+  smells/no-setinterval: 1
+  smells/no-this-assign: 1
 
   # 其他有默认值的 ESLint 规则就不重复定义了

@@ -1,5 +1,8 @@
 class LoginController {
-  static get $inject() { return ['$scope', '$http', '$rootScope', '$state', '$cordovaStatusbar', 'Accounts', 'APIRequest']; }
+  static get $inject() {
+    return ['$scope', '$http', '$rootScope', '$state', '$cordovaStatusbar',
+            'Accounts', 'APIRequest'];
+  }
 
   constructor($scope, $http, $rootScope, $state, $cordovaStatusbar, Accounts, APIRequest) {
     // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
@@ -29,7 +32,8 @@ class LoginController {
    */
   login() {
     this.Accounts.login()
-      // 这一步放在这里做是为了避免 Accounts 模块与 API 模块循环依赖，以及不知道为什么只能放在匿名函数里调用才能成功
+      // 这一步放在这里做是为了避免 Accounts 模块与 API 模块循环依赖
+      // 以及不知道为什么只能放在匿名函数里调用才能成功
       .then(() => this._getMe())
       .then(() => this._return());
   }
