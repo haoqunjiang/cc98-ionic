@@ -7,7 +7,7 @@ import fromNowModule from '../common/filters/fromNow';
 
 import securityModule from '../common/security/security';
 import apiModule from '../common/services/api';
-import mockModule from '../common/mock';
+//import mockModule from '../common/mock';
 
 import usersModule from '../common/resources/users';
 
