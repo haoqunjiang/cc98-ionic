@@ -1,10 +1,9 @@
 import 'ionic';
 import accountsModule from '../resources/accounts';
-/**
- * 每次切换页面时判断是否需要登录，如果需要就跳转到登录页
- * @param {Object} $rootScope
- */
+
+LoginInterceptor.$inject = ['$rootScope', '$location', 'Accounts'];
 function LoginInterceptor($rootScope, $location, Accounts) {
+  // 每次切换页面时判断是否需要登录，如果需要就跳转到登录页
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (toState.data && toState.data.requiresLogin && !isLoggedIn()) {
       event.preventDefault();
@@ -26,8 +25,6 @@ function LoginInterceptor($rootScope, $location, Accounts) {
     return !!Accounts.getCurrent();
   }
 }
-
-LoginInterceptor.$inject = ['$rootScope', '$location', 'Accounts'];
 
 export default angular
   .module('security.stateInterceptor', [accountsModule.name])

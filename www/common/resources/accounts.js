@@ -12,6 +12,7 @@ import secrets from '../../secrets.json!';
 const AUTH_SCOPE = 'all*';
 const REFRESH_TOKEN_EXPIRES_IN = 1200; // 目前 98 的实现有问题，时间太短，后续会改的
 
+Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
 function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, settings) {
   let services = {
     get: get,
@@ -42,7 +43,7 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
 
   /**
    * append/update a account in the accounts array
-   * @param {object} user the user account to set
+   * @param {Object} user the user account to set
    */
   function set(user) {
     $localStorage.accounts = $localStorage.accounts || [];
@@ -56,7 +57,7 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
 
   /**
    * get all accounts
-   * @return {array} array of all stored accounts,
+   * @return {Array} array of all stored accounts,
    * the reason to use array rather than object is that the user needs to see
    * the accounts in order when managing accounts
    */
@@ -79,7 +80,7 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
    * @param {number} user.access_token_expires timestamp indicating when access_token expires
    * @param {string} user.refresh_token
    * @param {number} user.refresh_token_expires timestamp indicating when access_token expires
-   * @param {id}     [user.userId]
+   * @param {number} [user.userId]
    * @param {string} [user.userName]
    * @param {string} [user.avatar]
    */
@@ -190,8 +191,6 @@ function Accounts($http, $q, $localStorage, $cordovaToast, $cordovaKeyboard, set
    */
   function logout() {}
 }
-
-Accounts.$inject = ['$http', '$q', '$localStorage', '$cordovaToast', '$cordovaKeyboard', 'settings'];
 
 export default angular
   .module('resources.accounts', [

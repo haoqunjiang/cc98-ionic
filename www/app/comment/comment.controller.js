@@ -1,5 +1,11 @@
-class CommentController {}
+class CommentController {
+  static get $inject() { return ['$scope']; }
 
-CommentController.$inject = [];
+  constructor($scope) {
+    $scope.ctrl = this;
+
+    this.$scope = $scope;
+  }
+}
 
 export default CommentController;

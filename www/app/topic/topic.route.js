@@ -8,6 +8,8 @@ export default {
   params: {
     topicTitle: '',
     boardId: null,
-    boardName: ''
+    boardName: '',
+    page: 1,
+    postsCount: 1
   }
 };

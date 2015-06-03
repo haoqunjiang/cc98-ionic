@@ -34,6 +34,7 @@ System.config({
 System.config({
   "map": {
     "angular-mocks": "github:angular/bower-angular-mocks@1.4.0",
+    "angular-pouchdb/angular-pouchdb": "github:angular-pouchdb/angular-pouchdb@2.1.0",
     "babel": "npm:babel-core@5.1.13",
     "babel-runtime": "npm:babel-runtime@5.1.13",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
@@ -47,6 +48,7 @@ System.config({
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
     "moment": "github:moment/moment@2.10.3",
     "nodelibs": "github:jspm/nodelibs@0.0.9",
+    "pouchdb": "github:pouchdb/pouchdb@3.6.0",
     "symbol-enum": "npm:symbol-enum@2.0.0",
     "systemjs/plugin-text": "github:systemjs/plugin-text@0.0.2",
     "text": "github:systemjs/plugin-text@0.0.2",

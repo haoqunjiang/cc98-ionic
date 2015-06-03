@@ -1,4 +1,6 @@
 class LoginController {
+  static get $inject() { return ['$scope', '$http', '$rootScope', '$state', '$cordovaStatusbar', 'Accounts', 'APIRequest']; }
+
   constructor($scope, $http, $rootScope, $state, $cordovaStatusbar, Accounts, APIRequest) {
     // ionic 对 controller as 支持有问题 https://github.com/driftyco/ionic/issues/3058
     $scope.ctrl = this;
@@ -55,7 +57,5 @@ class LoginController {
     this.$state.go(this.$rootScope.returnToStateName, this.$rootScope.returnToStateParams);
   }
 }
-
-LoginController.$inject = ['$scope', '$http', '$rootScope', '$state', '$cordovaStatusbar', 'Accounts', 'APIRequest'];
 
 export default LoginController;

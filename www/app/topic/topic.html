@@ -6,11 +6,12 @@
     </ion-refresher>
 
     <ion-list class="item-text-wrap topic-detail">
-      <p class="posts-from" style="font-weight: 100">
+      <p class="posts-from">
         话题来自：{{ctrl.boardName}}
       </p>
 
       <ion-item class="post-item padding-vertical" ng-repeat="post in ctrl.posts">
+      <img ng-src="{{post.userAvatar || 'http://placehold.it/60?text=cc98'}}"
       {{post.content}}
       </ion-item>
     </ion-list>

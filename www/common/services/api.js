@@ -8,6 +8,7 @@ import httpInterceptorsModule from '../security/httpInterceptors';
 
 import ErrorCode from '../error-code';
 
+APIRequest.$inject = ['$http', '$cordovaToast', 'Accounts', 'settings'];
 function APIRequest($http, $cordovaToast, Accounts, settings) {
   let services = {
     get: get,
@@ -45,8 +46,6 @@ function APIRequest($http, $cordovaToast, Accounts, settings) {
       });
   }
 }
-
-APIRequest.$inject = ['$http', '$cordovaToast', 'Accounts', 'settings'];
 
 export default angular
   .module('services.api', [

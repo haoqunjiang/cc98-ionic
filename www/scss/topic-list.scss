@@ -1,0 +1,18 @@
+// 帖子列表
+.topic-item {
+  .topic-item-meta {
+    // 因为里面包含的几个 small 没有占满高度，导致下方空隙看起来大一点，所以要 margin 负值补偿
+    margin-bottom: -4px !important;
+  }
+
+  small:not(:last-of-type), .icon {
+    margin-right: 0.25em;
+  }
+
+  .topic-item-boardname {
+    background-color: #f5f5f5;
+    color: #999;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+}

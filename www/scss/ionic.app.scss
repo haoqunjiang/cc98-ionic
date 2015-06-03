@@ -15,12 +15,12 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-// 下面用了占位符作为路径，在构建时动态获取 jspm_packages 里 ionic 所在文件夹的位置然后替换
+// 下面用了占位符作为路径，在构建时动态获取 jspm_packages 里 ionic 所在文件夹的位置（跟版本号有关）然后替换
+
 // The path for our ionicons font files, relative to the built CSS in www/bundles
 $ionicons-font-path: "{{ionic-font-path}}" !default;
-@import "{{ionic-scss-path}}";  // 引入 ionic 的所有 scss 文件
 
-@import "./helper.scss"; // 引入一些方便开发的通用样式
+@import "{{ionic-scss-path}}";  // 引入 ionic 的所有 scss 文件
 
 // 修复图标在 header bar 上过大的问题
 .button-bar-icon {
@@ -45,25 +45,6 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
   hyphens: auto;          // 英文单词断行用连字符，不过除了火狐外的浏览器都还不支持
 }
 
-// 帖子列表
-.topic-item {
-  .topic-item-meta {
-    // 因为里面包含的几个 small 没有占满高度，导致下方空隙看起来大一点，所以要 margin 负值补偿
-    margin-bottom: -4px !important;
-  }
-
-  small:not(:last-of-type), .icon {
-    margin-right: 0.25em;
-  }
-
-  .topic-item-boardname {
-    background-color: #f5f5f5;
-    color: #999;
-    padding: 2px 4px;
-    border-radius: 2px;
-  }
-}
-
 // 下拉刷新的默认字体大小是 16px 太大了（帖子标题用的 h3 才 14px），这里改小一点
 .scroll-refresher {
   .ionic-refresher-content {
@@ -76,23 +57,8 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
   }
 }
 
-// 帖子详情
-.topic-detail {
-  .posts-from {
-    @extend .item;
-    @extend .balanced;
 
-    padding-top: 6px;
-    padding-bottom: 6px;
-    min-height: 24px;
-    border: none;
+@import "./helper.scss";        // 引入一些方便开发的通用样式
 
-    font-size: 12px;
-    font-weight: 100;
-    background-color: #f8f8f8;
-  }
-
-  .post-item:nth-child(2) {
-    border-top: none;
-  }
-}
+@import "./topic-list.scss";    // 帖子列表
+@import "./topic-detail.scss";  // 帖子详情（回帖列表）

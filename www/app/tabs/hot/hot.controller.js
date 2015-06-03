@@ -1,4 +1,6 @@
 class HotController {
+  static get $inject() { return ['$scope', 'APIRequest']; }
+
   constructor($scope, APIRequest) {
     $scope.ctrl = this;
 
@@ -14,7 +16,5 @@ class HotController {
       .then(() => this.$scope.$broadcast('scroll.refreshComplete'));
   }
 }
-
-HotController.$inject = ['$scope', 'APIRequest'];
 
 export default HotController;

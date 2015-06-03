@@ -1,34 +1,67 @@
 class TopicController {
-  constructor($scope, $stateParams, APIRequest) {
-    $scope.ctrl = this; // controller as
+  static get $inject() { return ['$scope', '$stateParams', 'APIRequest', 'Users']; }
+
+  constructor($scope, $stateParams, APIRequest, Users) {
+    // controller as
+    $scope.ctrl = this;
 
     // dependencies
     this.$scope = $scope;
     this.APIRequest = APIRequest;
+    this.Users = Users;
 
     // meta
+    // 不论以何种方式进入当前主题，以下两个参数都应当存在
     this.topicId = $stateParams.topicId;
-    this.topicTitle = $stateParams.topicTitle;
     this.boardId = $stateParams.boardId;
+    this.page = $stateParams.page;  // 这个是因为有默认值
+    // 以下参数则不一定有传过来
+    this.topicTitle = $stateParams.topicTitle;
     this.boardName = $stateParams.boardName;
+    this.postsCount = $stateParams.postsCount;
 
-    this.page = 1;
+    this.fetchMeta();
+    this.fetchPosts().then(this.fetchAvatars.bind(this));
+  }
 
-    // fetch the first page
-    this.fetchPosts(0, 9)
+  fetchMeta() {
+    return this.APIRequest
+      .get(`topic/${this.topicId}`)
+      .then((topicMeta) => {
+        Object.assign(this, topicMeta);
+
+        // 一些属性在 API 中的名字与此处实现的名字不同
+        this.topicTitle = topicMeta.title;
+        this.postsCount = topicMeta.replyCount + 1;
+
+        // 然后获取版面的基本信息
+        return this.APIRequest.get(`board/${this.boardId}`);
+      })
+      .then((boardMeta) => this.boardName = boardMeta.name);
+  }
+
+  fetchPosts() {
+    let from = (this.page - 1) * 10;
+    let to = this.page * 10 - 1;
+
+    return this.APIRequest
+      .get(`post/topic/${this.topicId}`, {
+        headers: {Range: `bytes=${from}-${to}`}
+      })
       .then((list) => {
         this.title = list[0].title;
         this.posts = list;
       });
   }
 
-  fetchPosts(from, to) {
-    return this.APIRequest.get(`post/topic/${this.topicId}`, {
-      headers: {Range: `bytes=${from}-${to}`}
+  fetchAvatars(reload=false) {
+    this.posts.map((item) => {
+      this.Users.query({userId: item.userId, fromRemote: reload})
+        .then(({portraitUrl}) =>
+          item.userAvatar = portraitUrl.startsWith('http') ? portraitUrl : `http://www.cc98.org/${portraitUrl}`
+        );
     });
   }
 }
-
-TopicController.$inject = ['$scope', '$stateParams', 'APIRequest'];
 
 export default TopicController;

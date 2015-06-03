@@ -63,7 +63,8 @@ rules:
   no-self-compare: 1
 
   # 只能把 var 定义的变量当做块级变量来用，避免因为 variable hoisting 带来的难以察觉的 bug
-  block-scoped-var: 1
+  # 这里暂时不启用，因为 Angular factory 之类的函数的 $inject 成员放在定义前面一行看起来更方便也更容易维护
+  # block-scoped-var: 1
 
   # IIFE 调用必须用括弧 () 包裹（例：var x = (function () { return { y: 1 };})();）
   wrap-iife: [2, inside]

@@ -104,6 +104,7 @@ import settingsModule from '../resources/settings';
 
 // import ErrorCode from '../error-code';
 
+authInterceptor.$inject = ['$q', '$localStorage', 'settings'];
 function authInterceptor($q, $localStorage, settings) {
   return {
     request: function(config) {
@@ -136,8 +137,6 @@ function authInterceptor($q, $localStorage, settings) {
     }
   };
 }
-
-authInterceptor.$inject = ['$q', '$localStorage', 'settings'];
 
 export default angular
   .module('security.httpInterceptors', [
