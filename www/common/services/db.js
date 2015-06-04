@@ -19,7 +19,7 @@ function usersdb(pouchDB) {
     return ddoc;
   }
 
-  // 建立基于 userName 的索引（基于目前的 app 功能设计应该是用不到的……不过先建一个以防万一）
+  // 建立基于 userName 的索引
   let byUserNameDdoc = createDesignDoc('byUserName', (doc, emit) => emit(doc.userName));
   // 如果之前没有这个 design document，就 put 一个进去
   db.get('_design/byUserName').catch(() => db.put(byUserNameDdoc));
@@ -28,16 +28,18 @@ function usersdb(pouchDB) {
   db.upsert = function(doc) {
     // 先进行一遍查询
     return db.get(doc._id)
+      // 如果有查询到，就赋值 _rev 然后再插入
       .then(({_rev}) => {
-        // 如果有查询到，就赋值 _rev 然后再插入
-        let newDoc = Object.assign({}, doc, {_rev: _rev});
-        db.put(newDoc);
+        doc._rev = _rev;
+        return db.put(doc).then(() => db.get(doc._id));
       })
+      // 如果没查询到就直接插入
+      // 再否则抛出异常
       .catch(err => {
         if (err.status === 404) {
-          return db.put(doc); // 如果没查询到就直接插入
+          return db.put(doc).then(() => db.get(doc._id));
         } else {
-          throw err;  // 否则抛出异常
+          throw err;
         }
       });
   };
@@ -47,4 +49,4 @@ function usersdb(pouchDB) {
 
 export default angular
   .module('services.db', ['pouchdb'])
-  .factory('usersdb', usersdb);
+  .factory(usersdb.name, usersdb);

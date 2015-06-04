@@ -1,3 +1,5 @@
+initNativeEnv.$inject = ['$ionicPlatform', '$cordovaKeyboard', '$cordovaStatusbar'];
+
 function initNativeEnv($ionicPlatform, $cordovaKeyboard, $cordovaStatusbar) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar
@@ -6,7 +8,5 @@ function initNativeEnv($ionicPlatform, $cordovaKeyboard, $cordovaStatusbar) {
     $cordovaStatusbar.style(1); // LightContent
   });
 }
-
-initNativeEnv.$inject = ['$ionicPlatform', '$cordovaKeyboard', '$cordovaStatusbar'];
 
 export default initNativeEnv;

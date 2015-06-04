@@ -143,7 +143,7 @@ export default angular
     'ngStorage',
     settingsModule.name
   ])
-  .factory('authInterceptor', authInterceptor)
+  .factory(authInterceptor.name, authInterceptor)
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
   });

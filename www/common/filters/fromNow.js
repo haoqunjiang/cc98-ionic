@@ -20,4 +20,4 @@ function fromNow(str) {
 
 export default angular
   .module('filters.fromNow', [])
-  .filter('fromNow', () => fromNow);
+  .filter(fromNow.name, () => fromNow);

@@ -54,4 +54,4 @@ export default angular
     accountsModule.name,
     httpInterceptorsModule.name
   ])
-  .factory('APIRequest', APIRequest);
+  .factory(APIRequest.name, APIRequest);

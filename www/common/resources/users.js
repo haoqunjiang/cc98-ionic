@@ -47,10 +47,10 @@ function Users($q, APIRequest, usersdb) {
   }
 
   function store(user) {
-    Object.assign(user, {_id: user.id.toString()});
+    Object.assign(user, {_id: user.id.toString(), _updated: Date.now()});
 
     return usersdb.upsert(user)
-      .then(() => user)
+      .then((inserted) => inserted)
       .catch((err) => {
         console.error(err);
       });
@@ -62,4 +62,4 @@ export default angular
     dbModule.name,
     apiModule.name
   ])
-  .factory('Users', Users);
+  .factory(Users.name, Users);

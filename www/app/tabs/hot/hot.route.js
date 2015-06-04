@@ -1,7 +1,7 @@
 import HotController from './hot.controller';
 import HotTemplate from './hot.html!text';
 
-export default {
+export let hotRoute = {
   url: '/hot',
   views: {
     'tab-hot': {

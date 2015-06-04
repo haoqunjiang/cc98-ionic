@@ -1,6 +1,6 @@
 import TabsTemplate from './tabs.html!text';
 
-export default {
+export let tabsRoute = {
   url: '/tabs',
   abstract: true,
   template: TabsTemplate

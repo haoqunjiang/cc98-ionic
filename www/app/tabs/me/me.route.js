@@ -1,6 +1,6 @@
 import MeTemplate from './me.html!text';
 
-export default {
+export let meRoute = {
   url: '/me',
   views: {
     'tab-me': {

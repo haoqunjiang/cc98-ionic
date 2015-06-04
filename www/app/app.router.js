@@ -1,10 +1,10 @@
-import tabsRoute from 'app/tabs/tabs.route';
-import topicsRoute from 'app/tabs/topics/topics.route'; // 话题
-import boardsRoute from 'app/tabs/boards/boards.route'; // 版面列表
-import hotRoute from 'app/tabs/hot/hot.route';          // 热门话题
-import meRoute from 'app/tabs/me/me.route';             // 我
-import topicRoute from 'app/topic/topic.route';         // 话题
-import commentRoute from 'app/comment/comment.route';   // 回复
+import {tabsRoute} from 'app/tabs/tabs.route';
+import {topicsRoute} from 'app/tabs/topics/topics.route'; // 话题
+import {boardsRoute} from 'app/tabs/boards/boards.route'; // 版面列表
+import {hotRoute} from 'app/tabs/hot/hot.route';          // 热门话题
+import {meRoute} from 'app/tabs/me/me.route';             // 我
+import {topicRoute} from 'app/topic/topic.route';         // 话题
+import {commentRoute} from 'app/comment/comment.route';   // 回复
 // 搜索页
 // 搜索结果页
 // 话题内容

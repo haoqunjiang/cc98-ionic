@@ -21,7 +21,40 @@ class TopicController {
     this.postsCount = $stateParams.postsCount;
 
     this.fetchMeta();
-    this.fetchPosts().then(this.fetchAvatars.bind(this));
+    this.fetchPosts().then(() => this.fetchAvatars(false)); // 载入页面不必刷新头像缓存
+  }
+
+  // 下一页
+  nextPage() {
+    if (!this.postsCount || this.page * 10 >= this.postsCount) {
+      return;
+    }
+
+    this.page += 1;
+    this.fetchPosts().then(() => this.fetchAvatars(false));
+  }
+
+  // 上一页
+  prevPage() {
+    if (this.page === 1) {
+      return;
+    }
+
+    this.page += 1;
+    this.fetchPosts().then(() => this.fetchAvatars(false));
+  }
+
+  // 显示跳页对话框
+  showJumpDialog() {}
+
+  gotoPage() {}
+
+  // 刷新页面并强制刷新头像缓存
+  refreshPage() {
+    Promise.all([
+      this.fetchMeta(),
+      this.fetchPosts().then(() => this.fetchAvatars())
+    ]).then(() => this.$scope.$broadcast('scroll.refreshComplete'));
   }
 
   fetchMeta() {
@@ -54,7 +87,7 @@ class TopicController {
       });
   }
 
-  fetchAvatars(reload=false) {
+  fetchAvatars(reload=true) {
     this.posts.map((item) => {
       // 心灵
       if (!item.userId) {
@@ -67,14 +100,6 @@ class TopicController {
           item.userAvatar = portraitUrl.startsWith('http') ? portraitUrl : `http://www.cc98.org/${portraitUrl}`;
         });
     });
-  }
-
-  // 刷新页面并强制刷新头像缓存
-  refresh() {
-    Promise.all([
-      this.fetchMeta(),
-      this.fetchPosts().then(() => this.fetchAvatars(true))
-    ]).then(() => this.$scope.$broadcast('scroll.refreshComplete'));
   }
 }
 

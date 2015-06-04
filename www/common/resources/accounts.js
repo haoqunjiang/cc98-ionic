@@ -198,4 +198,4 @@ export default angular
     'ngCordovaMocks',
     settingsModule.name
   ])
-  .factory('Accounts', Accounts);
+  .factory(Accounts.name, Accounts);

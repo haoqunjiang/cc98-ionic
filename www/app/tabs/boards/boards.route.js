@@ -1,6 +1,6 @@
 import BoardsTemplate from './boards.html!text';
 
-export default {
+export let boardRoute = {
   url: '/boards',
   views: {
     'tab-boards': {

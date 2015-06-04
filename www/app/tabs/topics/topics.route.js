@@ -1,6 +1,6 @@
 import TopicsTemplate from './topics.html!text';
 
-export default {
+export let topicsRoute = {
   url: '/topics',
   views: {
     'tab-topics': {
