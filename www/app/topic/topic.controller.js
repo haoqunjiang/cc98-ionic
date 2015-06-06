@@ -1,7 +1,7 @@
 class TopicController {
-  static get $inject() { return ['$scope', '$stateParams', 'APIRequest', 'Users']; }
+  static get $inject() { return ['$scope', '$stateParams', 'APIRequest', 'Users', 'settings']; }
 
-  constructor($scope, $stateParams, APIRequest, Users) {
+  constructor($scope, $stateParams, APIRequest, Users, settings) {
     // controller as
     $scope.ctrl = this;
 
@@ -9,6 +9,7 @@ class TopicController {
     this.$scope = $scope;
     this.APIRequest = APIRequest;
     this.Users = Users;
+    this.settings = settings;
 
     // meta
     // 不论以何种方式进入当前主题，以下两个参数都应当存在
@@ -91,13 +92,13 @@ class TopicController {
     this.posts.map((item) => {
       // 心灵
       if (!item.userId) {
-        item.userAvatar = 'http://www.cc98.org/pic/anonymous.gif';
+        item.userAvatar = this.settings.websiteHost + 'pic/anonymous.gif';
         return;
       }
       // 否则载入用户头像
       this.Users.query({userId: item.userId, fromRemote: reload})
         .then(({portraitUrl}) => {
-          item.userAvatar = portraitUrl.startsWith('http') ? portraitUrl : `http://www.cc98.org/${portraitUrl}`;
+          item.userAvatar = portraitUrl.startsWith('http') ? portraitUrl : (this.settings.websiteHost + portraitUrl);
         });
     });
   }
