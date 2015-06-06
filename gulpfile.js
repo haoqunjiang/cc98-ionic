@@ -50,7 +50,9 @@ gulp.task('ionic-sass', function(cb) {
     .normalize('ionic')
     .then(function(n) { return System.locate({name: n}); })
     // System.locate 获取到的路径中缺了 www，于是只好 hard code 替换路径了
-    .then(function(addr) { return addr.replace('file:', '').replace(/^.*jspm_packages/, './www/jspm_packages'); })
+    .then(function(addr) {
+      return addr.replace('file:', '').replace(/^.*jspm_packages/, './www/jspm_packages');
+    })
     .then(function(jsPath) {
       var p = path.parse(jsPath);
       var dirPath = path.join(p.dir, p.name);

@@ -48,6 +48,7 @@ System.config({
     "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@1.1.0",
     "moment": "github:moment/moment@2.10.3",
     "nodelibs": "github:jspm/nodelibs@0.0.9",
+    "patorjk/Extendible-BBCode-Parser": "github:patorjk/Extendible-BBCode-Parser@master",
     "pouchdb": "github:pouchdb/pouchdb@3.6.0",
     "symbol-enum": "npm:symbol-enum@2.0.0",
     "systemjs/plugin-text": "github:systemjs/plugin-text@0.0.2",

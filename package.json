@@ -5,18 +5,18 @@
   "repository": "https://github.com/sodatea/cc98-ionic",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "gulp": "^3.8.11"
+    "gulp": "^3.9.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.7.1",
-    "eslint": "^0.21.2",
+    "browser-sync": "^2.7.6",
+    "eslint": "^0.22.1",
     "eslint-plugin-smells": "^1.0.1",
-    "gulp-jsinspect": "^1.0.0",
+    "gulp-jsinspect": "^1.0.1",
     "gulp-replace": "^0.5.3",
-    "gulp-sass": "^2.0.0",
+    "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
-    "systemjs": "^0.16.9",
-    "systemjs-builder": "^0.10.6"
+    "systemjs": "^0.17.1",
+    "systemjs-builder": "^0.11.3"
   },
   "cordovaPlugins": [
     "org.apache.cordova.device",
@@ -46,6 +46,7 @@
       "maximnaidenov/angular-busy-tracker": "github:maximnaidenov/angular-busy-tracker@^1.1.0",
       "moment": "github:moment/moment@^2.10.2",
       "nodelibs": "github:jspm/nodelibs@^0.0.9",
+      "patorjk/Extendible-BBCode-Parser": "github:patorjk/Extendible-BBCode-Parser@master",
       "pouchdb": "github:pouchdb/pouchdb@^3.6.0",
       "symbol-enum": "npm:symbol-enum@2",
       "systemjs/plugin-text": "github:systemjs/plugin-text@^0.0.2",
