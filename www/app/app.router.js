@@ -11,6 +11,7 @@ import {commentRoute} from 'app/comment/comment.route';   // 回复
 // 回复主题
 // 设置
 
+
 function appRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('tabs', tabsRoute)

@@ -4,12 +4,19 @@ import '../bundles/ionic.app.css!'; // 自定义编译后的 ionic css
 import 'driftyco/ng-cordova';
 import 'driftyco/ng-cordova/dist/ng-cordova-mocks';
 
+// filters
 import fromNowModule from '../common/filters/fromNow';
 
-import securityModule from '../common/security/security';
-import apiModule from '../common/services/api';
-//import mockModule from '../common/mock';
+// directives
+import cc98BackButtonModule from '../common/directives/cc98BackButton';
 
+// security
+import securityModule from '../common/security/security';
+
+// api
+import apiModule from '../common/services/api';
+
+// resources
 import usersModule from '../common/resources/users';
 
 import appRouter from './app.router';     // 路由
@@ -20,9 +27,9 @@ export default angular
     'ionic',
     'ngCordovaMocks',
     fromNowModule.name,
+    cc98BackButtonModule.name,
     securityModule.name,
     apiModule.name,
-    //mockModule.name,
     usersModule.name
   ])
   .config(appRouter)
