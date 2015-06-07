@@ -14,7 +14,16 @@
     background-color: #f8f8f8;
   }
 
-  .post-item:nth-child(2) {
+  .post-meta {
+    border-bottom: none;
+
+    .post-time {
+      font-size: 12px;
+    }
+  }
+
+  .post-content {
     border-top: none;
+    padding-top: 5px;
   }
 }

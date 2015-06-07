@@ -9382,7 +9382,13 @@ a.button {
   font-weight: 200;
   background-color: #f8f8f8; }
 
-.topic-detail .post-item:nth-child(2) {
-  border-top: none; }
+.topic-detail .post-meta {
+  border-bottom: none; }
+  .topic-detail .post-meta .post-time {
+    font-size: 12px; }
+
+.topic-detail .post-content {
+  border-top: none;
+  padding-top: 5px; }
 
 /*# sourceMappingURL=ionic.app.css.map */

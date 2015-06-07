@@ -5,6 +5,7 @@
   <ion-content>
     <ion-refresher
       pulling-text="下拉刷新"
+      spinner="ios-small"
       on-refresh="ctrl.refreshPage()">
     </ion-refresher>
 
@@ -13,10 +14,12 @@
         话题来自：{{ctrl.boardName}}
       </p>
 
-      <ion-item class="post-item padding-vertical item-avatar" ng-repeat-start="post in ctrl.posts">
+      <ion-item ng-repeat-start="post in ctrl.posts" class="post-meta item item-avatar">
         <img ng-src="{{post.userAvatar || 'http://placehold.it/60?text=cc98'}}">
+        <h3>{{post.userName || '匿名'}}</h3>
+        <p class="post-time">{{post.time | fromNow}}</p>
       </ion-item>
-      <ion-item ng-repeat-end>
+      <ion-item ng-repeat-end class="post-content">
         {{post.content}}
       </ion-item>
     </ion-list>
