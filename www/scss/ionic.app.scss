@@ -57,6 +57,10 @@ $ionicons-font-path: "{{ionic-font-path}}" !default;
   }
 }
 
+// 限制图片最大宽度
+img {
+  max-width: 100%;
+}
 
 @import "./helper.scss";        // 引入一些方便开发的通用样式
 

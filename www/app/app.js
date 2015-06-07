@@ -6,6 +6,7 @@ import 'driftyco/ng-cordova/dist/ng-cordova-mocks';
 
 // filters
 import fromNowModule from '../common/filters/fromNow';
+import ubbModule from '../common/filters/ubb';
 
 // directives
 import cc98BackButtonModule from '../common/directives/cc98BackButton';
@@ -27,6 +28,7 @@ export default angular
     'ionic',
     'ngCordovaMocks',
     fromNowModule.name,
+    ubbModule.name,
     cc98BackButtonModule.name,
     securityModule.name,
     apiModule.name,
