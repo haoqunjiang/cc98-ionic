@@ -86,18 +86,42 @@ rules:
   no-alert: 0
 
   # 控制代码复杂度 http://elijahmanor.github.io/talks/js-smells/
+
+  # 单个函数最多有 16 行（内部的其他函数定义不算）
   max-statements: [2, 16]
+
+  # 至多嵌套五层代码块
   max-depth: [2, 5]
+
+  # [cyclomatic complexity](http://en.wikipedia.org/wiki/Cyclomatic_complexity) 上限为 7
   complexity: [2, 7]
+
   # 每行最多 110 个字符，比 80 个字符多一点，毕竟可能会有很多缩进，而且反正显示器够大
   max-len: [1, 110]
+
   # 上限设置到 10 是因为 Angular 依赖注入可能会有很多
   max-params: [1, 10]
+
   # 最多允许嵌套两层回调
   max-nested-callbacks: [2, 2]
-  smells/no-switch: 1
+
+  # 允许使用 switch 语句
+  smells/no-switch: 0
+
+  # 但禁止 case 条件后面跟着超过一行语句（大部分情况下这种情况都能被重构成其他更易读的写法）
   smells/no-complex-switch-case: 1
+
+  # 禁止 setInterval（对时间要求精确的动画除外）（为了防止 timer 未清除之类的乱七八糟的错误）
   smells/no-setinterval: 1
+
+  # 都用 ES6 了还写什么 var self = this; 何况 bind 也挺好用的（需要支持 IE8- 且没有 polyfill 时例外）
   smells/no-this-assign: 1
+
+  # 禁止复杂的字符串拼接，用模板引擎或 ES6 template string 替代
+  smells/no-complex-string-concat: 1
+
+  # 禁止连续反复操作同一个变量，用 forEach、reduce、_.flow 都可以解决
+  # 尚未支持
+  # smells/no-reassign: 1
 
   # 其他有默认值的 ESLint 规则就不重复定义了
