@@ -40,14 +40,20 @@ function Users($q, APIRequest, usersdb) {
    */
   function queryRemote({userId, userName}) {
     if (userId) {
-      return APIRequest.get(`user/${userId}`).then(store);
+      return APIRequest.get(`user/${userId}`).then(cache);
     } else {
-      return APIRequest.get(`user/name/${userName}`).then(store);
+      return APIRequest.get(`user/name/${userName}`).then(cache);
     }
   }
 
-  function store(user) {
-    Object.assign(user, {_id: user.id.toString(), _updated: Date.now()});
+  /* eslint-disable camelcase, no-console */
+  /**
+   * 缓存查询到的用户对象到本地数据库中
+   * @param  {Object} user
+   * @return {Promise}
+   */
+  function cache(user) {
+    Object.assign(user, {_id: user.id.toString(), pouchdb_updated: Date.now()});
 
     return usersdb.upsert(user)
       .then((inserted) => inserted)
@@ -55,6 +61,7 @@ function Users($q, APIRequest, usersdb) {
         console.error(err);
       });
   }
+  /* eslint-enable camelcase, no-console */
 }
 
 export default angular
