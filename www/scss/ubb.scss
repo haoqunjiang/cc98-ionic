@@ -1,0 +1,15 @@
+.noubb .cc98-emot {
+  content: '';  // 为了让 before 的内容能显示出来
+}
+
+@for $i from 0 through 9 {
+  .noubb .cc98-emot-0#{$i}, .xbbcode-code .cc98-emot-0#{$i} {
+    content: '[em0#{$i}]';
+  }
+}
+
+@for $i from 10 through 99 {
+  .noubb .cc98-emot-#{$i}, .xbbcode-code .cc98-emot-#{$i} {
+    content: '[em#{$i}]';
+  }
+}
