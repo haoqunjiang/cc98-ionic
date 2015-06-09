@@ -9394,307 +9394,359 @@ img {
   border-top: none;
   padding-top: 5px; }
 
-.noubb .cc98-emot {
+.cc98-emot {
+  height: 36px;
+  vertical-align: bottom; }
+
+.noubb .cc98-emot, .xbbcode-code .cc98-emot {
   content: ''; }
 
-.noubb .cc98-emot-00, .xbbcode-code .cc98-emot-00 {
+.noubb .cc98-emot-00:before, .xbbcode-code .cc98-emot-00:before {
   content: "[em00]"; }
 
-.noubb .cc98-emot-01, .xbbcode-code .cc98-emot-01 {
+.noubb .cc98-emot-01:before, .xbbcode-code .cc98-emot-01:before {
   content: "[em01]"; }
 
-.noubb .cc98-emot-02, .xbbcode-code .cc98-emot-02 {
+.noubb .cc98-emot-02:before, .xbbcode-code .cc98-emot-02:before {
   content: "[em02]"; }
 
-.noubb .cc98-emot-03, .xbbcode-code .cc98-emot-03 {
+.noubb .cc98-emot-03:before, .xbbcode-code .cc98-emot-03:before {
   content: "[em03]"; }
 
-.noubb .cc98-emot-04, .xbbcode-code .cc98-emot-04 {
+.noubb .cc98-emot-04:before, .xbbcode-code .cc98-emot-04:before {
   content: "[em04]"; }
 
-.noubb .cc98-emot-05, .xbbcode-code .cc98-emot-05 {
+.noubb .cc98-emot-05:before, .xbbcode-code .cc98-emot-05:before {
   content: "[em05]"; }
 
-.noubb .cc98-emot-06, .xbbcode-code .cc98-emot-06 {
+.noubb .cc98-emot-06:before, .xbbcode-code .cc98-emot-06:before {
   content: "[em06]"; }
 
-.noubb .cc98-emot-07, .xbbcode-code .cc98-emot-07 {
+.noubb .cc98-emot-07:before, .xbbcode-code .cc98-emot-07:before {
   content: "[em07]"; }
 
-.noubb .cc98-emot-08, .xbbcode-code .cc98-emot-08 {
+.noubb .cc98-emot-08:before, .xbbcode-code .cc98-emot-08:before {
   content: "[em08]"; }
 
-.noubb .cc98-emot-09, .xbbcode-code .cc98-emot-09 {
+.noubb .cc98-emot-09:before, .xbbcode-code .cc98-emot-09:before {
   content: "[em09]"; }
 
-.noubb .cc98-emot-10, .xbbcode-code .cc98-emot-10 {
+.noubb .cc98-emot-10:before, .xbbcode-code .cc98-emot-10:before {
   content: "[em10]"; }
 
-.noubb .cc98-emot-11, .xbbcode-code .cc98-emot-11 {
+.noubb .cc98-emot-11:before, .xbbcode-code .cc98-emot-11:before {
   content: "[em11]"; }
 
-.noubb .cc98-emot-12, .xbbcode-code .cc98-emot-12 {
+.noubb .cc98-emot-12:before, .xbbcode-code .cc98-emot-12:before {
   content: "[em12]"; }
 
-.noubb .cc98-emot-13, .xbbcode-code .cc98-emot-13 {
+.noubb .cc98-emot-13:before, .xbbcode-code .cc98-emot-13:before {
   content: "[em13]"; }
 
-.noubb .cc98-emot-14, .xbbcode-code .cc98-emot-14 {
+.noubb .cc98-emot-14:before, .xbbcode-code .cc98-emot-14:before {
   content: "[em14]"; }
 
-.noubb .cc98-emot-15, .xbbcode-code .cc98-emot-15 {
+.noubb .cc98-emot-15:before, .xbbcode-code .cc98-emot-15:before {
   content: "[em15]"; }
 
-.noubb .cc98-emot-16, .xbbcode-code .cc98-emot-16 {
+.noubb .cc98-emot-16:before, .xbbcode-code .cc98-emot-16:before {
   content: "[em16]"; }
 
-.noubb .cc98-emot-17, .xbbcode-code .cc98-emot-17 {
+.noubb .cc98-emot-17:before, .xbbcode-code .cc98-emot-17:before {
   content: "[em17]"; }
 
-.noubb .cc98-emot-18, .xbbcode-code .cc98-emot-18 {
+.noubb .cc98-emot-18:before, .xbbcode-code .cc98-emot-18:before {
   content: "[em18]"; }
 
-.noubb .cc98-emot-19, .xbbcode-code .cc98-emot-19 {
+.noubb .cc98-emot-19:before, .xbbcode-code .cc98-emot-19:before {
   content: "[em19]"; }
 
-.noubb .cc98-emot-20, .xbbcode-code .cc98-emot-20 {
+.noubb .cc98-emot-20:before, .xbbcode-code .cc98-emot-20:before {
   content: "[em20]"; }
 
-.noubb .cc98-emot-21, .xbbcode-code .cc98-emot-21 {
+.noubb .cc98-emot-21:before, .xbbcode-code .cc98-emot-21:before {
   content: "[em21]"; }
 
-.noubb .cc98-emot-22, .xbbcode-code .cc98-emot-22 {
+.noubb .cc98-emot-22:before, .xbbcode-code .cc98-emot-22:before {
   content: "[em22]"; }
 
-.noubb .cc98-emot-23, .xbbcode-code .cc98-emot-23 {
+.noubb .cc98-emot-23:before, .xbbcode-code .cc98-emot-23:before {
   content: "[em23]"; }
 
-.noubb .cc98-emot-24, .xbbcode-code .cc98-emot-24 {
+.noubb .cc98-emot-24:before, .xbbcode-code .cc98-emot-24:before {
   content: "[em24]"; }
 
-.noubb .cc98-emot-25, .xbbcode-code .cc98-emot-25 {
+.noubb .cc98-emot-25:before, .xbbcode-code .cc98-emot-25:before {
   content: "[em25]"; }
 
-.noubb .cc98-emot-26, .xbbcode-code .cc98-emot-26 {
+.noubb .cc98-emot-26:before, .xbbcode-code .cc98-emot-26:before {
   content: "[em26]"; }
 
-.noubb .cc98-emot-27, .xbbcode-code .cc98-emot-27 {
+.noubb .cc98-emot-27:before, .xbbcode-code .cc98-emot-27:before {
   content: "[em27]"; }
 
-.noubb .cc98-emot-28, .xbbcode-code .cc98-emot-28 {
+.noubb .cc98-emot-28:before, .xbbcode-code .cc98-emot-28:before {
   content: "[em28]"; }
 
-.noubb .cc98-emot-29, .xbbcode-code .cc98-emot-29 {
+.noubb .cc98-emot-29:before, .xbbcode-code .cc98-emot-29:before {
   content: "[em29]"; }
 
-.noubb .cc98-emot-30, .xbbcode-code .cc98-emot-30 {
+.noubb .cc98-emot-30:before, .xbbcode-code .cc98-emot-30:before {
   content: "[em30]"; }
 
-.noubb .cc98-emot-31, .xbbcode-code .cc98-emot-31 {
+.noubb .cc98-emot-31:before, .xbbcode-code .cc98-emot-31:before {
   content: "[em31]"; }
 
-.noubb .cc98-emot-32, .xbbcode-code .cc98-emot-32 {
+.noubb .cc98-emot-32:before, .xbbcode-code .cc98-emot-32:before {
   content: "[em32]"; }
 
-.noubb .cc98-emot-33, .xbbcode-code .cc98-emot-33 {
+.noubb .cc98-emot-33:before, .xbbcode-code .cc98-emot-33:before {
   content: "[em33]"; }
 
-.noubb .cc98-emot-34, .xbbcode-code .cc98-emot-34 {
+.noubb .cc98-emot-34:before, .xbbcode-code .cc98-emot-34:before {
   content: "[em34]"; }
 
-.noubb .cc98-emot-35, .xbbcode-code .cc98-emot-35 {
+.noubb .cc98-emot-35:before, .xbbcode-code .cc98-emot-35:before {
   content: "[em35]"; }
 
-.noubb .cc98-emot-36, .xbbcode-code .cc98-emot-36 {
+.noubb .cc98-emot-36:before, .xbbcode-code .cc98-emot-36:before {
   content: "[em36]"; }
 
-.noubb .cc98-emot-37, .xbbcode-code .cc98-emot-37 {
+.noubb .cc98-emot-37:before, .xbbcode-code .cc98-emot-37:before {
   content: "[em37]"; }
 
-.noubb .cc98-emot-38, .xbbcode-code .cc98-emot-38 {
+.noubb .cc98-emot-38:before, .xbbcode-code .cc98-emot-38:before {
   content: "[em38]"; }
 
-.noubb .cc98-emot-39, .xbbcode-code .cc98-emot-39 {
+.noubb .cc98-emot-39:before, .xbbcode-code .cc98-emot-39:before {
   content: "[em39]"; }
 
-.noubb .cc98-emot-40, .xbbcode-code .cc98-emot-40 {
+.noubb .cc98-emot-40:before, .xbbcode-code .cc98-emot-40:before {
   content: "[em40]"; }
 
-.noubb .cc98-emot-41, .xbbcode-code .cc98-emot-41 {
+.noubb .cc98-emot-41:before, .xbbcode-code .cc98-emot-41:before {
   content: "[em41]"; }
 
-.noubb .cc98-emot-42, .xbbcode-code .cc98-emot-42 {
+.noubb .cc98-emot-42:before, .xbbcode-code .cc98-emot-42:before {
   content: "[em42]"; }
 
-.noubb .cc98-emot-43, .xbbcode-code .cc98-emot-43 {
+.noubb .cc98-emot-43:before, .xbbcode-code .cc98-emot-43:before {
   content: "[em43]"; }
 
-.noubb .cc98-emot-44, .xbbcode-code .cc98-emot-44 {
+.noubb .cc98-emot-44:before, .xbbcode-code .cc98-emot-44:before {
   content: "[em44]"; }
 
-.noubb .cc98-emot-45, .xbbcode-code .cc98-emot-45 {
+.noubb .cc98-emot-45:before, .xbbcode-code .cc98-emot-45:before {
   content: "[em45]"; }
 
-.noubb .cc98-emot-46, .xbbcode-code .cc98-emot-46 {
+.noubb .cc98-emot-46:before, .xbbcode-code .cc98-emot-46:before {
   content: "[em46]"; }
 
-.noubb .cc98-emot-47, .xbbcode-code .cc98-emot-47 {
+.noubb .cc98-emot-47:before, .xbbcode-code .cc98-emot-47:before {
   content: "[em47]"; }
 
-.noubb .cc98-emot-48, .xbbcode-code .cc98-emot-48 {
+.noubb .cc98-emot-48:before, .xbbcode-code .cc98-emot-48:before {
   content: "[em48]"; }
 
-.noubb .cc98-emot-49, .xbbcode-code .cc98-emot-49 {
+.noubb .cc98-emot-49:before, .xbbcode-code .cc98-emot-49:before {
   content: "[em49]"; }
 
-.noubb .cc98-emot-50, .xbbcode-code .cc98-emot-50 {
+.noubb .cc98-emot-50:before, .xbbcode-code .cc98-emot-50:before {
   content: "[em50]"; }
 
-.noubb .cc98-emot-51, .xbbcode-code .cc98-emot-51 {
+.noubb .cc98-emot-51:before, .xbbcode-code .cc98-emot-51:before {
   content: "[em51]"; }
 
-.noubb .cc98-emot-52, .xbbcode-code .cc98-emot-52 {
+.noubb .cc98-emot-52:before, .xbbcode-code .cc98-emot-52:before {
   content: "[em52]"; }
 
-.noubb .cc98-emot-53, .xbbcode-code .cc98-emot-53 {
+.noubb .cc98-emot-53:before, .xbbcode-code .cc98-emot-53:before {
   content: "[em53]"; }
 
-.noubb .cc98-emot-54, .xbbcode-code .cc98-emot-54 {
+.noubb .cc98-emot-54:before, .xbbcode-code .cc98-emot-54:before {
   content: "[em54]"; }
 
-.noubb .cc98-emot-55, .xbbcode-code .cc98-emot-55 {
+.noubb .cc98-emot-55:before, .xbbcode-code .cc98-emot-55:before {
   content: "[em55]"; }
 
-.noubb .cc98-emot-56, .xbbcode-code .cc98-emot-56 {
+.noubb .cc98-emot-56:before, .xbbcode-code .cc98-emot-56:before {
   content: "[em56]"; }
 
-.noubb .cc98-emot-57, .xbbcode-code .cc98-emot-57 {
+.noubb .cc98-emot-57:before, .xbbcode-code .cc98-emot-57:before {
   content: "[em57]"; }
 
-.noubb .cc98-emot-58, .xbbcode-code .cc98-emot-58 {
+.noubb .cc98-emot-58:before, .xbbcode-code .cc98-emot-58:before {
   content: "[em58]"; }
 
-.noubb .cc98-emot-59, .xbbcode-code .cc98-emot-59 {
+.noubb .cc98-emot-59:before, .xbbcode-code .cc98-emot-59:before {
   content: "[em59]"; }
 
-.noubb .cc98-emot-60, .xbbcode-code .cc98-emot-60 {
+.noubb .cc98-emot-60:before, .xbbcode-code .cc98-emot-60:before {
   content: "[em60]"; }
 
-.noubb .cc98-emot-61, .xbbcode-code .cc98-emot-61 {
+.noubb .cc98-emot-61:before, .xbbcode-code .cc98-emot-61:before {
   content: "[em61]"; }
 
-.noubb .cc98-emot-62, .xbbcode-code .cc98-emot-62 {
+.noubb .cc98-emot-62:before, .xbbcode-code .cc98-emot-62:before {
   content: "[em62]"; }
 
-.noubb .cc98-emot-63, .xbbcode-code .cc98-emot-63 {
+.noubb .cc98-emot-63:before, .xbbcode-code .cc98-emot-63:before {
   content: "[em63]"; }
 
-.noubb .cc98-emot-64, .xbbcode-code .cc98-emot-64 {
+.noubb .cc98-emot-64:before, .xbbcode-code .cc98-emot-64:before {
   content: "[em64]"; }
 
-.noubb .cc98-emot-65, .xbbcode-code .cc98-emot-65 {
+.noubb .cc98-emot-65:before, .xbbcode-code .cc98-emot-65:before {
   content: "[em65]"; }
 
-.noubb .cc98-emot-66, .xbbcode-code .cc98-emot-66 {
+.noubb .cc98-emot-66:before, .xbbcode-code .cc98-emot-66:before {
   content: "[em66]"; }
 
-.noubb .cc98-emot-67, .xbbcode-code .cc98-emot-67 {
+.noubb .cc98-emot-67:before, .xbbcode-code .cc98-emot-67:before {
   content: "[em67]"; }
 
-.noubb .cc98-emot-68, .xbbcode-code .cc98-emot-68 {
+.noubb .cc98-emot-68:before, .xbbcode-code .cc98-emot-68:before {
   content: "[em68]"; }
 
-.noubb .cc98-emot-69, .xbbcode-code .cc98-emot-69 {
+.noubb .cc98-emot-69:before, .xbbcode-code .cc98-emot-69:before {
   content: "[em69]"; }
 
-.noubb .cc98-emot-70, .xbbcode-code .cc98-emot-70 {
+.noubb .cc98-emot-70:before, .xbbcode-code .cc98-emot-70:before {
   content: "[em70]"; }
 
-.noubb .cc98-emot-71, .xbbcode-code .cc98-emot-71 {
+.noubb .cc98-emot-71:before, .xbbcode-code .cc98-emot-71:before {
   content: "[em71]"; }
 
-.noubb .cc98-emot-72, .xbbcode-code .cc98-emot-72 {
+.noubb .cc98-emot-72:before, .xbbcode-code .cc98-emot-72:before {
   content: "[em72]"; }
 
-.noubb .cc98-emot-73, .xbbcode-code .cc98-emot-73 {
+.noubb .cc98-emot-73:before, .xbbcode-code .cc98-emot-73:before {
   content: "[em73]"; }
 
-.noubb .cc98-emot-74, .xbbcode-code .cc98-emot-74 {
+.noubb .cc98-emot-74:before, .xbbcode-code .cc98-emot-74:before {
   content: "[em74]"; }
 
-.noubb .cc98-emot-75, .xbbcode-code .cc98-emot-75 {
+.noubb .cc98-emot-75:before, .xbbcode-code .cc98-emot-75:before {
   content: "[em75]"; }
 
-.noubb .cc98-emot-76, .xbbcode-code .cc98-emot-76 {
+.noubb .cc98-emot-76:before, .xbbcode-code .cc98-emot-76:before {
   content: "[em76]"; }
 
-.noubb .cc98-emot-77, .xbbcode-code .cc98-emot-77 {
+.noubb .cc98-emot-77:before, .xbbcode-code .cc98-emot-77:before {
   content: "[em77]"; }
 
-.noubb .cc98-emot-78, .xbbcode-code .cc98-emot-78 {
+.noubb .cc98-emot-78:before, .xbbcode-code .cc98-emot-78:before {
   content: "[em78]"; }
 
-.noubb .cc98-emot-79, .xbbcode-code .cc98-emot-79 {
+.noubb .cc98-emot-79:before, .xbbcode-code .cc98-emot-79:before {
   content: "[em79]"; }
 
-.noubb .cc98-emot-80, .xbbcode-code .cc98-emot-80 {
+.noubb .cc98-emot-80:before, .xbbcode-code .cc98-emot-80:before {
   content: "[em80]"; }
 
-.noubb .cc98-emot-81, .xbbcode-code .cc98-emot-81 {
+.noubb .cc98-emot-81:before, .xbbcode-code .cc98-emot-81:before {
   content: "[em81]"; }
 
-.noubb .cc98-emot-82, .xbbcode-code .cc98-emot-82 {
+.noubb .cc98-emot-82:before, .xbbcode-code .cc98-emot-82:before {
   content: "[em82]"; }
 
-.noubb .cc98-emot-83, .xbbcode-code .cc98-emot-83 {
+.noubb .cc98-emot-83:before, .xbbcode-code .cc98-emot-83:before {
   content: "[em83]"; }
 
-.noubb .cc98-emot-84, .xbbcode-code .cc98-emot-84 {
+.noubb .cc98-emot-84:before, .xbbcode-code .cc98-emot-84:before {
   content: "[em84]"; }
 
-.noubb .cc98-emot-85, .xbbcode-code .cc98-emot-85 {
+.noubb .cc98-emot-85:before, .xbbcode-code .cc98-emot-85:before {
   content: "[em85]"; }
 
-.noubb .cc98-emot-86, .xbbcode-code .cc98-emot-86 {
+.noubb .cc98-emot-86:before, .xbbcode-code .cc98-emot-86:before {
   content: "[em86]"; }
 
-.noubb .cc98-emot-87, .xbbcode-code .cc98-emot-87 {
+.noubb .cc98-emot-87:before, .xbbcode-code .cc98-emot-87:before {
   content: "[em87]"; }
 
-.noubb .cc98-emot-88, .xbbcode-code .cc98-emot-88 {
+.noubb .cc98-emot-88:before, .xbbcode-code .cc98-emot-88:before {
   content: "[em88]"; }
 
-.noubb .cc98-emot-89, .xbbcode-code .cc98-emot-89 {
+.noubb .cc98-emot-89:before, .xbbcode-code .cc98-emot-89:before {
   content: "[em89]"; }
 
-.noubb .cc98-emot-90, .xbbcode-code .cc98-emot-90 {
+.noubb .cc98-emot-90:before, .xbbcode-code .cc98-emot-90:before {
   content: "[em90]"; }
 
-.noubb .cc98-emot-91, .xbbcode-code .cc98-emot-91 {
+.noubb .cc98-emot-91:before, .xbbcode-code .cc98-emot-91:before {
   content: "[em91]"; }
 
-.noubb .cc98-emot-92, .xbbcode-code .cc98-emot-92 {
+.noubb .cc98-emot-92:before, .xbbcode-code .cc98-emot-92:before {
   content: "[em92]"; }
 
-.noubb .cc98-emot-93, .xbbcode-code .cc98-emot-93 {
+.noubb .cc98-emot-93:before, .xbbcode-code .cc98-emot-93:before {
   content: "[em93]"; }
 
-.noubb .cc98-emot-94, .xbbcode-code .cc98-emot-94 {
+.noubb .cc98-emot-94:before, .xbbcode-code .cc98-emot-94:before {
   content: "[em94]"; }
 
-.noubb .cc98-emot-95, .xbbcode-code .cc98-emot-95 {
+.noubb .cc98-emot-95:before, .xbbcode-code .cc98-emot-95:before {
   content: "[em95]"; }
 
-.noubb .cc98-emot-96, .xbbcode-code .cc98-emot-96 {
+.noubb .cc98-emot-96:before, .xbbcode-code .cc98-emot-96:before {
   content: "[em96]"; }
 
-.noubb .cc98-emot-97, .xbbcode-code .cc98-emot-97 {
+.noubb .cc98-emot-97:before, .xbbcode-code .cc98-emot-97:before {
   content: "[em97]"; }
 
-.noubb .cc98-emot-98, .xbbcode-code .cc98-emot-98 {
+.noubb .cc98-emot-98:before, .xbbcode-code .cc98-emot-98:before {
   content: "[em98]"; }
 
-.noubb .cc98-emot-99, .xbbcode-code .cc98-emot-99 {
+.noubb .cc98-emot-99:before, .xbbcode-code .cc98-emot-99:before {
+  content: "[em99]"; }
+
+.cc98-emot-92 {
+  content: ''; }
+
+.cc98-emot-92:before {
+  content: "[em92]"; }
+
+.cc98-emot-93 {
+  content: ''; }
+
+.cc98-emot-93:before {
+  content: "[em93]"; }
+
+.cc98-emot-94 {
+  content: ''; }
+
+.cc98-emot-94:before {
+  content: "[em94]"; }
+
+.cc98-emot-95 {
+  content: ''; }
+
+.cc98-emot-95:before {
+  content: "[em95]"; }
+
+.cc98-emot-96 {
+  content: ''; }
+
+.cc98-emot-96:before {
+  content: "[em96]"; }
+
+.cc98-emot-97 {
+  content: ''; }
+
+.cc98-emot-97:before {
+  content: "[em97]"; }
+
+.cc98-emot-98 {
+  content: ''; }
+
+.cc98-emot-98:before {
+  content: "[em98]"; }
+
+.cc98-emot-99 {
+  content: ''; }
+
+.cc98-emot-99:before {
   content: "[em99]"; }
 
 /*# sourceMappingURL=ionic.app.css.map */

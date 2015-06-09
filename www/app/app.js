@@ -9,6 +9,7 @@ import fromNowModule from '../common/filters/fromNow';
 import ubbModule from '../common/filters/ubb';
 
 // directives
+import bindHtmlCompileModule from '../common/directives/bindHtmlCompile';
 import cc98BackButtonModule from '../common/directives/cc98BackButton';
 
 // security
@@ -19,6 +20,7 @@ import apiModule from '../common/services/api';
 
 // resources
 import usersModule from '../common/resources/users';
+import settingsModule from '../common/resources/settings';
 
 import appRouter from './app.router';     // 路由
 import initNativeEnv from './app.native'; // 移动平台相关
@@ -29,10 +31,12 @@ export default angular
     'ngCordovaMocks',
     fromNowModule.name,
     ubbModule.name,
+    bindHtmlCompileModule.name,
     cc98BackButtonModule.name,
     securityModule.name,
     apiModule.name,
-    usersModule.name
+    usersModule.name,
+    settingsModule.name
   ])
   .config(appRouter)
   .run(initNativeEnv);

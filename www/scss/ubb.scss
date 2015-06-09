@@ -1,15 +1,35 @@
-.noubb .cc98-emot {
-  content: '';  // 为了让 before 的内容能显示出来
+.cc98-emot {
+  height: 36px;
+  vertical-align: bottom;
+}
+
+
+// noubb 和 code 标签中的表情要显示原来的样子
+
+// 为了让 before 的内容能显示出来，需要设置 content
+.noubb .cc98-emot, .xbbcode-code .cc98-emot {
+  content: '';
 }
 
 @for $i from 0 through 9 {
-  .noubb .cc98-emot-0#{$i}, .xbbcode-code .cc98-emot-0#{$i} {
+  .noubb .cc98-emot-0#{$i}:before, .xbbcode-code .cc98-emot-0#{$i}:before {
     content: '[em0#{$i}]';
   }
 }
 
 @for $i from 10 through 99 {
-  .noubb .cc98-emot-#{$i}, .xbbcode-code .cc98-emot-#{$i} {
+  .noubb .cc98-emot-#{$i}:before, .xbbcode-code .cc98-emot-#{$i}:before {
+    content: '[em#{$i}]';
+  }
+}
+
+// [em92] ~ [em99] 也不应该被解析
+@for $i from 92 through 99 {
+  .cc98-emot-#{$i} {
+    content: ''
+  }
+
+  .cc98-emot-#{$i}:before {
     content: '[em#{$i}]';
   }
 }
