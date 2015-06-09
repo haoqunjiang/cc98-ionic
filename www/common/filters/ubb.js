@@ -3,13 +3,6 @@ import 'patorjk/Extendible-BBCode-Parser/xbbcode.css!';
 
 import settingsModule from '../resources/settings';
 
-// TODO
-// 转化 形如
-// [quotex][b]以下是引用[i]标签在2015/6/7 14:20:21[/i]的发言：[/b]↵
-// 以及
-// [quotex][b]以下是引用[i]Fastlane在2015/6/7 14:21:37[/i]的发言： [url=/dispbbs.asp?boardid=135&id=4526662#5][color=royalblue]>>查看原帖<<[/color][/url][/b]↵
-// 的引用文字
-
 // XBBCODE 已经实现的 ubb 标签：
 // [b, bbcode, center, code, color, email, face, font, i,
 // img, justify, large, left, li, list, noparse, ol, php,
@@ -17,10 +10,10 @@ import settingsModule from '../resources/settings';
 // tfoot, thead, td, th, tr, u, ul, url, *]
 //
 // 尚未实现的：
-// [quotex√, del√, noubb √, align √, float √, upload, audio, video, mp3, replyview, pm, topic, board]
+// [quotex√, del√, noubb √, align √, float √, upload √, mp3 √, audio √, video, replyview, pm, topic, board]
 //
 // 实现效果需要纠正的：
-// [size √, color √, url, img]
+// [size √, color √, font √, url, img √]
 //
 // 不打算支持的：
 // [glow, shadow, flv, flash, durl]
@@ -52,7 +45,16 @@ function ubb($window, $sce, settings) {
       openTag: () => '<del>',
       closeTag: () => '</del>'
     },
-    img: {},
+    img: {
+      openTag: (params, content) =>
+        `<img src="/img/click-to-show.png" data-src="${content}" onclick="showImage(this)">`,
+      closeTag: () => ''
+    },
+    mp3: {
+      displayContent: false,
+      openTag: (params, content) => `<audio src="${content}" controls="1" preload="none">`,
+      closeTag: () => `</audio>`
+    },
     noubb: {
       openTag: () => '<span class="noubb">',
       closeTag: () => '</span>'
@@ -65,7 +67,7 @@ function ubb($window, $sce, settings) {
     // 带参数的标签
     align: {
       openTag: (params) => {
-        let match = params.match(/^=(left|right|center)$/ig);
+        let match = params.match(/^=(left|right|center)$/i);  // 不能带 g flag
         if (match) {
           return `<div class="xbbcode-${match[1]}">`;
         } else {
@@ -73,6 +75,12 @@ function ubb($window, $sce, settings) {
         }
       },
       closeTag: () => '</div>'
+    },
+    audio: {
+      displayContent: false,
+      // 暂时懒得处理参数
+      openTag: (params, content) => `<audio src="${content}" controls="1" preload="none">`,
+      closeTag: () => `</audio>`
     },
     color: {
       openTag: (params) => {
@@ -92,9 +100,24 @@ function ubb($window, $sce, settings) {
       },
       closeTag: () => '</span>'
     },
+    font: {
+      openTag: (params) => {
+        var fontface = `'${params.substr(1)}'` || 'inherit';
+        return `<span style="font-family: ${fontface}">`;
+      },
+      closeTag: () => '</span>'
+    },
     size: {
       openTag: (params) => {
-        let size = parseInt(params.substr(1), 10);
+        let size = params.substr(1);
+
+        // 自带单位的就直接赋值给 style
+        if (/^\d+(px|pt|em|rem|vh|vw|vmin|vmax)$/.test(size)) {
+          return `<span style="font-size: ${size}"></span>`;
+        }
+
+        // 否则按 size x 5px 算字号
+        size = parseInt(size, 10);
 
         if (size < 0) {
           size = 16 / 5;  // 默认字号 16px
@@ -121,11 +144,27 @@ function ubb($window, $sce, settings) {
         }
 
         // otherwise, file
+        return `<a href="javascript:void(0)" onclick="openLink(${content})"></a>`;
       },
       closeTag: () => ''  // 反正 content 不显示，逻辑都放在 openTag 里做比较简单
     },
     url: {
-      openTag: () => {},
+      openTag: (params, content) => {
+        let url = params.substr(1);
+
+        // 没有参数则直接用链接文字作为链接
+        if (!url) { url = content; }
+
+        // 阻止脚本。
+        if (url.match(/^\s*javascript\s*:/gi)) {
+          return '<a>';
+        }
+
+        // 格式化地址，如果是站内链接的话转化为 app 内链
+
+        // 否则直接用 url（链接文字为空时直接用 url 参数作为文字）
+        return `<a href="${url}" target="_blank">${content ? '' : url}`;
+      },
       closeTag: () => '</a>'
     }
   });
@@ -133,8 +172,8 @@ function ubb($window, $sce, settings) {
   // 解析 ubb 代码
   function parse(ubbCode) {
     let res = XBBCODE.process({
-      text: ubbCode,
-      addInLineBreaks: true
+      text: ubbCode.trim(),
+      addInLineBreaks: false
     });
 
     // 处理换行

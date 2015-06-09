@@ -33,3 +33,15 @@
     content: '[em#{$i}]';
   }
 }
+
+
+// 引用样式
+.xbbcode-blockquote {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+// 链接
+a {
+  text-decoration: none;
+}

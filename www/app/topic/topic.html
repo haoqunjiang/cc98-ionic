@@ -23,19 +23,17 @@
         <p class="post-time">{{post.time | fromNow}}</p>
       </ion-item>
       <ion-item ng-repeat-end class="post-content">
-        <div ng-bind-html="post.content | ubb"></div>
+        <div bind-html-compile="post.content | ubb"></div>
       </ion-item>
     </ion-list>
   </ion-content>
 
   <ion-footer-bar class="item-input-inset" style="border-top: 1px solid #eee">
-    <div class="list" style="margin-bottom: 0">
-      <label class="item-input-wrapper" ui-sref="comment({topicId: ctrl.topicId})">
-        <i class="icon ion-ios-chatbubble"></i>
-        <input type="text" placeholder="添加评论">
-      </label>
-    </div>
-    <div class="buttons pull-right">
+    <label class="item-input-wrapper" ui-sref="comment({topicId: ctrl.topicId})">
+      <i class="icon ion-ios-chatbubble"></i>
+      <input type="text" placeholder="添加评论">
+    </label>
+    <div class="buttons">
       <button class="button button-light button-small positive"><</button>
       <button class="button button-light button-small positive">下一页</button>
     </div>

@@ -9749,4 +9749,11 @@ img {
 .cc98-emot-99:before {
   content: "[em99]"; }
 
+.xbbcode-blockquote {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
+a {
+  text-decoration: none; }
+
 /*# sourceMappingURL=ionic.app.css.map */
