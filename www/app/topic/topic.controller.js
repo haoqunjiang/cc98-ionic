@@ -1,12 +1,13 @@
 class TopicController {
-  static get $inject() { return ['$scope', '$stateParams', 'APIRequest', 'Users', 'settings']; }
+  static get $inject() { return ['$scope', '$stateParams', '$ionicScrollDelegate', 'APIRequest', 'Users', 'settings']; }
 
-  constructor($scope, $stateParams, APIRequest, Users, settings) {
+  constructor($scope, $stateParams, $ionicScrollDelegate, APIRequest, Users, settings) {
     // controller as
     $scope.ctrl = this;
 
     // dependencies
     this.$scope = $scope;
+    this.$ionicScrollDelegate = $ionicScrollDelegate;
     this.APIRequest = APIRequest;
     this.Users = Users;
     this.settings = settings;
@@ -32,7 +33,9 @@ class TopicController {
     }
 
     this.page += 1;
-    this.fetchPosts().then(() => this.fetchAvatars(false));
+    this.fetchPosts()
+      .then(() => this.fetchAvatars(false))
+      .then(() => this.$ionicScrollDelegate.scrollTop());
   }
 
   // 上一页
@@ -41,8 +44,10 @@ class TopicController {
       return;
     }
 
-    this.page += 1;
-    this.fetchPosts().then(() => this.fetchAvatars(false));
+    this.page -= 1;
+    this.fetchPosts()
+      .then(() => this.fetchAvatars(false))
+      .then(() => this.$ionicScrollDelegate.scrollTop());
   }
 
   // 显示跳页对话框

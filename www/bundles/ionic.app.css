@@ -9385,6 +9385,13 @@ img {
   font-weight: 200;
   background-color: #f8f8f8; }
 
+.topic-detail .post-header {
+  border-bottom: none;
+  padding-bottom: 0; }
+
+.topic-detail .post-header + .post-meta {
+  border-top: none; }
+
 .topic-detail .post-meta {
   border-bottom: none; }
   .topic-detail .post-meta .post-time {
@@ -9393,6 +9400,15 @@ img {
 .topic-detail .post-content {
   border-top: none;
   padding-top: 5px; }
+
+.pagination-buttons {
+  margin-left: 20px; }
+
+.pagination-buttons button {
+  height: 26px;
+  min-width: 30px !important;
+  margin-left: 2px;
+  vertical-align: middle; }
 
 .cc98-emot {
   height: 36px;

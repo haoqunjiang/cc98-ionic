@@ -16,7 +16,10 @@
         话题来自：{{ctrl.boardName}}
       </p>
 
-      <ion-item ng-repeat-start="post in ctrl.posts" class="post-meta item item-avatar">
+      <ion-item class="post-header" ng-repeat-start="post in ctrl.posts">
+        <h2>{{post.title}}</h2>
+      </ion-item>
+      <ion-item class="post-meta item item-avatar">
         <img ng-src="{{post.userAvatar || '/img/placeholder.png'}}">
         <p class="post-floor pull-right">{{post.floor === 1 ? '楼主' : ('#' + post.floor)}}</p>
         <h3>{{post.userName || '匿名'}}</h3>
@@ -33,9 +36,22 @@
       <i class="icon ion-ios-chatbubble"></i>
       <input type="text" placeholder="添加评论">
     </label>
-    <div class="buttons">
-      <button class="button button-light button-small positive"><</button>
-      <button class="button button-light button-small positive">下一页</button>
+    <div class="buttons pagination-buttons">
+      <button
+        class="button button-light button-small positive"
+        ng-disabled="ctrl.page === 1"
+        ng-click="ctrl.prevPage()">
+        &lsaquo;
+      </button>
+
+      <button class="button button-light button-small positive">{{ctrl.page}}</button>
+
+      <button
+        class="button button-light button-small positive"
+        ng-disabled="!ctrl.postsCount || ctrl.page * 10 >= ctrl.postsCount"
+        ng-click="ctrl.nextPage()">
+        下一页 &rsaquo;
+      </button>
     </div>
   </ion-footer-bar>
 </ion-view>
