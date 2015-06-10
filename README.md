@@ -98,3 +98,7 @@
 ## 后续计划
 
 - 等 [flow](http://flowtype.org/) 或 [TypeScript](http://typescriptlang.org/) 对 ES6 的支持成熟后考虑加入类型系统。目前来说 flow 的坑太多、功能太不完善；TypeScript 1.5 尚处在 beta 版很多 ES6 相关的新功能还不能用，都不适合用到本项目中。
+
+
+## 截图
+![热门话题](http://ww3.sinaimg.cn/large/921c1cdagw1esyw0n62ftj20ku112afd.jpg)
