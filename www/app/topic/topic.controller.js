@@ -92,7 +92,7 @@ class TopicController {
     this.posts.map((item) => {
       // 心灵
       if (!item.userId) {
-        item.userAvatar = this.settings.websiteHost + 'pic/anonymous.gif';
+        item.userAvatar = '/img/anonymous.gif';
         return;
       }
       // 否则载入用户头像
