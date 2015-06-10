@@ -9405,7 +9405,8 @@ img {
   margin-left: 20px; }
 
 .pagination-buttons button {
-  height: 26px;
+  height: 26px !important;
+  line-height: 26px !important;
   min-width: 30px !important;
   margin-left: 2px;
   vertical-align: middle; }

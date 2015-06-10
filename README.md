@@ -102,4 +102,4 @@
 
 ## 截图
 ![热门话题](http://ww3.sinaimg.cn/large/921c1cdagw1esyw0n62ftj20ku112afd.jpg)
-![话题详情](http://ww3.sinaimg.cn/large/921c1cdagw1eszfewwti6j20ku112tg3.jpg)
+![话题详情](http://ww3.sinaimg.cn/large/921c1cdagw1eszfspcms2j20ku112qab.jpg)
