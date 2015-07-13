@@ -1,5 +1,7 @@
 class TopicController {
-  static get $inject() { return ['$scope', '$stateParams', '$ionicScrollDelegate', 'APIRequest', 'Users', 'settings']; }
+  static get $inject() {
+    return ['$scope', '$stateParams', '$ionicScrollDelegate', 'APIRequest', 'Users', 'settings'];
+  }
 
   constructor($scope, $stateParams, $ionicScrollDelegate, APIRequest, Users, settings) {
     // controller as
@@ -97,7 +99,7 @@ class TopicController {
     this.posts.map((item) => {
       // 心灵
       if (!item.userId) {
-        item.userAvatar = '/img/anonymous.gif';
+        item.userAvatar = '/images/anonymous.gif';
         return;
       }
       // 否则载入用户头像

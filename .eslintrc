@@ -88,13 +88,13 @@ rules:
   # 控制代码复杂度 http://elijahmanor.github.io/talks/js-smells/
 
   # 单个函数最多有 16 行（内部的其他函数定义不算）
-  max-statements: [2, 16]
+  max-statements: [1, 16]
 
   # 至多嵌套五层代码块
-  max-depth: [2, 5]
+  max-depth: [1, 5]
 
   # [cyclomatic complexity](http://en.wikipedia.org/wiki/Cyclomatic_complexity) 上限为 7
-  complexity: [2, 7]
+  complexity: [1, 7]
 
   # 每行最多 110 个字符，比 80 个字符多一点，毕竟可能会有很多缩进，而且反正显示器够大
   max-len: [1, 110]
@@ -103,7 +103,16 @@ rules:
   max-params: [1, 10]
 
   # 最多允许嵌套两层回调
-  max-nested-callbacks: [2, 2]
+  max-nested-callbacks: [1, 2]
+
+  # 对于对象的成员函数，要求使用简写
+  object-shorthand: [1, methods]
+
+  # 如果表达式太长需要换行，操作符应该在下一行的开头
+  operator-linebreak: [1, before]
+
+  # 衍生类必须有 super() 调用，非衍生类不准调用 super()
+  constructor-super: 2
 
   # 允许使用 switch 语句
   smells/no-switch: 0

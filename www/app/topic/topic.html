@@ -20,7 +20,7 @@
         <h2>{{post.title}}</h2>
       </ion-item>
       <ion-item class="post-meta item item-avatar">
-        <img ng-src="{{post.userAvatar || '/img/placeholder.png'}}">
+        <img ng-src="{{post.userAvatar || '/images/placeholder.png'}}">
         <p class="post-floor pull-right">{{post.floor === 1 ? '楼主' : ('#' + post.floor)}}</p>
         <h3>{{post.userName || '匿名'}}</h3>
         <p class="post-time">{{post.time | fromNow}}</p>

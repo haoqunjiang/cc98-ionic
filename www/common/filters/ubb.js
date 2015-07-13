@@ -47,7 +47,7 @@ function ubb($window, $sce, settings) {
     },
     img: {
       openTag: (params, content) =>
-        `<img src="/img/click-to-show.png" data-src="${content}" onclick="showImage(this)">`,
+        `<img src="/images/click-to-show.png" data-src="${content}" onclick="showImage(this)">`,
       closeTag: () => ''
     },
     mp3: {
@@ -136,7 +136,7 @@ function ubb($window, $sce, settings) {
 
         let ext = params[0];
         let clickToShow = (params[1] === '1');
-        let imageUrlToShow = clickToShow ? '/img/click-to-show.png' : content;
+        let imageUrlToShow = clickToShow ? '/images/click-to-show.png' : content;
 
         // test if it is img
         if (/^(gif|jpg|jpeg|bmp|png)$/.test(ext)) {
