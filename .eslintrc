@@ -26,10 +26,10 @@ rules:
   indent: [1, 2]
 
   # 函数定义的 () 前不应有空格（示例：function() {}、function foo() {}）
-  space-before-function-parentheses: never
+  space-before-function-paren: [1, never]
 
   # 代码块的花括号 { 前面应当有个空格
-  space-before-blocks: always
+  space-before-blocks: [1, always]
 
   # 花括号 { 一律在行末，除非表达式只有一行
   brace-style: [1, 1tbs, { allowSingleLine: true }]
@@ -59,7 +59,7 @@ rules:
   comma-style: [1, last]
 
   # 单行注释的 // 后面应当有个空格
-  spaced-line-comment: always
+  spaced-line-comment: [1, always]
 
   # 变量不能自己和自己进行比较
   no-self-compare: 1
